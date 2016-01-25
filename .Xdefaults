@@ -1,0 +1,68 @@
+URxvt.scrollstyle: plain
+
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
+URxvt.font:     xft:Inconsolata     :size=12:antialias=true
+URxvt.boldFont: xft:Inconsolata:bold:size=12:antialias=true
+
+! Copy and pasting
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste 
+URxvt.iso14755: False
+URxvt.perl-ext-common: default,clipboard
+
+URxvt.internalBorder:  15
+
+! C&P'd colors
+urxvt*transparent: true
+urxvt*shading: 15
+urxvt*foreground: #DDDDDD
+urxvt*background: #333333
+
+! -- Pencil --
+
+! Base
+*background: #212121
+*foreground: #d9d9d9
+*cursorColor: #20bbfc
+! Black
+*color0: #212121
+*color8: #424242
+! Red
+*color1: #c30771
+*color9: #fb007a
+! Green
+*color2: #10a778
+*color10: #5fd7af
+! Yellow
+*color3: #a89c14
+*color11: #f3e430
+! Blue
+*color4: #008ec4
+*color12: #20bbfc
+! Magenta
+*color5: #523c79
+*color13: #6855de
+! Cyan
+*color6: #20a5ba
+*color14: #4fb8cc
+! White
+*color7: #d9d9d9
+*color15: #f1f1f1
+
+! *color0:  #2E3436
+! *color1:  #a40000
+! *color2:  #4E9A06
+! *color3:  #C4A000
+! *color4:  #3465A4
+! *color5:  #75507B
+! *color6:  #ce5c00
+! *color7:  #babdb9
+! *color8:  #555753
+! *color9:  #EF2929
+! *color10: #8AE234
+! *color11: #FCE94F
+! *color12: #729FCF
+! *color13: #AD7FA8
+! *color14: #fcaf3e
+! *color15: #EEEEEC
