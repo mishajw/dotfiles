@@ -37,4 +37,6 @@ alias stopcsecvm="VBoxManage controlvm 'Intro to Computer Security' poweroff"
 # Restart internet
 alias resint="sudo systemctl restart NetworkManager.service"
 
+# Misc
+alias dua="du -sh *"
 
