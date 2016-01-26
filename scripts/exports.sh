@@ -8,3 +8,5 @@ export VOL_CHANGED_FIFO="/tmp/vol-changed-fifo"
 export LANGUAGE="$LANG"
 export LC_ALL="$LANG"
 
+export PATH=$PATH:/usr/bin/core_perl
+
