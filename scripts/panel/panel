@@ -29,8 +29,9 @@ done
 
 . $PANEL_PATH/panel_colors
 
-cat "$PANEL_FIFO" |\
-  $PANEL_PATH/panel-parser.py |\
+cat "$PANEL_FIFO" | \
+  $PANEL_PATH/panel-parser.py | \
+  tee $PANEL_PATH/.panel-parser.log | \
   lemonbar \
     -g x"$BAR_HEIGHT" \
     -f "$MAIN_FONT" \
