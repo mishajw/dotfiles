@@ -1,4 +1,6 @@
 #!/bin/bash
 
-clock -sf '%a %H:%M:%S'
-
+while true ; do
+  date +'%a %d %b  %T'
+  sleep 1
+done
