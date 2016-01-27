@@ -5,13 +5,29 @@ import sys
 import re
 import time
 import math
+from panelParams import SLEEP_BATTERY
 
 RED='#C23B22'
 GREEN='#77DD77'
 YELLOW='#FDFD96'
 
+fifoPath = os.environ['PANEL_BATTERY_FIFO']
+
+promptCommand = """
+tail -f $PANEL_BATTERY_FIFO &
+while true ; do
+  echo hello
+  sleep """ + str(SLEEP_BATTERY) + """
+done
+"""
+
+batteryCommand = """
+upower -i $(upower -e | grep 'BAT') |\
+  grep -E 'state|time\ to|percentage'
+"""
+
 def getBatteryDump():
-  f = os.popen("upower -i $(upower -e | grep 'BAT') | grep -E 'state|time\ to|percentage'")
+  f = os.popen(batteryCommand)
   return [re.compile("\s+").split(line) for line in f.read().split('\n')]
 
 def getBatteryFormatted():
@@ -46,13 +62,18 @@ def getBatteryFormatted():
     icon = '\uf243'
 
   return "%%{F%s}%s%s%%{F-} %d%% (%s)" % (color, icon, state, perc, time)
-  # return "%d%% %s(%s)" % (perc, state, time)
 
 def main():
+  try:
+    os.mkfifo(fifoPath)
+  except:
+    pass
+
+  promptProcess = os.popen(promptCommand)
   while(1):
     print(getBatteryFormatted())
     sys.stdout.flush()
-    time.sleep(1)
+    promptProcess.readline()
 
 if __name__ == "__main__":
   main()

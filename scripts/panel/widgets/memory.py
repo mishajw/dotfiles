@@ -4,36 +4,24 @@ import subprocess
 import sys
 import time
 import re
-
-UPDATE_TIME = 1
+import os
+from panelParams import SLEEP_MEMORY
 
 def main():
 
   while(1):
-    process = subprocess.Popen(
-      'free -m'.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE
-    )
-    stats = process.stdout.read().decode()
+    p = os.popen('free -m')
 
-    for line in stats.split('\n'):
-      if line[:3] != "Mem":
-        continue
-    
-      split = re.split(" +", line)
+    try:
+      stats = [re.split(' +', line) for line in p.read().split('\n') if 'Mem' in line][0] 
+      perc = int(stats[2]) / int(stats[1]) * 100
 
-      perc = int(split[2]) / int(split[1]) * 100
+      print("\uf02a %.2f%%" % perc)
+      sys.stdout.flush()
+    except:
+      pass
 
-      print("\uf02a %.2f%%" % perc)
-
-      break
-    
-
-    sys.stdout.flush()
-
-    time.sleep(UPDATE_TIME)
-
-    process.kill()
-
+    time.sleep(SLEEP_MEMORY)
 
 if __name__ == "__main__":
   main()

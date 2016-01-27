@@ -3,15 +3,14 @@
 import os
 import time
 import sys
-
-TIME_WAIT = 60
+from panelParams import SLEEP_PACMAN
 
 def getIntFromOS(cmd):
   f = os.popen(cmd)
   return int(f.read())
 
 def getUpdates():
-  return getIntFromOS("pacman -Qu | wc -l")
+  return getIntFromOS("checkupdates | wc -l")
 
 def getExpInstalled():
   return getIntFromOS("pacman -Qe | wc -l")
@@ -27,7 +26,7 @@ def main():
       getUpdates()
     ))
     sys.stdout.flush()
-    time.sleep(TIME_WAIT)
+    time.sleep(SLEEP_PACMAN)
 
 if __name__ == "__main__":
   main()

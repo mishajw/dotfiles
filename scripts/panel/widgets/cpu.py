@@ -1,25 +1,24 @@
 #!/usr/bin/python
 
-import subprocess
+import os
 import sys
+import time
+import re
+from panelParams import SLEEP_CPU
 
 def main():
-  process = subprocess.Popen(
-    'mpstat 5'.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE
-  )
-
   while(1):
-    stats = process.stdout.readline().decode()
+    p = os.popen("mpstat")
+    stats = p.read()
     idle = stats[-7:]
-
     try:
-      used = 100 - float(idle)
+      used = 100 - float([re.split(' +', line)[-1] for line in stats.split('\n') if "all" in line][0])
       print("\uf017 %.2f%%" % used)
       sys.stdout.flush()
     except:
       pass
 
-    sys.stdout.flush()
+    time.sleep(SLEEP_CPU)
 
   process.close()
 
