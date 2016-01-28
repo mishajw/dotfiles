@@ -36,32 +36,25 @@ def getBatteryFormatted():
   state = battery[0][-1]
   time = battery[1][-2] + battery[1][-1][0]
   perc = int(battery[2][-1][:-1])
-  color = ''
-
-  if state == 'charging':
-    color = GREEN
+  color = '#FF0000'
+  
+  if state == "charging":
     state = ' \uf0e7'
   else:
     state = ''
-    if perc > 60:
-      color = GREEN
-    elif perc > 30:
-      color = YELLOW
-    else:
-      color = RED
 
   icon = ''
-
-  if perc > 75:
-    icon = '\uf240'
-  elif perc > 50:
-    icon = '\uf241'
-  elif perc > 25:
-    icon = '\uf242'
+  if perc > 66:
+    icon = '\uf004\uf004\uf004'
+  elif perc > 33:
+    icon = '\uf08a\uf004\uf004'
+  elif perc > 10:
+    icon = '\uf08a\uf08a\uf004'
   else:
-    icon = '\uf243'
+    icon = '\uf08a\uf08a\uf08a'
 
-  return "%%{F%s}%s%s%%{F-} %d%% (%s)" % (color, icon, state, perc, time)
+
+  return "%d%% %%{F%s}%s%s%%{F-} (%s)" % (perc, color, icon, state, time)
 
 def main():
   try:
