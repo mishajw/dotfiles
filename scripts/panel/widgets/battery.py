@@ -39,7 +39,7 @@ def getBatteryFormatted():
   color = '#FF0000'
   
   if state == "charging":
-    state = ' \uf0e7'
+    state = ' \uf0fa'
   else:
     state = ''
 
@@ -47,9 +47,9 @@ def getBatteryFormatted():
   if perc > 66:
     icon = '\uf004\uf004\uf004'
   elif perc > 33:
-    icon = '\uf08a\uf004\uf004'
+    icon = '\uf004\uf004\uf08a'
   elif perc > 10:
-    icon = '\uf08a\uf08a\uf004'
+    icon = '\uf004\uf08a\uf08a'
   else:
     icon = '\uf08a\uf08a\uf08a'
 
