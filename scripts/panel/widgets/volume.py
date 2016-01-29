@@ -6,6 +6,7 @@ import re
 import sys
 
 fifoPath = os.environ['VOL_CHANGED_FIFO']
+command = "amixer sset 'Master' 0% ; amixer sset 'Master' mute ; ~/scripts/vol-changed.sh"
 
 def main():
   makeFifo()
@@ -39,7 +40,7 @@ def getVolumeDetails():
   else:
     icon = '\uf027'
 
-  print("%s %d%%" % (icon, vol))
+  print("%%{A:%s:}%s %d%%%%{A}" % (command, icon, vol))
   sys.stdout.flush()
 
 def makeFifo():

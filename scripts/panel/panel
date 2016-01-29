@@ -10,7 +10,7 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
-bspc config top_padding $PANEL_HEIGHT
+bspc config top_padding $BAR_HEIGHT
 
 lefts=('workspaces.sh' 'title.sh')
 rights=('volume.py' 'memory.py' 'cpu.py' 'battery.py' 'pacman.py' 'clock.sh')
@@ -35,7 +35,8 @@ cat "$PANEL_FIFO" | \
   lemonbar \
     -g x"$BAR_HEIGHT" \
     -f "$MAIN_FONT" \
-    -f "FontAwesome"
-    -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" &
+    -f "FontAwesome" \
+    -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" \
+    -p | sh &
 
 wait
