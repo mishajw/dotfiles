@@ -5,6 +5,8 @@ import time
 import sys
 from panelParams import SLEEP_PACMAN
 
+command = 'urxvt -hold -e sudo pacman -Syyu ; echo Done'
+
 def getIntFromOS(cmd):
   f = os.popen(cmd)
   return int(f.read())
@@ -19,8 +21,11 @@ def getInstalled():
   return getIntFromOS("pacman -Q | wc -l")
 
 def main():
+  print('Loading...')
+  sys.stdout.flush()
   while(1):
-    print("\uf0aa T:%d E:%d U:%d" % (
+    print("%%{A:%s:}\uf0aa T:%d E:%d U:%d%%{A}" % (
+      command,
       getInstalled(),
       getExpInstalled(),
       getUpdates()
