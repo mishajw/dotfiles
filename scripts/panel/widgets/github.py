@@ -5,16 +5,19 @@ import datetime
 import sys
 import time
 from urllib.request import urlopen
+from urllib.error import URLError
+from panelParams import SLEEP_GITHUB
 
-command = 'google-chrome-stable "http://github.com/mishajw"'
+command = 'google-chrome-stable http://github.com/mishajw'
 
 def main():
   while 1:
     try:
       printCommits()
-    except:
-      pass
-    time.sleep(1)
+    except URLError as e:
+      printMessage('\uf119')
+
+    time.sleep(SLEEP_GITHUB)
 
 def printCommits():
   raw = getRawJSON()
@@ -27,12 +30,11 @@ def printCommits():
   for (t, i) in times:
     if checkTime(t):
       today += i
-
-  print("%%{A:%s:}\uf09b %d%%{A}" % (command, today))
-  sys.stdout.flush()
+  
+  printMessage(str(today))
 
 def getRawJSON():
-  response = urlopen('https://api.github.com/users/mishajw/events')
+  response = urlopen('https://api.github.com/users/mishajw/events?access_token=43324f412e680003cee4d7395fb23e9bcfdec0a5')
   return response.read().decode()
 
 def checkTime(timeStr):
@@ -50,6 +52,9 @@ def checkTime(timeStr):
 
   return isToday
 
+def printMessage(amount):
+  print("%%{A:%s:}\uf09b %s%%{A}" % (command, amount))
+  sys.stdout.flush()
 
 if __name__ == '__main__':
   main()
