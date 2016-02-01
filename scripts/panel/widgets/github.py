@@ -4,13 +4,17 @@ import json
 import datetime
 import sys
 import time
+import os
 from urllib.request import urlopen
 from urllib.error import URLError
 from panelParams import SLEEP_GITHUB
 
+url = ''
 command = 'google-chrome-stable http://github.com/mishajw'
 
 def main():
+  setURL()
+
   while 1:
     try:
       printCommits()
@@ -34,7 +38,9 @@ def printCommits():
   printMessage(str(today))
 
 def getRawJSON():
-  response = urlopen('https://api.github.com/users/mishajw/events?access_token=43324f412e680003cee4d7395fb23e9bcfdec0a5')
+  global url
+
+  response = urlopen(url)
   return response.read().decode()
 
 def checkTime(timeStr):
@@ -55,6 +61,14 @@ def checkTime(timeStr):
 def printMessage(amount):
   print("%%{A:%s:}\uf09b %s%%{A}" % (command, amount))
   sys.stdout.flush()
+
+def setURL():
+  global url
+  tokenPath = os.environ['PANEL_PATH'] + "/widgets/git_token"
+  f = open(tokenPath, 'r')
+  token = f.read()
+
+  url = 'https://api.github.com/users/mishajw/events?access_token=' + token 
 
 if __name__ == '__main__':
   main()
