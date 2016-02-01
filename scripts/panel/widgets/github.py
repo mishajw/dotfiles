@@ -10,7 +10,7 @@ from urllib.error import URLError
 from panelParams import SLEEP_GITHUB
 
 url = ''
-command = 'google-chrome-stable http://github.com/mishajw'
+command = 'google-chrome-stable github.com/mishajw'
 
 def main():
   setURL()
