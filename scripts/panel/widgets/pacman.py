@@ -5,7 +5,7 @@ import time
 import sys
 from panelParams import SLEEP_PACMAN
 
-command = 'urxvt -hold -e sudo pacman -Syyu ; echo Done'
+command = "urxvt -hold -e bash -c 'sudo pacman -Syyu && echo Done updating.'"
 
 def getIntFromOS(cmd):
   f = os.popen(cmd)
