@@ -20,6 +20,13 @@ alias gpull="git stash ; git fetch ; git rebase FETCH_HEAD"
 alias gs="git status"
 alias gd="git diff"
 
+# SVN
+alias sa="svn add"
+alias svnu="svn update"
+alias sc="svn commit -m"
+alias svns="svn status"
+alias sl="svn log"
+
 # ls
 alias ll="ls -lah"
 alias la="ls -a"
@@ -36,6 +43,11 @@ alias stopcsecvm="VBoxManage controlvm 'Intro to Computer Security' poweroff"
 
 # Restart internet
 alias resint="sudo systemctl restart NetworkManager.service"
+
+# Systemctl
+alias sysstart="sudo systemctl start"
+alias sysstop="sudo systemctl stop"
+alias sysres="sudo systemctl restart"
 
 # Misc
 alias dua="du -sh *"
