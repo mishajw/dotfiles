@@ -51,4 +51,5 @@ alias sysres="sudo systemctl restart"
 
 # Misc
 alias dua="du -sh *"
+csvview () { column -s, -t < $@ | less -#2 -N -S }
 
