@@ -21,11 +21,12 @@ alias gs="git status"
 alias gd="git diff"
 
 # SVN
-alias sa="svn add"
-alias svnu="svn update"
-alias sc="svn commit -m"
-alias svns="svn status"
-alias sl="svn log"
+alias va="svn add"
+alias vu="svn update"
+alias vc="svn commit -m"
+alias vs="svn status"
+alias vl="svn log"
+alias vd="svn diff"
 
 # ls
 alias ll="ls -lah"
