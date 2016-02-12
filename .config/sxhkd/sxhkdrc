@@ -61,8 +61,8 @@ super + alt + shift + {Left,Down,Up,Right}
 super + ctrl + {1-9}
 	bspc window -r 0.{1-9}
 
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,window -d} ^{1-9,10}
+super + {_,shift + }{1-9,0,d}
+	bspc {desktop -f,window -d} ^{1-9,10,11}
 
 ~button1
 	bspc pointer -g focus
@@ -83,14 +83,29 @@ super + @button{1-3}
 super + Return
 	urxvt
 
+# Launcher
 super + space
   /home/misha/scripts/launcher.sh
 
+#Volume
 XF86Audio{Lower,Raise}Volume
   /home/misha/scripts/vol-{down,up}.sh
-
 XF86AudioMute
   /home/misha/scripts/vol-mute.sh
+
+# Brightness
+XF86MonBrightnessUp
+  xbacklight -inc 5
+XF86MonBrightnessDown
+  xbacklight -dec 5
+
+# Change window gaps
+alt + {minus,equal}
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2 ))
+
+# Network dmenu
+super + XF86WLAN
+  nmcli_dmenu
 
 # make sxhkd reload its configuration files:
 super + Escape
