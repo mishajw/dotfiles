@@ -1,3 +1,9 @@
+export MAIN_DISPLAY="eDP1"
+export SECOND_DISPLAY="DP1"
+export MASTER_SOUND="Master"
+
+export SCRIPTS="/home/misha/scripts"
+
 export MAIN_FONT="Monospace:style=Bold:size=10"
 export BAR_HEIGHT=30
 
@@ -12,5 +18,5 @@ export LC_ALL="$LANG"
 # SVN
 export SVN_EDITOR="gvim"
 
-export PATH=$PATH:/usr/bin/core_perl
+export PATH=$PATH:/usr/bin/core_perl:$SCRIPTS
 
