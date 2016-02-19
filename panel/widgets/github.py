@@ -18,7 +18,7 @@ def main():
   while 1:
     try:
       printCommits()
-    except URLError as e:
+    except:
       printMessage('\uf119')
 
     time.sleep(SLEEP_GITHUB)
