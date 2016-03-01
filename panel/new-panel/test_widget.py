@@ -1,11 +1,13 @@
 #!/usr/bin/python
 
 from widget import Widget
+from panel_help import *
 
 class TestWidget(Widget):
   def __init__(self):
     self.click_command = "echo Hello"
+    super(TestWidget, self).__init__()
 
-  def get_text(self):
-    return "Hello, world!"
+  def update_text(self):
+    return str(curr_time())
 

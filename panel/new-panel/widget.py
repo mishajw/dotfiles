@@ -1,19 +1,31 @@
 #!/usr/bin/python
 
+from threading import Thread
+import time
 from panel_help import *
 
 class Widget:
   def __init__(self):
-    self.update_time = 0
+    self.update_time = 1
     self.click_command = ""
+    self.text = ""
 
-  def get_text(self):
+  def update_text(self):
     return "Not implmented"
 
-  def get_text_with_commands(self):
-    text = self.get_text()
+  def update_text_with_commands(self):
+    self.text = self.update_text()
 
     if self.click_command != "":
       text = set_left_click(text, self.click_command)
+
+  def update_loop(self):
+    while 1:
+      time.sleep(self.update_time)
+      self.update_text_with_commands()
     
-    return text
+
+  def start_thread(self):
+    t = Thread(target=self.update_loop)
+    t.start()
+
