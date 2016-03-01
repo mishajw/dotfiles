@@ -3,6 +3,8 @@
 from test_widget import TestWidget
 from workspace_widget import WorkspaceWidget
 from panel_help import *
+import time
+import sys
 
 colors = [
   "#FF0000",
@@ -25,10 +27,12 @@ def main():
 
   while 1:
     print_full_text()
+    time.sleep(1)
 
 def print_full_text():
   full_text = get_full_text()
   print(full_text)
+  sys.stdout.flush()
 
 def start_widgets():
   for w in all_widgets():
@@ -44,7 +48,7 @@ def get_full_text():
   return full_text
     
 def get_items_text(items):
-  all_text = [i.text for i in items]
+  all_text = [i.get_text_with_commands() for i in items]
   colored_text = [set_color(all_text[i], colors[i % len(colors)]) for i in range(len(all_text))]
   full_text = separator.join(colored_text)
 

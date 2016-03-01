@@ -13,17 +13,16 @@ class Widget:
   def update_text(self):
     return "Not implmented"
 
-  def update_text_with_commands(self):
-    self.text = self.update_text()
-
+  def get_text_with_commands(self):
     if self.click_command != "":
-      text = set_left_click(text, self.click_command)
+      return set_left_click(self.text, self.click_command)
+    else:
+      return self.text
 
   def update_loop(self):
     while 1:
       time.sleep(self.update_time)
       self.update_text_with_commands()
-    
 
   def start_thread(self):
     t = Thread(target=self.update_loop)
