@@ -5,6 +5,8 @@ from workspace_widget import WorkspaceWidget
 from panel_help import *
 import time
 import sys
+import os
+import subprocess
 
 colors = [
   "#FF0000",
@@ -22,7 +24,15 @@ middle_items = []
 
 right_items = []
 
+lemonbar_command = 'lemonbar -g x' + os.environ['BAR_HEIGHT'] + ' -f ' + os.environ['MAIN_FONT'] + ' -f "FontAwesome" -p'
+
+
 def main():
+  global stdout
+  p = subprocess.Popen(lemonbar_command.split(" "), stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+
+
+  stdout = p.stdin
   start_widgets()
 
   while 1:
@@ -30,7 +40,12 @@ def main():
     time.sleep(1)
 
 def print_full_text():
-  full_text = get_full_text()
+  full_text = get_full_text() + "\n"
+  
+  global stdout
+  stdout.write(full_text.encode())
+  stdout.flush()
+
   print(full_text)
   sys.stdout.flush()
 
@@ -59,3 +74,5 @@ def all_widgets():
     
 if __name__ == "__main__":
   main()
+  ww = WorkspaceWidget()
+  ww.update_loop()
