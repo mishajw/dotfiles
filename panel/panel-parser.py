@@ -13,20 +13,23 @@ rightProcesses = []
 def main():
   global leftProcesses
   global rightProcesses
+  
+  try:
+    for input in sys.stdin:
+      align = input[0]
+      index = int(input[1])
+      content = input[2:].replace('\n', '')
 
-  for input in sys.stdin:
-    align = input[0]
-    index = int(input[1])
-    content = input[2:].replace('\n', '')
+      if align == 'l':
+        leftProcesses = makeRoom(leftProcesses, index)
+        leftProcesses[index] = content
+      elif align =='r':
+        rightProcesses = makeRoom(rightProcesses, index)
+        rightProcesses[index] = content
 
-    if align == 'l':
-      leftProcesses = makeRoom(leftProcesses, index)
-      leftProcesses[index] = content
-    elif align =='r':
-      rightProcesses = makeRoom(rightProcesses, index)
-      rightProcesses[index] = content
-
-    printAll()
+      printAll()
+  except:
+    main()
 
 def printArray(a):
   output = ''
