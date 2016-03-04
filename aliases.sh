@@ -16,9 +16,10 @@ alias yn="y --noconfirm"
 alias ga="git add"
 alias gc="git commit -m"
 alias gp="git push"
-alias gpull="git stash ; git fetch ; git rebase FETCH_HEAD"
+alias gpull="git pull --rebase"
 alias gs="git status"
 alias gd="git diff"
+alias glog="git log --oneline"
 
 # SVN
 alias va="svn add"
