@@ -30,14 +30,29 @@ lemonbar_command = 'lemonbar -g x' + os.environ['BAR_HEIGHT'] + ' -f ' + os.envi
 def main():
   global stdout
   p = subprocess.Popen(lemonbar_command.split(" "), stdout=subprocess.PIPE, stdin=subprocess.PIPE)
-
+  
+  setupFifo()
 
   stdout = p.stdin
   start_widgets()
 
-  while 1:
-    print_full_text()
-    time.sleep(1)
+  printLoop()
+
+def printLoop():
+  f = open(FIFO_PATH, 'r')
+
+  print_full_text()
+
+  for line in f:
+    if line == "updated":
+      print_full_text()
+
+def setupFifo():
+  try:
+    os.mkfifo(FIFO_PATH)
+    print("Made fifo at %s" % FIFO_PATH)
+  except FileExistsError:
+    print("Didn't make fifo, because already exists")
 
 def print_full_text():
   full_text = get_full_text() + "\n"

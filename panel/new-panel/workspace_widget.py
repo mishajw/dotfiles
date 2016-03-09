@@ -38,5 +38,5 @@ class WorkspaceWidget(CommandWidget):
         allWorkspaces.append(set_all_colors(" %s " % (title), color[0], color[1]))
     
     self.text = "".join(allWorkspaces)
-
+    registerUpdate()
 

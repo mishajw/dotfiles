@@ -2,6 +2,8 @@
 
 from datetime import datetime
 
+FIFO_PATH="/tmp/new-panel-fifo"
+
 def set_color(s, color):
   return "%%{F%s}%s%%{F-}" % (color, s)
 
@@ -16,3 +18,10 @@ def set_left_click(s, command):
 
 def curr_time():
   return datetime.now().microsecond
+
+def registerUpdate():
+  f = open(FIFO_PATH, 'w')
+  f.write("updated\n")
+  f.close()
+
+  print("Wrote updated to fifo")
