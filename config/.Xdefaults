@@ -11,7 +11,7 @@ URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.iso14755: False
 URxvt.perl-ext-common: default,clipboard
 
-URxvt.internalBorder:  15
+! URxvt.internalBorder:  15
 
 ! C&P'd colors
 urxvt*transparent: true

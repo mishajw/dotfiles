@@ -1,0 +1,24 @@
+{
+  "symlinks": [
+    {
+      "src": ".vimrc"
+    },
+    {
+      "src": "bspwmrc",
+      "dst": ".config/bspwm/bspwmrc"
+    },
+    {
+      "src": "sxhkdrc",
+      "dst": ".config/sxhkd/sxhkdrc"
+    },
+    {
+      "src": ".Xdefaults"
+    },
+    {
+      "src": ".zshrc"
+    },
+    {
+      "src": ".xinitrc"
+    }
+  ]
+}
