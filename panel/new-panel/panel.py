@@ -2,6 +2,7 @@
 
 from test_widget import TestWidget
 from workspace_widget import WorkspaceWidget
+from title_widget import TitleWidget
 from panel_help import *
 import time
 import sys
@@ -18,6 +19,7 @@ separator = " | "
 
 left_items = [
   WorkspaceWidget(),
+  TitleWidget()
 ]
 
 middle_items = []
