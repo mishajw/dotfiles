@@ -48,7 +48,7 @@ def print_loop():
   print_full_text()
 
   while True:
-    line = f.readline()[:-1]
+    line = f.readline()[:-1] # Trim the new line character off
 
     if line != "":
       print("Got line: " + line)
