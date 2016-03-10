@@ -20,8 +20,10 @@ def curr_time():
   return datetime.now().microsecond
 
 def registerUpdate():
+  print_to_fifo("updated")
+
+def print_to_fifo(s):
   f = open(FIFO_PATH, 'w')
-  f.write("updated\n")
+  f.write(s + "\n")
   f.close()
 
-  print("Wrote updated to fifo")

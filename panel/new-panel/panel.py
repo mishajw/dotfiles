@@ -31,23 +31,30 @@ def main():
   global stdout
   p = subprocess.Popen(lemonbar_command.split(" "), stdout=subprocess.PIPE, stdin=subprocess.PIPE)
   
-  setupFifo()
+  setup_fifo()
 
   stdout = p.stdin
   start_widgets()
 
-  printLoop()
+  print_loop()
 
-def printLoop():
+def print_loop():
   f = open(FIFO_PATH, 'r')
+
+  registerUpdate()
 
   print_full_text()
 
-  for line in f:
+  while True:
+    line = f.readline()[:-1]
+
+    if line != "":
+      print("Got line: " + line)
+
     if line == "updated":
       print_full_text()
 
-def setupFifo():
+def setup_fifo():
   try:
     os.mkfifo(FIFO_PATH)
     print("Made fifo at %s" % FIFO_PATH)
