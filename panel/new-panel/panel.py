@@ -4,19 +4,22 @@ from volume_widget import VolumeWidget
 from workspace_widget import WorkspaceWidget
 from title_widget import TitleWidget
 from battery_widget import BatteryWidget
+from date_widget import DateWidget
+from github_widget import GithubWidget
+from updates_widget import UpdatesWidget
+
 from panel_help import *
+
 import time
 import sys
 import os
 import subprocess
 
-colors = [
-  "#FF0000",
-  "#00FF00",
-  "#0000FF"
-]
+colors = ['#a0b89f', '#e1d5a9', '#e4a972']
+backgroundColor = '#33000000'
+foregroundColor = '#ff888888'
 
-separator = " | "
+separator = "  "
 
 left_items = [
   WorkspaceWidget(),
@@ -27,11 +30,15 @@ middle_items = []
 
 right_items = [
   VolumeWidget(),
-  BatteryWidget()
+  BatteryWidget(),
+  GithubWidget(),
+  UpdatesWidget(),
+  DateWidget()
 ]
 
-lemonbar_command = 'lemonbar -g x' + os.environ['BAR_HEIGHT'] + ' -f ' + os.environ['MAIN_FONT'] + ' -f "FontAwesome" -p'
-
+lemonbar_command = \
+        'lemonbar -g x%s -f %s -f "FontAwesome" -F %s -B %s' % \
+        (os.environ['BAR_HEIGHT'], os.environ['MAIN_FONT'], foregroundColor, backgroundColor)
 
 def main():
   global stdout
@@ -54,9 +61,6 @@ def print_loop():
   while True:
     line = f.readline()[:-1] # Trim the new line character off
 
-    if line != "":
-      print("Got line: " + line)
-
     if line == "updated":
       print_full_text()
 
@@ -74,9 +78,6 @@ def print_full_text():
   stdout.write(full_text.encode())
   stdout.flush()
 
-  print(full_text)
-  sys.stdout.flush()
-
 def start_widgets():
   for w in all_widgets():
     w.start_thread()
@@ -86,13 +87,13 @@ def get_full_text():
   middle_text = get_items_text(middle_items)
   right_text = get_items_text(right_items)
 
-  full_text = "%%{l}%s%%{c}%s%%{r}%s" % (left_text, middle_text, right_text)
+  full_text = "  %%{l}%s%%{c}%s%%{r}%s  " % (left_text, middle_text, right_text)
 
   return full_text
     
 def get_items_text(items):
   all_text = [i.get_text_with_commands() for i in items]
-  colored_text = [set_color(all_text[i], colors[i % len(colors)]) for i in range(len(all_text))]
+  colored_text = [set_underline_color(set_color(all_text[i], colors[i % len(colors)]), colors[i % len(colors)]) for i in range(len(all_text))]
   full_text = separator.join(colored_text)
 
   return full_text

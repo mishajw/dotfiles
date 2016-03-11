@@ -10,6 +10,9 @@ def set_color(s, color):
 def set_background_color(s, color):
   return "%%{B%s}%s%%{B-}" % (color, s)
 
+def set_underline_color(s, color):
+  return "%%{U%s}%%{+u}%s%%{-u}%%{U-}" % (color, s)
+
 def set_all_colors(s, fg, bg):
   return set_background_color(set_color(s, fg), bg)
 

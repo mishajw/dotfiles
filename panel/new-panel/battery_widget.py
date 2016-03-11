@@ -9,6 +9,8 @@ class BatteryWidget(NumberWidget):
 
   def __init__(self):
     super(BatteryWidget, self).__init__('B')
+    
+    self.update_time = 3
 
     self.battery_command = "upower -i $(upower -e | grep 'BAT') |\
       grep -E 'state|time\ to|percentage'"
@@ -19,6 +21,7 @@ class BatteryWidget(NumberWidget):
     self.state = battery[0][-1]
     self.number = int(battery[2][-1][:-1])
  
+  """
   def update_char(self):
     if self.number > 66:
       self.character = '\uf004\uf004\uf004'
@@ -28,7 +31,8 @@ class BatteryWidget(NumberWidget):
       self.character = '\uf004\uf08a\uf08a'
     else:
       self.character = '\uf08a\uf08a\uf08a'
-  
+  """
+
   def get_battery_dump(self):
     f = os.popen(self.battery_command)
     return [re.compile("\s+").split(line) for line in f.read().split('\n')]

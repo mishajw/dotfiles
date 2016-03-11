@@ -19,6 +19,7 @@ class VolumeWidget(NumberWidget):
     self.number = int(spl[5][1:-2])
     self.mute = spl[6][1:-2] == 'off'
 
+"""
   def update_char(self):
     if self.number == 0 or self.mute:
       self.character = '\uf026'
@@ -26,3 +27,4 @@ class VolumeWidget(NumberWidget):
       self.character = '\uf028'
     else:
       self.character = '\uf027'
+"""

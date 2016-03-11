@@ -64,7 +64,7 @@ class GithubWidget(NumberWidget):
   
   def setURL(self):
     global url
-    tokenPath = os.environ['PANEL_PATH'] + "/widgets/git_token"
+    tokenPath = os.environ['PANEL_PATH'] + "/git_token"
     f = open(tokenPath, 'r')
     token = f.read()
   
