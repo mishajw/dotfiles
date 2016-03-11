@@ -1,8 +1,9 @@
 #!/usr/bin/python
 
-from test_widget import TestWidget
+from volume_widget import VolumeWidget
 from workspace_widget import WorkspaceWidget
 from title_widget import TitleWidget
+from battery_widget import BatteryWidget
 from panel_help import *
 import time
 import sys
@@ -24,7 +25,10 @@ left_items = [
 
 middle_items = []
 
-right_items = []
+right_items = [
+  VolumeWidget(),
+  BatteryWidget()
+]
 
 lemonbar_command = 'lemonbar -g x' + os.environ['BAR_HEIGHT'] + ' -f ' + os.environ['MAIN_FONT'] + ' -f "FontAwesome" -p'
 

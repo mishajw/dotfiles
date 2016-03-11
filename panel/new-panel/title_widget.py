@@ -9,6 +9,6 @@ class TitleWidget(CommandWidget):
     super(TitleWidget, self).__init__("xtitle -sf '%s' -t 40")
 
   def handle_output(self, output):
-    self.text = output.decode()
+    self.text = output.decode().replace("\n", "")
     registerUpdate()
 
