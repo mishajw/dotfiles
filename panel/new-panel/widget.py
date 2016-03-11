@@ -23,6 +23,7 @@ class Widget:
     while 1:
       time.sleep(self.update_time)
       self.update_text()
+      registerUpdate()
 
   def start_thread(self):
     t = Thread(target=self.update_loop)
