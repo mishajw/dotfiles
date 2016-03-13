@@ -30,6 +30,6 @@ bspc rule -a URxvtQuake sticky=on floating=on border=off
 hsetroot -fill ~/Pictures/backgrounds/basic_hills.jpg
 # Start bar
 # killall panel ; $SCRIPTS/panel/panel &
-killall panel.py ; $SCRIPTS/panel/new-panel/panel.py & 
+killall panel.py ; $SCRIPTS/panel/panel.py & 
 # Start compton
 killall compton ; compton --config ~/.compton.conf &
