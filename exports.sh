@@ -5,7 +5,7 @@ export MASTER_SOUND="Master"
 export SCRIPTS="/home/misha/scripts"
 
 export MAIN_FONT="Monospace:style=Bold:size=10"
-export BAR_HEIGHT=30
+export BAR_HEIGHT=25
 
 export PANEL_PATH="/home/misha/scripts/panel"
 export PANEL_FIFO="/tmp/panel-fifo"
