@@ -20,9 +20,11 @@ class BatteryWidget(NumberWidget):
     
     self.state = battery[0][-1]
     self.number = int(battery[2][-1][:-1])
- 
+
   def update_char(self):
-    if self.number < 20:
+    if self.state == 'charging':
+      self.character = '%{F#00FF00}B'
+    elif self.number < 20:
       self.character = '%{F#FF0000}B'
     else:
       self.character = 'B'
