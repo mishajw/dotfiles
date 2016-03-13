@@ -1,22 +1,83 @@
+" VUNDLE
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Deoplete
+Plugin 'Shougo/deoplete.nvim'
+let g:deoplete#enable_at_startup = 1
+
+" Neomake
+Plugin 'benekastah/neomake'
+let g:neomake_verbose=3
+let g:neomake_logfile='/tmp/error.log'
+let g:neomake_open_list = 2
+
+" Other plugins
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'mhartington/oceanic-next' 
+Plugin 'derekwyatt/vim-scala'
+Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'vim-airline/vim-airline'
+
+" VUNDLE
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Enable syntax highlighting
 syntax on
+
+" Color scheme
+set t_Co=256
+colorscheme hybrid_material
+set background=dark
+
+" Show numbers on side
 set number
 
+" Navigation improved
+:tnoremap <A-h> <C-\><C-n><C-w>h
+:tnoremap <A-j> <C-\><C-n><C-w>j
+:tnoremap <A-k> <C-\><C-n><C-w>k
+:tnoremap <A-l> <C-\><C-n><C-w>l
+:nnoremap <A-h> <C-w>h
+:nnoremap <A-j> <C-w>j
+:nnoremap <A-k> <C-w>k
+:nnoremap <A-l> <C-w>l
+
+" Tabs
 set expandtab
+set softtabstop=2
 set tabstop=2
 set shiftwidth=2
-set softtabstop=2
-
 set autoindent
+set formatoptions+=o    " Continue comment marker in new lines.
+set textwidth=0         " Hard-wrap long lines as you type them.
+set expandtab           " Insert spaces when TAB is pressed.
+set tabstop=2           " Render TABs using this many spaces.
+set shiftwidth=2        " Indentation amount for < and > commands.
 
-colo pencil
-command Light set background=light
-command Dark set background=dark
+" Highlight line when in insert mode
+:autocmd InsertEnter,InsertLeave * set cul!
 
-Dark
-
+" For gvim
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
+
+" Searching
+set hlsearch            " Highlight search results.
+set ignorecase          " Make searching case insensitive
+set smartcase           " ... unless the query has capital letters.
+set incsearch           " Incremental search.
+set gdefault            " Use 'g' flag by default with :s/foo/bar/.
+set magic               " Use 'magic' patterns (extended regular expressions).
+
+" More natural splits
+set splitbelow          " Horizontal split below current.
+set splitright          " Vertical split to right of current.
 
 
