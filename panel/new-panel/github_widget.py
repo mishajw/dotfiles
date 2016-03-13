@@ -5,6 +5,7 @@ import datetime
 import sys
 import time
 import os
+import traceback
 from urllib.request import urlopen
 from urllib.error import URLError
 from number_widget import NumberWidget
@@ -21,20 +22,30 @@ class GithubWidget(NumberWidget):
     except Exception as e:
       print("Couldn't get github commits")
       print(e)
+      traceback.print_exc()
       self.number = 0
   
   def getCommits(self):
     raw = self.getRawJSON()
     parsed = json.loads(raw)
-  
-    times = [(event['created_at'].split("T")[0], int(event['payload']['size'])) for event in parsed]
     
+    print(parsed)
+
+    # times = [(event['created_at'].split("T")[0], int(event['payload']['size'])) for event in parsed]
+
     today = 0
-  
-    for (t, i) in times:
-      if self.checkTime(t):
-        today += i
-    
+
+    for event in parsed:
+      time = event['created_at'].split("T")[0]
+
+      try:
+        amount = int(event['payload']['size'])
+      except:
+        amount = 0
+
+      if self.checkTime(time):
+        today += amount
+        
     return today
   
   def getRawJSON(self):
@@ -67,6 +78,8 @@ class GithubWidget(NumberWidget):
     tokenPath = os.environ['PANEL_PATH'] + "/git_token"
     f = open(tokenPath, 'r')
     token = f.read()
+    print(token)
   
     url = 'https://api.github.com/users/mishajw/events?access_token=' + token 
+    print(url)
   
