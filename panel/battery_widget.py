@@ -23,9 +23,9 @@ class BatteryWidget(NumberWidget):
  
   def update_char(self):
     if self.number < 20:
-      self.character = '%{F#FF0000}V%'
+      self.character = '%{F#FF0000}B%'
     else:
-      self.character = 'V'
+      self.character = 'B'
 
   def get_battery_dump(self):
     f = os.popen(self.battery_command)

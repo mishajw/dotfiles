@@ -87,7 +87,7 @@ def get_full_text():
   middle_text = get_items_text(middle_items)
   right_text = get_items_text(right_items)
 
-  full_text = "  %%{l}%s%%{c}%s%%{r}%s  " % (left_text, middle_text, right_text)
+  full_text = "  %%{Sl}%%{l}%s%%{c}%s%%{r}%s  " % (left_text, middle_text, right_text)
 
   return full_text
     
