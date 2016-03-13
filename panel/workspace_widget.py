@@ -5,6 +5,7 @@ from panel_help import *
 
 COLOR_USED = '#e1d5a9'
 COLOR_OPEN_EMPTY = '#a0b89f'
+COLOR_SEPARATOR = '#e4a972'
 
 class WorkspaceWidget(CommandWidget):
 
@@ -31,6 +32,9 @@ class WorkspaceWidget(CommandWidget):
       elif label == "O":
         title = set_color(title, COLOR_USED)
         title = set_underline_color(title, COLOR_USED)
+      elif label == 'm':
+        title = "|"
+        title = set_color(title, COLOR_SEPARATOR)
       else:
         dont_draw = True
 
