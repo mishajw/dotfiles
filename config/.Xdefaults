@@ -1,4 +1,4 @@
-URxvt.scrollstyle: plain
+URxvt.scrollBar: False
 
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
@@ -7,9 +7,19 @@ URxvt.font:     xft:Inconsolata     :size=12:antialias=true
 URxvt.boldFont: xft:Inconsolata:bold:size=12:antialias=true
 
 ! Copy and pasting
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste 
 URxvt.iso14755: False
 URxvt.perl-ext-common: default,clipboard
+urxvt.iso14755:             false
+urxvt.iso14755_52:          false
+urxvt.perl-ext-common:      default,clipboard
+urxvt.keysym.Shift-Control-C:   perl:clipboard:copy
+URxvt.keysym.Shift-Control-V:   perl:clipboard:paste 
+
+! Opening links
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/google-chrome-stable
+URxvt.matcher.button: 1
+URxvt.matcher.rend.0: Uline Bold fg5
 
 ! URxvt.internalBorder:  15
 
