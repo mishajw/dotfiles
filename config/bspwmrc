@@ -1,7 +1,7 @@
 #!/bin/sh
 
 bspc config border_width 2
-bspc config window_gap 20 
+bspc config window_gap $BAR_HEIGHT
 
 bspc config split_ratio         0.52
 bspc config borderless_monocle  true
@@ -29,6 +29,7 @@ bspc rule -a URxvtQuake sticky=on floating=on border=off
 # Set background
 hsetroot -fill ~/Pictures/backgrounds/basic_hills.jpg
 # Start bar
-killall panel ; $PANEL_PATH/panel &
+# killall panel ; $SCRIPTS/panel/panel &
+killall panel.py ; $SCRIPTS/panel/new-panel/panel.py & 
 # Start compton
 killall compton ; compton --config ~/.compton.conf &
