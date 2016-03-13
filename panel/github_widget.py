@@ -74,8 +74,6 @@ class GithubWidget(NumberWidget):
     tokenPath = os.environ['PANEL_PATH'] + "/git_token"
     f = open(tokenPath, 'r')
     token = f.read()
-    print(token)
   
     url = 'https://api.github.com/users/mishajw/events?access_token=' + token 
-    print(url)
   
