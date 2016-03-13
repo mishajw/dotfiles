@@ -2,6 +2,7 @@
 
 from widget import Widget
 import os
+import re
 
 class DateWidget(Widget):
   
@@ -10,5 +11,5 @@ class DateWidget(Widget):
 
   def update_text(self):
     f = os.popen("date +'%a %e %l:%M:%S %p'")
-    self.text = f.read()
+    self.text = re.sub(r" +", " ", f.read())
 
