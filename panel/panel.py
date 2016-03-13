@@ -23,10 +23,11 @@ separator = "  "
 
 left_items = [
   WorkspaceWidget(),
-  TitleWidget()
 ]
 
-middle_items = []
+middle_items = [
+  TitleWidget()
+]
 
 right_items = [
   VolumeWidget(),
