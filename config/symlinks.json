@@ -4,6 +4,10 @@
       "src": ".vimrc"
     },
     {
+      "src": ".vimrc",
+      "dst": ".config/nvim/init.vim"
+    },
+    {
       "src": "bspwmrc",
       "dst": ".config/bspwm/bspwmrc"
     },
