@@ -3,8 +3,8 @@
 from command_widget import CommandWidget
 from panel_help import *
 
-COLOR_USED = '#FFFFFF'
-COLOR_OPEN_EMPTY = '#999999'
+COLOR_USED = '#e1d5a9'
+COLOR_OPEN_EMPTY = '#a0b89f'
 
 class WorkspaceWidget(CommandWidget):
 
@@ -27,7 +27,7 @@ class WorkspaceWidget(CommandWidget):
         title = set_color(title, COLOR_USED)
       elif label == "F":
         title = set_color(title, COLOR_OPEN_EMPTY)
-        title = set_underline_color(title, COLOR_USED)
+        title = set_underline_color(title, COLOR_OPEN_EMPTY)
       elif label == "O":
         title = set_color(title, COLOR_USED)
         title = set_underline_color(title, COLOR_USED)
