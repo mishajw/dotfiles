@@ -8,6 +8,7 @@ class NumberWidget(Widget):
     super(NumberWidget, self).__init__()
     self.number = 0
     self.character = init_char
+    self.has_underline = True
 
   def update_text(self):
     self.update_number()

@@ -72,7 +72,7 @@ def setup_fifo():
     print("Didn't make fifo, because already exists")
 
 def print_full_text():
-  full_text = get_full_text() + "\n"
+  full_text = get_full_text()
   
   global stdout
   stdout.write(full_text.encode())
@@ -93,7 +93,18 @@ def get_full_text():
     
 def get_items_text(items):
   all_text = [i.get_text_with_commands() for i in items]
-  colored_text = [set_underline_color(set_color(all_text[i], colors[i % len(colors)]), colors[i % len(colors)]) for i in range(len(all_text))]
+
+  colored_text = []
+
+  for i in range(len(all_text)):
+    color = colors[i % len(colors)]
+    colored = set_color(all_text[i], color)
+
+    if (items[i].has_underline):
+      colored = set_underline_color(colored, color)
+
+    colored_text.append(colored)
+
   full_text = separator.join(colored_text)
 
   return full_text

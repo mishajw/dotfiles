@@ -9,6 +9,7 @@ class Widget:
     self.update_time = 1
     self.click_command = ""
     self.text = ""
+    self.has_underline = False
 
   def update_text(self):
     return "Not implmented"
@@ -21,9 +22,9 @@ class Widget:
 
   def update_loop(self):
     while 1:
-      time.sleep(self.update_time)
       self.update_text()
       registerUpdate()
+      time.sleep(self.update_time)
 
   def start_thread(self):
     t = Thread(target=self.update_loop)
