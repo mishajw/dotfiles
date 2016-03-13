@@ -1,4 +1,4 @@
 *.log
 *__
-panel/widgets/git_token
+*git_token
 *.swp
