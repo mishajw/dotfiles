@@ -42,11 +42,16 @@ lemonbar_command = \
 
 def main():
   global stdout
+
   p = subprocess.Popen(lemonbar_command.split(" "), stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+  bash = subprocess.Popen("sh", stdout=subprocess.PIPE, stdin=p.stdout)
   
   setup_fifo()
 
   stdout = p.stdin
+
+  
+
   start_widgets()
 
   print_loop()
