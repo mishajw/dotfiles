@@ -15,6 +15,7 @@ class GithubWidget(NumberWidget):
   def __init__(self):
     super(GithubWidget, self).__init__('G')
     self.setURL()
+    self.update_time = 10
 
   def update_number(self):
     try:
@@ -22,17 +23,12 @@ class GithubWidget(NumberWidget):
     except Exception as e:
       print("Couldn't get github commits")
       print(e)
-      traceback.print_exc()
       self.number = 0
   
   def getCommits(self):
     raw = self.getRawJSON()
     parsed = json.loads(raw)
     
-    print(parsed)
-
-    # times = [(event['created_at'].split("T")[0], int(event['payload']['size'])) for event in parsed]
-
     today = 0
 
     for event in parsed:
