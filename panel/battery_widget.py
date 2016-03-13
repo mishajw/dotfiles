@@ -23,7 +23,7 @@ class BatteryWidget(NumberWidget):
  
   def update_char(self):
     if self.number < 20:
-      self.character = '%{F#FF0000}B%'
+      self.character = '%{F#FF0000}B'
     else:
       self.character = 'B'
 
