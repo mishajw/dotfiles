@@ -107,7 +107,7 @@ def get_items_text(items):
     colored = set_color(all_text[i], color)
 
     if (items[i].has_underline):
-      colored = set_underline_color(colored, color)
+      colored = set_underline_color(colored, darken_color(color))
 
     colored_text.append(colored)
 
