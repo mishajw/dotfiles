@@ -38,7 +38,7 @@ right_items = [
 ]
 
 lemonbar_command = \
-        'lemonbar -g x%s -f %s -f "FontAwesome" -F %s -B %s' % \
+        'lemonbar -a 100 -g x%s -f %s -f "FontAwesome" -F %s -B %s' % \
         (os.environ['BAR_HEIGHT'], os.environ['MAIN_FONT'], foregroundColor, backgroundColor)
 
 def main():
