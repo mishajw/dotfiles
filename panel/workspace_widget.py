@@ -10,7 +10,7 @@ COLOR_SEPARATOR = '#e4a972'
 class WorkspaceWidget(CommandWidget):
 
   def __init__(self):
-    super(WorkspaceWidget, self).__init__("bspc control --subscribe")
+    super(WorkspaceWidget, self).__init__("bspc subscribe")
 
   def handle_output(self, output):
     workspaces = str(output).split(":")
@@ -21,6 +21,7 @@ class WorkspaceWidget(CommandWidget):
       label = w[0]
 
       title = set_left_click(w[1:], "bspc desktop -f %s" % w[1:])
+
 
       dont_draw = False
 

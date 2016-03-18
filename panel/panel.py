@@ -32,7 +32,7 @@ middle_items = [
 right_items = [
   VolumeWidget(),
   BatteryWidget(),
-  GithubWidget(),
+  # GithubWidget(),
   UpdatesWidget(),
   DateWidget()
 ]

@@ -6,7 +6,7 @@ super + alt + Escape
 	bspc quit
 
 super + w
-	bspc window -c
+	bspc node -c
 
 super + t
 	bspc desktop -l next
@@ -15,30 +15,30 @@ super + b
 	bspc desktop -B
 
 super + {s,f}
-	bspc window -t {floating,fullscreen}
+	bspc node --state \~{floating,fullscreen}
 
 super + {grave,Tab}
-	bspc {window,desktop} -f last
+	bspc {node,desktop} -f last
 
 super + apostrophe
-	bspc window -s last
+	bspc node -s last
 
 super + {o,i}
 	bspc control --record-history off; \
-	bspc window {older,newer} -f; \
+	bspc node {older,newer} -f; \
 	bspc control --record-history on
 
 super + y
-	bspc window -w last.manual
+	bspc node -w last.manual
 
 super + m
-	bspc window -s biggest
+	bspc node -s biggest
 
 super + {_,shift + }{h,j,k,l}
-	bspc window -{f,s} {left,down,up,right}
+	bspc node -{f,s} {west,south,north,east}
 
 super + {_,shift + }c
-	bspc window -f {next,prev}
+	bspc node -f {next,prev}
 
 super + {comma,period}
 	bspc desktop -C {backward,forward}
@@ -47,25 +47,25 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}
 
 super + ctrl + {h,j,k,l}
-	bspc window -p {left,down,up,right}
+	bspc node -p {west,south,north,east}
 
 super + ctrl + {_,shift + }space
-	bspc {window -p cancel,desktop -c}
+	bspc {node -p cancel,desktop -c}
 
 super + alt + {h,j,k,l}
-	bspc window -e {left -20,down +20,up -20,right +20}
+	bspc node -e {west -20,south +20,north -20,east +20}
 
 super + alt + shift + {h,j,k,l}
-	bspc window -e {right -20,up +20,down -20,left +20}
+	bspc node -e {east -20,north +20,south -20,west +20}
 
 super + ctrl + {1-9}
-	bspc window -r 0.{1-9}
+	bspc node -r 0.{1-9}
 
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,window -d} ^{1-9,10}
+	bspc {desktop -f,node -d} ^{1-9,10}
 
 super + {_,shift + }d
-	bspc {desktop -f,window -d} Dump
+	bspc {desktop -f,node -d} Dump
 
 ~button1
 	bspc pointer -g focus
@@ -102,17 +102,17 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
   xbacklight -dec 5
 
-# Change window gaps
+# Change node gaps
 alt + {minus,equal}
-	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2 ))
+	bspc config -d focused node_gap $((`bspc config -d focused node_gap` {+,-} 2 ))
 
 # Network dmenu
 super + ctrl + c
   nmcli_dmenu
 
 super + shift + Return
-  xdotool search --onlyvisible --classname URxvtQuake windowunmap \
-  || xdotool search --classname URxvtQuake windowmap \
+  xdotool search --onlyvisible --classname URxvtQuake nodeunmap \
+  || xdotool search --classname URxvtQuake nodemap \
   || urxvt -name URxvtQuake -geometry 120x20+411+$BAR_HEIGHT
 
 # make sxhkd reload its configuration files:
@@ -120,10 +120,10 @@ super + Escape
 	pkill -USR1 -x sxhkd
 
 # super + shift + q
-#   bspc window -c 
+#   bspc node -c 
 # 
 # super + {s,f}
-#   bspc window -t {floating,fullscreen}
+#   bspc node -t {floating,fullscreen}
 # 
 # super + {shift, alt} + {h,j,k,l}
-#   bspc window -{s,w} {left,down,up,right}
+#   bspc node -{s,w} {west,south,north,east}
