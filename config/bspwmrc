@@ -26,7 +26,7 @@ bspc rule -a mplayer2 floating=on
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a scratchpad --sticky
-bspc rule -a URxvtQuake sticky=on state=floating border=off
+bspc rule -a URxvt:URxvtQuake state=floating stick=on border=off
 
 # Set background
 hsetroot -fill ~/Pictures/backgrounds/basic_hills.jpg

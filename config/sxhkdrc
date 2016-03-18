@@ -111,8 +111,8 @@ super + ctrl + c
   nmcli_dmenu
 
 super + shift + Return
-  xdotool search --onlyvisible --classname URxvtQuake nodeunmap \
-  || xdotool search --classname URxvtQuake nodemap \
+  xdotool search --onlyvisible --classname URxvtQuake windowunmap \
+  || xdotool search --classname URxvtQuake windowmap \
   || urxvt -name URxvtQuake -geometry 120x20+411+$BAR_HEIGHT
 
 # make sxhkd reload its configuration files:
