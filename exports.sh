@@ -15,6 +15,8 @@ export PANEL_BATTERY_FIFO="/tmp/battery-fifo"
 export LANGUAGE="$LANG"
 export LC_ALL="$LANG"
 
+export BACKGROUND_IMAGE="$SCRIPTS/background.jpg"
+
 # SVN
 export SVN_EDITOR="gvim"
 
