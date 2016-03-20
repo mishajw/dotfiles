@@ -15,7 +15,7 @@ import sys
 import os
 import subprocess
 
-colors = ['#b95942', '#308444', '#50707e']
+colors = ['#dbad72', '#f9d3a5', '#ab9c73']
 backgroundColor = '#291f0a'
 foregroundColor = '#774f38'
 
