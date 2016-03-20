@@ -4,7 +4,7 @@ from command_widget import CommandWidget
 from panel_help import *
 
 colors = ['#dbad72', '#f9d3a5', '#ab9c73']
-COLOR_USED = '#dbad72'
+COLOR_USED = '#f9d3a5'
 COLOR_OPEN_EMPTY = '#ab9c73'
 COLOR_SEPARATOR = '#e4a972'
 
