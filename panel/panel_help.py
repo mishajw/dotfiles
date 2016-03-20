@@ -34,7 +34,7 @@ def darken_color(c):
   c = c[1:]
   split = [c[i:i+2] for i in range(0, len(c), 2)]
   ints = [int(h, 16) for h in split]
-  lowered = [int(i * 0.6) for i in ints]
+  lowered = [int(i * 0.8) for i in ints]
   loweredHex = [hex(i) for i in lowered]
   formatted = [str(h)[2:] for h in loweredHex]
   

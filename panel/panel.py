@@ -15,9 +15,9 @@ import sys
 import os
 import subprocess
 
-colors = ['#a0b89f', '#e1d5a9', '#e4a972']
-backgroundColor = '#33000000'
-foregroundColor = '#ff888888'
+colors = ['#b95942', '#308444', '#50707e']
+backgroundColor = '#291f0a'
+foregroundColor = '#774f38'
 
 separator = "  "
 
@@ -38,7 +38,7 @@ right_items = [
 ]
 
 lemonbar_command = \
-        'lemonbar -a 100 -g x%s -f %s -f "FontAwesome" -F %s -B %s' % \
+        'lemonbar -a 100 -u 2 -g x%s -f %s -f "FontAwesome" -F %s -B %s' % \
         (os.environ['BAR_HEIGHT'], os.environ['MAIN_FONT'], foregroundColor, backgroundColor)
 
 def main():
@@ -107,7 +107,7 @@ def get_items_text(items):
     colored = set_color(all_text[i], color)
 
     if (items[i].has_underline):
-      colored = set_underline_color(colored, darken_color(color))
+      colored = set_underline_color(colored, color)
 
     colored_text.append(colored)
 

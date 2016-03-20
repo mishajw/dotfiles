@@ -3,8 +3,8 @@
 from command_widget import CommandWidget
 from panel_help import *
 
-COLOR_USED = '#e1d5a9'
-COLOR_OPEN_EMPTY = '#a0b89f'
+COLOR_USED = '#b95942'
+COLOR_OPEN_EMPTY = '#308444'
 COLOR_SEPARATOR = '#e4a972'
 
 class WorkspaceWidget(CommandWidget):
