@@ -29,7 +29,7 @@ bspc rule -a scratchpad --sticky
 bspc rule -a URxvt:URxvtQuake state=floating stick=on border=off
 
 # Set background
-hsetroot -fill $BACKGROUND_IMAGE
+feh --bg-scale $BACKGROUND_IMAGE
 # Start bar
 # killall panel ; $SCRIPTS/panel/panel &
 killall panel.py ; $SCRIPTS/panel/panel.py & 
