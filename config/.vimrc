@@ -21,6 +21,8 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'zefei/cake16'
+Plugin 'godlygeek/csapprox'
 
 " VUNDLE
 call vundle#end()            " required
@@ -63,7 +65,7 @@ endfunction
 
 " Color scheme
 set t_Co=256
-colorscheme hybrid_material
+colorscheme cake16
 set background=dark
 
 " Show numbers on side
