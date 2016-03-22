@@ -22,8 +22,7 @@ class WorkspaceWidget(CommandWidget):
       label = w[0]
     
       title = w[1:]
-      # title = set_left_click(title, "bspc desktop -f %s" % title)
-
+      title = set_left_click(title, "bspc desktop -f %s" % title)
 
       dont_draw = False
 
