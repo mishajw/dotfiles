@@ -16,12 +16,10 @@ let g:neomake_open_list = 2
 
 " Other plugins
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'mhartington/oceanic-next' 
 Plugin 'derekwyatt/vim-scala'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
-Plugin 'zefei/cake16'
 
 " VUNDLE
 call vundle#end()            " required
@@ -29,7 +27,7 @@ filetype plugin indent on    " required
 
 " Enable syntax highlighting
 syntax on
-
+set t_Co=256
 " Set wrapping key
 set nowrap
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
@@ -63,7 +61,8 @@ function ToggleWrap()
 endfunction
 
 " Color scheme
-colorscheme cake16
+colorscheme default
+set background=dark
 
 " Show numbers on side
 set number
