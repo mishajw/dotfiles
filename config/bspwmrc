@@ -26,7 +26,7 @@ bspc rule -a mplayer2 floating=on
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a scratchpad --sticky
-bspc rule -a URxvt:URxvtQuake state=floating stick=on border=off
+bspc rule -a URxvt:URxvtQuake state=floating stick=on border=on
 
 # Set background
 feh --bg-scale $BACKGROUND_IMAGE
