@@ -15,7 +15,7 @@ class GithubWidget(NumberWidget):
   def __init__(self):
     super(GithubWidget, self).__init__('G')
     self.setURL()
-    self.update_time = 10
+    self.update_time = 60 * 5
 
   def update_number(self):
     try:
