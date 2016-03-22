@@ -27,7 +27,7 @@ def registerUpdate():
 
 def print_to_fifo(s):
   fifo = open(FIFO_PATH, 'w')
-  fifo.write(s)
+  fifo.write(s + "\n")
   fifo.flush()
   fifo.close()
 

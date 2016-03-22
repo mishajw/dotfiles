@@ -13,6 +13,7 @@ from panel_help import *
 import time
 import sys
 import os
+import re
 import subprocess
 
 colors = ['#f9d3a5', '#dbad72', '#ab9c73']
@@ -60,11 +61,21 @@ def print_loop():
 
   while True:
     line = f.readline()
+    line = re.sub("\n", "", line)
+  
+    # print("^" + line + "$")
+
+    should_update = line == "updated"
+
+    for w in all_widgets():
+      if w.__class__.__name__ == line:
+        w.update_text()
+        should_update = True
 
     if line == "":
       f = open(FIFO_PATH, 'r')
 
-    if line == "updated":
+    if should_update:
       print_full_text()
 
 def setup_fifo():
