@@ -10,7 +10,7 @@ class BatteryWidget(NumberWidget):
   def __init__(self):
     super(BatteryWidget, self).__init__('B')
     
-    self.update_time = 30
+    self.update_time = 60
 
     self.battery_command = "upower -i $(upower -e | grep 'BAT') |\
       grep -E 'state|time\ to|percentage'"

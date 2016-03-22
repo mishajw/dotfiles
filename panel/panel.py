@@ -63,7 +63,7 @@ def print_loop():
     line = f.readline()
     line = re.sub("\n", "", line)
   
-    # print("^" + line + "$")
+    print("^" + line + "$")
 
     should_update = line == "updated"
 

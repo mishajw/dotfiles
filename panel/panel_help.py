@@ -1,8 +1,9 @@
 #!/usr/bin/python
 
 from datetime import datetime
+import os
 
-FIFO_PATH="/tmp/new-panel-fifo"
+FIFO_PATH = os.environ["PANEL_FIFO"]
 
 def set_color(s, color):
   return "%%{F%s}%s%%{F-}" % (color, s)

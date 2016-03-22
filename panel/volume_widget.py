@@ -10,6 +10,7 @@ class VolumeWidget(NumberWidget):
     super(VolumeWidget, self).__init__('V')
     self.mute = False
     self.click_command = "echo hello ; amixer sset Master mute ; amixer sset Master 0%"
+    self.update_time = 60 * 5
 
   def update_number(self):
     p = os.popen("amixer sget Master | grep 'Front Left: Playback'")
