@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo "changed" > $VOL_CHANGED_FIFO
+echo "VolumeWidget" > $PANEL_FIFO
 
