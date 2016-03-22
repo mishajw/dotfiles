@@ -46,26 +46,23 @@ def main():
 
   p = subprocess.Popen(lemonbar_command.split(" "), stdout=subprocess.PIPE, stdin=subprocess.PIPE)
   bash = subprocess.Popen("sh", stdout=subprocess.PIPE, stdin=p.stdout)
-  
   setup_fifo()
-
   stdout = p.stdin
-
-  
 
   start_widgets()
 
   print_loop()
 
 def print_loop():
-  f = open(FIFO_PATH, 'r')
-
-  registerUpdate()
-
   print_full_text()
 
+  f = open(FIFO_PATH, 'r')
+
   while True:
-    line = f.readline()[:-1] # Trim the new line character off
+    line = f.readline()
+
+    if line == "":
+      f = open(FIFO_PATH, 'r')
 
     if line == "updated":
       print_full_text()
@@ -120,5 +117,4 @@ def all_widgets():
     
 if __name__ == "__main__":
   main()
-  ww = WorkspaceWidget()
-  ww.update_loop()
+

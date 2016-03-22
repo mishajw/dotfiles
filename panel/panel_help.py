@@ -26,9 +26,10 @@ def registerUpdate():
   print_to_fifo("updated")
 
 def print_to_fifo(s):
-  f = open(FIFO_PATH, 'w')
-  f.write(s + "\n")
-  f.close()
+  fifo = open(FIFO_PATH, 'w')
+  fifo.write(s)
+  fifo.flush()
+  fifo.close()
 
 def darken_color(c):
   c = c[1:]

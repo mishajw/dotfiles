@@ -6,7 +6,7 @@ from panel_help import *
 
 class Widget:
   def __init__(self):
-    self.update_time = 1
+    self.update_time = 60
     self.click_command = ""
     self.text = ""
     self.has_underline = False

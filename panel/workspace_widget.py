@@ -20,8 +20,9 @@ class WorkspaceWidget(CommandWidget):
 
     for w in workspaces:
       label = w[0]
-
-      title = set_left_click(w[1:], "bspc desktop -f %s" % w[1:])
+    
+      title = w[1:]
+      # title = set_left_click(title, "bspc desktop -f %s" % title)
 
 
       dont_draw = False
@@ -35,7 +36,7 @@ class WorkspaceWidget(CommandWidget):
       elif label == "O":
         title = set_color(title, COLOR_USED)
         title = set_underline_color(title, COLOR_USED)
-      elif label == 'm':
+      elif label.lower() == 'm':
         title = "|"
         title = set_color(title, COLOR_SEPARATOR)
       else:
