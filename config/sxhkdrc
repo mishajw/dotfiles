@@ -53,10 +53,10 @@ super + ctrl + {_,shift + }space
 	bspc {node -p cancel,desktop -c}
 
 super + alt + {h,j,k,l}
-	bspc node -e {west -20,south +20,north -20,east +20}
+  bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
 
 super + alt + shift + {h,j,k,l}
-	bspc node -e {east -20,north +20,south -20,west +20}
+  bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
 
 super + ctrl + {1-9}
 	bspc node -r 0.{1-9}
