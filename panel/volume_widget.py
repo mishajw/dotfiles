@@ -9,7 +9,7 @@ class VolumeWidget(NumberWidget):
   def __init__(self):
     super(VolumeWidget, self).__init__('V')
     self.mute = False
-    self.click_command = "echo hello ; amixer sset Master mute ; amixer sset Master 0%"
+    self.click_command = "echo hello ; amixer sset Master mute ; amixer sset Master 0% ; echo VolumeWidget > $PANEL_FIFO"
     self.update_time = 60 * 5
 
   def update_number(self):
