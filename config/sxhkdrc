@@ -115,6 +115,10 @@ super + shift + Return
   || xdotool search --classname URxvtQuake windowmap \
   || urxvt -name URxvtQuake -geometry 120x20+411+$BAR_HEIGHT
 
+# Start browser
+super + r
+  google-chrome-stable &
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
