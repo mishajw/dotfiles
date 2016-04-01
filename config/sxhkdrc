@@ -92,9 +92,9 @@ super + space
 
 #Volume
 XF86Audio{Lower,Raise}Volume
-  /home/misha/scripts/vol-{down,up}.sh
+  /home/misha/scripts/vol-control.sh {down,up}
 XF86AudioMute
-  /home/misha/scripts/vol-mute.sh
+  /home/misha/scripts/vol-control.sh toggle
 
 # Brightness
 XF86MonBrightnessUp
