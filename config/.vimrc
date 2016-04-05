@@ -78,6 +78,9 @@ set number
 :nnoremap <A-k> <C-w>k
 :nnoremap <A-l> <C-w>l
 
+" Double Esc to save
+map <Esc><Esc> :w<CR>
+
 " Tabs
 set expandtab
 set softtabstop=2
