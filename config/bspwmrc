@@ -5,7 +5,7 @@ bspc config top_padding $BAR_HEIGHT
 bspc config window_gap 20
 
 
-bspc config split_ratio         0.52
+bspc config split_ratio         0.50
 bspc config single_monocle      true
 bspc config gapless_monocle     true
 bspc config focus_by_distance   true
@@ -26,7 +26,7 @@ bspc rule -a mplayer2 floating=on
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a scratchpad --sticky
-bspc rule -a URxvt:URxvtQuake state=floating stick=on border=on
+bspc rule -a URxvt:URxvtQuake state=floating sticky=on border=on
 
 # Set background
 feh --bg-scale $BACKGROUND_IMAGE
