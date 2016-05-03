@@ -64,9 +64,13 @@ endfunction
 " Color scheme
 colorscheme default
 set background=dark
+highlight Normal ctermfg=white ctermbg=black
 
 " Show numbers on side
 set number
+
+" Collapsing
+set foldmethod=indent
 
 " Navigation improved
 :tnoremap <A-h> <C-\><C-n><C-w>h
