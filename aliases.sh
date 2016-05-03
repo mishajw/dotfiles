@@ -56,6 +56,17 @@ mycloud () {
   sudo mount -t cifs -o user=misha,passwd=,rw,file_mode=0777,dir_mode=0777 //$ip/misha /mnt/mycloud
 }
 
+# Displays
+start-display() {
+  xrandr --addmode $SECOND_DISPLAY $SECOND_DISPLAY_RES
+  xrandr --output $SECOND_DISPLAY --mode $SECOND_DISPLAY_RES --above $MAIN_DISPLAY
+  $cnf/bspwmrc
+}
+
+stop-display() {
+  xrandr --output $SECOND_DISPLAY --off
+}
+
 # Systemctl
 alias sysstart="sudo systemctl start"
 alias sysstop="sudo systemctl stop"

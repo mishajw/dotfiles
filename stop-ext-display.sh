@@ -1,3 +1,3 @@
 #!/bin/bash
 
-xrandr --output DP2 --off
+xrandr --output $SECOND_DISPLAY --off

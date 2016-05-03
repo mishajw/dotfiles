@@ -1,5 +1,6 @@
 #!/bin/bash
 
-xrandr --addmode DP2 1920x1080
-xrandr --output DP2 --mode 1920x1080 --above eDP1
-/home/misha/.config/bspwm/bspwmrc
+xrandr --addmode $SECOND_DISPLAY $SECOND_DISPLAY_RES
+xrandr --output $SECOND_DISPLAY --mode $SECOND_DISPLAY_RES --above $MAIN_DISPLAY
+$cnf/bspwmrc
+

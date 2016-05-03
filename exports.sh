@@ -2,7 +2,8 @@
 
 # Display
 export MAIN_DISPLAY="eDP1"
-export SECOND_DISPLAY="DP1"
+export SECOND_DISPLAY="DP2"
+export SECOND_DISPLAY_RES="1920x1080"
 
 # Sound
 export MASTER_SOUND="Master"
