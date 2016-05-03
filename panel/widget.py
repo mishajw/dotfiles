@@ -22,7 +22,11 @@ class Widget:
 
   def update_loop(self):
     while 1:
-      self.update_text()
+      try:
+        self.update_text()
+      except e:
+        print("Got exception: %s" % e)
+
       registerUpdate()
       time.sleep(self.update_time)
 
