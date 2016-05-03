@@ -65,6 +65,7 @@ start-display() {
 
 stop-display() {
   xrandr --output $SECOND_DISPLAY --off
+  $cnf/bspwmrc
 }
 
 # Systemctl
