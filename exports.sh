@@ -30,3 +30,5 @@ export SXHKD_SHELL="bash"
 # SVN
 export SVN_EDITOR="gvim"
 
+source $df/local-exports.sh
+

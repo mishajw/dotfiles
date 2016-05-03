@@ -44,6 +44,18 @@ alias stopcsecvm="VBoxManage controlvm 'Intro to Computer Security' poweroff"
 # Restart internet
 alias resint="sudo systemctl restart NetworkManager.service"
 
+# Mounts
+mycloud () {
+  if [ $# -eq 0 ]; then
+    ip=$MYCLOUD_IP
+  else
+    ip=$1
+  fi
+
+  sudo mkdir -p /mnt/mycloud
+  sudo mount -t cifs -o user=misha,passwd=,rw,file_mode=0777,dir_mode=0777 //$ip/misha /mnt/mycloud
+}
+
 # Systemctl
 alias sysstart="sudo systemctl start"
 alias sysstop="sudo systemctl stop"
@@ -52,4 +64,5 @@ alias sysres="sudo systemctl restart"
 # Misc
 alias dua="du -sh *"
 csvview () { column -s, -t < $@ | less -#2 -N -S }
+alias gourcec="gource -f -s 1 -a 1"
 
