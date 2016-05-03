@@ -31,6 +31,5 @@ bspc rule -a URxvt:URxvtQuake state=floating sticky=on border=on
 # Set background
 feh --bg-scale $BACKGROUND_IMAGE
 # Start bar
-# killall panel ; $SCRIPTS/panel/panel &
-killall panel.py ; $SCRIPTS/panel/panel.py & 
+killall panel.py ; $PANEL_PATH/panel.py & 
 

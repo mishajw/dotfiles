@@ -97,5 +97,5 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #    }
 #    zle -N zle-line-init
 
-source ~/scripts/sh-startup.sh
+source /home/misha/dotfiles/scripts/start/shell.sh
 

@@ -3,7 +3,7 @@
 import json
 import os
 
-srcPath = os.environ["SCRIPTS"] + "/config/"
+srcPath = os.environ["cnf"] + "/"
 dstPath = os.environ["HOME"] + "/"
 
 def main():

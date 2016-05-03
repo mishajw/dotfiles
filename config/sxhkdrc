@@ -88,13 +88,16 @@ super + Return
 
 # Launcher
 super + space
-  /home/misha/scripts/launcher.sh
+  source ~/.zshrc ; \
+  $scr/launcher.sh
 
 #Volume
 XF86Audio{Lower,Raise}Volume
-  /home/misha/scripts/vol-control.sh {down,up}
+  source ~/.zshrc ; \
+  $scr/vol-control.sh {down,up}
 XF86AudioMute
-  /home/misha/scripts/vol-control.sh toggle
+  source ~/.zshrc ; \
+  $scr/vol-control.sh toggle
 
 # Brightness
 XF86MonBrightnessUp
@@ -110,6 +113,7 @@ alt + {minus,equal}
 super + ctrl + c
   nmcli_dmenu
 
+# Quake-like terminal
 super + shift + Return
   xdotool search --onlyvisible --classname URxvtQuake windowunmap \
   || xdotool search --classname URxvtQuake windowmap \
@@ -123,11 +127,3 @@ super + r
 super + Escape
 	pkill -USR1 -x sxhkd
 
-# super + shift + q
-#   bspc node -c 
-# 
-# super + {s,f}
-#   bspc node -t {floating,fullscreen}
-# 
-# super + {shift, alt} + {h,j,k,l}
-#   bspc node -{s,w} {west,south,north,east}
