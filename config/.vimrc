@@ -66,8 +66,8 @@ endfunction
 
 " Color scheme
 colorscheme default
-set background=dark
-highlight Normal ctermfg=white ctermbg=black
+"set background=dark
+"highlight Normal ctermfg=white ctermbg=black
 
 " Show numbers on side
 set number
