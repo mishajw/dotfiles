@@ -11,7 +11,7 @@ alias acs="apt-cache search"
 # Arch
 alias y="yaourt"
 alias yn="y --noconfirm"
-alias yu="y -Syua"
+alias yu="yn -Syua"
 
 # Git
 alias ga="git add"
