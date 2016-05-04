@@ -19,7 +19,7 @@ export PANEL_FIFO="/tmp/panel-fifo"
 
 # Visuals
 export MAIN_FONT="Monospace:style=Bold:size=10"
-export BAR_HEIGHT=25
+export PANEL_HEIGHT=25
 export BACKGROUND_IMAGE="$df/background.jpg"
 
 # Misc
