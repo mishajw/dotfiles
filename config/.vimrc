@@ -13,7 +13,7 @@ Plugin 'benekastah/neomake'
 let g:neomake_verbose=3
 let g:neomake_logfile='/tmp/error.log'
 let g:neomake_open_list = 2
-autocmd! BufWritePost,BufEnter * Neomake
+map <C-s> :Neomake<CR>
 
 " Other plugins
 Plugin 'VundleVim/Vundle.vim'
