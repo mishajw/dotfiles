@@ -26,6 +26,9 @@ Plugin 'vim-airline/vim-airline'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" Airline
+let g:airline_powerline_fonts = 1
+
 " Enable syntax highlighting
 syntax on
 set t_Co=256
