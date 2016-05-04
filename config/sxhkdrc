@@ -115,9 +115,9 @@ super + ctrl + c
 
 # Quake-like terminal
 super + shift + Return
-  xdotool search --onlyvisible --classname URxvtQuake windowunmap \
-  || xdotool search --classname URxvtQuake windowmap \
-  || urxvt -name URxvtQuake -geometry 120x20+411+$BAR_HEIGHT
+  xdotool search --onlyvisible --classname QuakeTerminal windowunmap \
+  || xdotool search --classname QuakeTerminal windowmap \
+  || termite --name QuakeTerminal --geometry 960x350+480+$PANEL_HEIGHT
 
 # Start browser
 super + r
