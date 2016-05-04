@@ -84,7 +84,7 @@ super + @button{1-3}
 #
 
 super + Return
-	urxvt
+	termite
 
 # Launcher
 super + space

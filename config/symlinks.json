@@ -25,6 +25,10 @@
       "src": ".xinitrc"
     },
     {
+      "src": "termite.conf",
+      "dst": ".config/termite/config"
+    },
+    {
       "src": ".compton.conf"
     }
   ]
