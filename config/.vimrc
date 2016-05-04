@@ -74,6 +74,7 @@ set number
 
 " Collapsing
 set foldmethod=indent
+set nofoldenable
 
 " Navigation improved
 :tnoremap <A-h> <C-\><C-n><C-w>h
