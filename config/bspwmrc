@@ -13,11 +13,12 @@ bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 
 if [ "$(xrandr | grep ' connected' | wc -l)" -gt 1 ]; then
-  bspc monitor "eDP1" -d I II III IV V
-  bspc monitor "DP2" -d I II III IV V
+  bspc monitor "$MAIN_DISPLAY" -d I II III IV V VI VII Dump
+  bspc monitor "$SECOND_DISPLAY" -d A B
+  bspc monitor "$MAIN_DISPLAY" --swap "$SECOND_DISPLAY"
 else
-  bspc monitor "eDP1" -d I II III IV V VI VII VIII IV X Dump
-  bspc monitor "DP2" -d None
+  bspc monitor "$MAIN_DISPLAY" -d I II III IV V VI VII VIII IX X Dump
+  bspc monitor "$SECOND_DISPLAY" -d None
 fi
 
 bspc rule -a Gimp desktop=^8 follow=on floating=on
