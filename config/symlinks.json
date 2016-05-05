@@ -29,6 +29,9 @@
       "dst": ".config/termite/config"
     },
     {
+      "src": ".yaourtrc"
+    },
+    {
       "src": ".compton.conf"
     }
   ]
