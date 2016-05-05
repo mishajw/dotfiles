@@ -81,9 +81,8 @@ def print_loop():
 def setup_fifo():
   try:
     os.mkfifo(FIFO_PATH)
-    print("Made fifo at %s" % FIFO_PATH)
   except FileExistsError:
-    print("Didn't make fifo, because already exists")
+    pass
 
 def print_full_text():
   full_text = get_full_text()
