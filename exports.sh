@@ -13,6 +13,9 @@ export df="/home/misha/dotfiles"
 export cnf="$df/config"
 export scr="$df/scripts"
 
+# Network
+export NET="wlp4s0"
+
 # Directories
 export PANEL_PATH="$df/panel"
 export PANEL_FIFO="/tmp/panel-fifo"
