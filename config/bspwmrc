@@ -21,12 +21,6 @@ else
   bspc monitor "$SECOND_DISPLAY" -d None
 fi
 
-bspc rule -a Gimp desktop=^8 follow=on floating=on
-bspc rule -a Chromium desktop=^2
-bspc rule -a mplayer2 floating=on
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
-bspc rule -a scratchpad --sticky
 bspc rule -a Termite:QuakeTerminal state=floating sticky=on border=on
 
 # Set background
