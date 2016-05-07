@@ -70,7 +70,7 @@ display-stop() {
 }
 
 # Networking
-alias pubip="curl ipinfo.io | grep -oE '\"ip\": \"(.*)\"' | sed 's/\"ip\": //; s/\"//g'"
+alias ip-pub="curl -s ipinfo.io | grep -oE '\"ip\": \"(.*)\"' | sed 's/\"ip\": //; s/\"//g'"
 
 # Systemctl
 alias sysstart="sudo systemctl start"
