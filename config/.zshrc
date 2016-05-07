@@ -97,5 +97,9 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #    }
 #    zle -N zle-line-init
 
+# Word navigation
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
+
 source /home/misha/dotfiles/scripts/start/shell.sh
 
