@@ -69,6 +69,9 @@ display-stop() {
   $cnf/bspwmrc
 }
 
+# Networking
+alias pubip="curl ipinfo.io | grep -oE '\"ip\": \"(.*)\"' | sed 's/\"ip\": //; s/\"//g'"
+
 # Systemctl
 alias sysstart="sudo systemctl start"
 alias sysstop="sudo systemctl stop"
