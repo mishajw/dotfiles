@@ -19,7 +19,8 @@ class BatteryWidget(NumberWidget):
     battery = self.get_battery_dump()
     
     self.state = battery[0][-1]
-    self.number = int(battery[2][-1][:-1])
+
+    self.number = int(battery[-1][-1][:-1])
 
   def update_char(self):
     if self.state == 'charging':
@@ -31,4 +32,4 @@ class BatteryWidget(NumberWidget):
 
   def get_battery_dump(self):
     f = os.popen(self.battery_command)
-    return [re.compile("\s+").split(line) for line in f.read().split('\n')]
+    return [re.compile("\s+").split(line) for line in f.read().split('\n') if line.strip() != '']
