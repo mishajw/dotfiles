@@ -69,6 +69,13 @@ display-stop() {
   $cnf/bspwmrc
 }
 
+# Volume
+set-vol() {
+  if [ -z $1 ]; then exit; fi
+  amixer sset $MASTER_SOUND ${1}% > /dev/null
+  echo "VolumeWidget" > $PANEL_FIFO
+}
+
 # Networking
 alias ip-pub="curl -s ipinfo.io | grep -oE '\"ip\": \"(.*)\"' | sed 's/\"ip\": //; s/\"//g'"
 
