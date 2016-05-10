@@ -14,6 +14,6 @@ else
   exit
 fi
 
-amixer sset Master $MODIFIER > /dev/null
+amixer sset $MASTER_SOUND $MODIFIER > /dev/null
 echo "VolumeWidget" > $PANEL_FIFO
 
