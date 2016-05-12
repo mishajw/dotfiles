@@ -17,8 +17,8 @@ super + b
 super + {s,f}
 	bspc node --state \~{floating,fullscreen}
 
-super + {grave,Tab}
-	bspc {node,desktop} -f last
+super + Tab
+	bspc desktop -f last
 
 super + apostrophe
 	bspc node -s last
@@ -83,7 +83,7 @@ super + @button{1-3}
 # wm independent hotkeys
 #
 
-super + Return
+super + grave
 	termite
 
 # Launcher
@@ -114,7 +114,7 @@ super + ctrl + c
   nmcli_dmenu
 
 # Quake-like terminal
-super + shift + Return
+super + shift + grave
   xdotool search --onlyvisible --classname QuakeTerminal windowunmap \
   || xdotool search --classname QuakeTerminal windowmap \
   || termite --name QuakeTerminal --geometry 960x350+480+$PANEL_HEIGHT
