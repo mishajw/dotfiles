@@ -91,4 +91,5 @@ alias gourcec="gource -f -s 1 -a 1"
 alias vnc="x11vnc -display :0"
 alias net="slurm -i $NET"
 cdmk () { mkdir -p -- "$1" && cd -P -- "$1" }
+opr () { "$@" > /dev/null 2>&1 & disown }
 
