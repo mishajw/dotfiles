@@ -83,7 +83,7 @@ super + @button{1-3}
 # wm independent hotkeys
 #
 
-super + grave
+super + Return
 	termite
 
 # Launcher
@@ -114,7 +114,7 @@ super + ctrl + c
   nmcli_dmenu
 
 # Quake-like terminal
-super + shift + grave
+super + grave
   xdotool search --onlyvisible --classname QuakeTerminal windowunmap \
   || xdotool search --classname QuakeTerminal windowmap \
   || termite --name QuakeTerminal --geometry 960x350+480+$PANEL_HEIGHT
