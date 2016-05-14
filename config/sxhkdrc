@@ -123,6 +123,11 @@ super + grave
 super + r
   google-chrome-stable &
 
+# Lock screen
+super + Delete
+  source ~/.zshrc ; \
+  $scr/lock.sh
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
