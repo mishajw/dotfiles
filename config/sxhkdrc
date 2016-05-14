@@ -128,6 +128,10 @@ super + Delete
   source ~/.zshrc ; \
   $scr/lock.sh
 
+# Screenshot
+super + Print
+  deepin-screenshot
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
