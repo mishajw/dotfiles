@@ -102,7 +102,8 @@ set tabstop=2           " Render TABs using this many spaces.
 set shiftwidth=2        " Indentation amount for < and > commands.
 
 " Highlight line when in insert mode
-:autocmd InsertEnter,InsertLeave * set cul!
+:autocmd InsertEnter * set cul
+:autocmd InsertLeave * set nocul
 
 " For gvim
 set guioptions-=m  "remove menu bar
