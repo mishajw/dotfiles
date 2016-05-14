@@ -12,6 +12,7 @@ export MASTER_SOUND="Master"
 export df="/home/misha/dotfiles"
 export cnf="$df/config"
 export scr="$df/scripts"
+export imgs="$df/images"
 
 # Network
 export NET="wlp4s0"
@@ -23,7 +24,8 @@ export PANEL_FIFO="/tmp/panel-fifo"
 # Visuals
 export MAIN_FONT="Monospace:style=Bold:size=10"
 export PANEL_HEIGHT=25
-export BACKGROUND_IMAGE="$df/background.jpg"
+export BACKGROUND_IMAGE="$imgs/background.jpg"
+
 
 # Misc
 export LANGUAGE="$LANG"
