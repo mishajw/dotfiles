@@ -88,15 +88,12 @@ super + Return
 
 # Launcher
 super + space
-  source ~/.zshrc ; \
   $scr/launcher.sh
 
 #Volume
 XF86Audio{Lower,Raise}Volume
-  source ~/.zshrc ; \
   $scr/vol-control.sh {down,up}
 XF86AudioMute
-  source ~/.zshrc ; \
   $scr/vol-control.sh toggle
 
 # Brightness
@@ -125,7 +122,6 @@ super + r
 
 # Lock screen
 super + Delete
-  source ~/.zshrc ; \
   $scr/lock.sh
 
 # Screenshot
