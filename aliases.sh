@@ -92,4 +92,5 @@ alias vnc="x11vnc -display :0"
 alias net="slurm -i $NET"
 cdmk () { mkdir -p -- "$1" && cd -P -- "$1" }
 opr () { "$@" > /dev/null 2>&1 & disown }
+alias dmenu="dmenu -o 0.8 -fn $MAIN_FONT -h 50 -w 500 -x 680 -y 490"
 
