@@ -4,6 +4,7 @@
 export MAIN_DISPLAY="eDP1"
 export SECOND_DISPLAY="DP2"
 export SECOND_DISPLAY_RES="1920x1080"
+export WINDOW_GAP=15
 
 # Sound
 export MASTER_SOUND="Master"
