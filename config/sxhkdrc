@@ -128,6 +128,9 @@ super + Delete
 super + Print
   deepin-screenshot
 
+super + g
+  $scr/toggle-gap.sh
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
