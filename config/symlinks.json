@@ -33,6 +33,9 @@
     },
     {
       "src": ".compton.conf"
+    },
+    {
+      "src": ".tmux.conf"
     }
   ]
 }
