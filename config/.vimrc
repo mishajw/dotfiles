@@ -21,6 +21,7 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " VUNDLE
 call vundle#end()            " required
@@ -77,14 +78,21 @@ set foldmethod=indent
 set nofoldenable
 
 " Navigation improved
-:tnoremap <A-h> <C-\><C-n><C-w>h
-:tnoremap <A-j> <C-\><C-n><C-w>j
-:tnoremap <A-k> <C-\><C-n><C-w>k
-:tnoremap <A-l> <C-\><C-n><C-w>l
-:nnoremap <A-h> <C-w>h
-:nnoremap <A-j> <C-w>j
-:nnoremap <A-k> <C-w>k
-:nnoremap <A-l> <C-w>l
+" :tnoremap <A-h> <C-\><C-n><C-w>h
+" :tnoremap <A-j> <C-\><C-n><C-w>j
+" :tnoremap <A-k> <C-\><C-n><C-w>k
+" :tnoremap <A-l> <C-\><C-n><C-w>l
+" :nnoremap <A-h> <C-w>h
+" :nnoremap <A-j> <C-w>j
+" :nnoremap <A-k> <C-w>k
+" :nnoremap <A-l> <C-wl
+
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <A-\> :TmuxNavigatePrevious<cr><Paste>
 
 " Double Esc to save
 map <Esc><Esc> :w<CR>
