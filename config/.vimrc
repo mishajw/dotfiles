@@ -22,6 +22,7 @@ Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'tomtom/tcomment_vim'
 
 " VUNDLE
 call vundle#end()            " required
@@ -72,6 +73,7 @@ colorscheme default
 
 " Show numbers on side
 set number
+set relativenumber
 
 " Collapsing
 set foldmethod=indent
