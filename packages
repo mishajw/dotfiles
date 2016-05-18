@@ -25,4 +25,6 @@ pulseaudio
 pulseaudio-alsa
 alsa-utils
 pavucontrol
+tree
+arandr
 
