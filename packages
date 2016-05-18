@@ -3,10 +3,13 @@ neovim
 git
 zsh
 tmux
-htop
+
+# Util
 upower
 dmenu2
 tree
+htop
+dtrx
 
 # OS
 btrfs-progs
@@ -41,6 +44,7 @@ otf-inconsolata-lgc
 # Applications
 google-chrome
 termite
+virtualbox
 
 # Audio
 pulseaudio
