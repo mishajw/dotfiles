@@ -3,6 +3,7 @@ neovim
 git
 zsh
 tmux
+openssh
 
 # Util
 upower
