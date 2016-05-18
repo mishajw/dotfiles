@@ -13,6 +13,8 @@ alias y="yaourt"
 alias yn="y --noconfirm"
 alias yu="yn -Syua ; echo 'UpdatesWidget' > $PANEL_FIFO"
 alias yro="y -Rsn --noconfirm $(y -Qdtq)"
+alias df-packages="yaourt -Sy --needed --noconfirm $df/packages"
+
 # Git
 alias ga="git add"
 alias gc="git commit -m"
