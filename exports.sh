@@ -23,7 +23,7 @@ export PANEL_PATH="$df/panel"
 export PANEL_FIFO="/tmp/panel-fifo"
 
 # Visuals
-export MAIN_FONT="InconsolataForPowerline Nerd Font 11"  # "Monospace:style=Bold:size=10"
+export MAIN_FONT="Monospace:style=Bold:size=10"
 export PANEL_HEIGHT=25
 export BACKGROUND_IMAGE="$imgs/background.jpg"
 
