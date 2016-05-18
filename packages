@@ -1,34 +1,55 @@
+# Basics
 neovim
 git
+zsh
 tmux
+htop
+upower
+dmenu2
+tree
+
+# OS
+btrfs-progs
+refind-efi
+
+# X11
 xorg-server
 xorg-xinit
+xorg-xbacklight
 bspwm
 sxhkd
-zsh
-google-chrome
-termite
-htop
-xorg-xsetroot
-feh
+lemonbar-xft-git
 libxrandr
-lemonbar
+feh
+arandr
+xdotool
+xorg-xsetroot
 ttf-inconsolata
 libinput
 xorg-xinput
+xtitle
 xf86-input-libinput
-upower
+
+# Fonts
 ttf-inconsolata
 ttf-font-awesome
-xtitle
+cairo-infinality-ultimate
+fontconfig-infinality-ultimate
+freetype2-infinality-ultimate
+otf-inconsolata-lgc
+
+# Applications
+google-chrome
+termite
+
+# Audio
 pulseaudio
 pulseaudio-alsa
 alsa-utils
 pavucontrol
-tree
-arandr
-xdotool
+
+# Internet
 networkmanager
 networkmanager-dmenu-git
-dmenu2
+cifs-utils
 
