@@ -9,6 +9,20 @@ zsh
 google-chrome
 termite
 htop
-xsetroot
-
+xorg-xsetroot
+feh
+libxrandr
+lemonbar
+ttf-inconsolata
+libinput
+xorg-xinput
+xf86-input-libinput
+upower
+ttf-inconsolata
+ttf-font-awesome
+xtitle
+pulseaudio
+pulseaudio-alsa
+alsa-utils
+pavucontrol
 
