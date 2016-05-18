@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Display
-export MAIN_DISPLAY="eDP1"
+export MAIN_DISPLAY="eDP-1"
 export SECOND_DISPLAY="DP2"
 export SECOND_DISPLAY_RES="1920x1080"
 export WINDOW_GAP=15
@@ -23,7 +23,7 @@ export PANEL_PATH="$df/panel"
 export PANEL_FIFO="/tmp/panel-fifo"
 
 # Visuals
-export MAIN_FONT="Monospace:style=Bold:size=10"
+export MAIN_FONT="InconsolataForPowerline Nerd Font 11"  # "Monospace:style=Bold:size=10"
 export PANEL_HEIGHT=25
 export BACKGROUND_IMAGE="$imgs/background.jpg"
 
