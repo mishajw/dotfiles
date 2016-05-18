@@ -27,4 +27,8 @@ alsa-utils
 pavucontrol
 tree
 arandr
+xdotool
+networkmanager
+networkmanager-dmenu-git
+dmenu2
 
