@@ -11,10 +11,12 @@ dmenu2
 tree
 htop
 dtrx
+xclip
 
 # OS
 btrfs-progs
 refind-efi
+xf86-video-intel
 
 # X11
 xorg-server
@@ -33,6 +35,9 @@ libinput
 xorg-xinput
 xtitle
 xf86-input-libinput
+scrot
+imagemagick
+i3lock
 
 # Fonts
 ttf-inconsolata
@@ -46,6 +51,9 @@ otf-inconsolata-lgc
 google-chrome
 termite
 virtualbox
+vlc
+thunderbird
+tightvnc
 
 # Audio
 pulseaudio
