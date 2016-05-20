@@ -100,3 +100,10 @@ bindkey "^[[1;3D" backward-word
 
 source /home/misha/dotfiles/scripts/start/shell.sh
 
+
+# start x automatically
+pgrep Xorg 1>/dev/null
+if [ "$?" -ne "0" ]; then
+  startx
+fi
+
