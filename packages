@@ -56,6 +56,19 @@ thunderbird
 tightvnc
 teamspeak3
 transmission-gtk
+intellij-idea-ultimate-edition
+clion
+dropbox
+spotify
+gparted
+
+# Programming
+jdk8-openjdk
+scala
+scala-docs
+sbt
+typesafe-activator
+cmake
 
 # Virtualbox
 virtualbox
