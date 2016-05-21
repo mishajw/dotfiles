@@ -23,6 +23,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'juanedi/predawn.vim'
 
 " VUNDLE
 call vundle#end()            " required
@@ -34,6 +35,7 @@ let g:airline_powerline_fonts = 1
 " Enable syntax highlighting
 syntax on
 set t_Co=256
+
 " Set wrapping key
 set nowrap
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
@@ -67,9 +69,7 @@ function ToggleWrap()
 endfunction
 
 " Color scheme
-colorscheme default
-"set background=dark
-"highlight Normal ctermfg=white ctermbg=black
+colorscheme predawn
 
 " Show numbers on side
 set number
