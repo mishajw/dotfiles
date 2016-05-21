@@ -30,7 +30,7 @@ mkinitcpio -p linux
 echo $hostname > /etc/hostname
 
 # Setup boot
-pacman -S refind-efi
+pacman -S refind-efi --noconfirm
 refind-install
 
 echo "Done. Unmount and reboot."
