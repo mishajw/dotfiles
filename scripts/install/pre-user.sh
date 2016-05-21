@@ -26,7 +26,12 @@ pacman -S btrfs-progs --noconfirm
 # Build kernel
 mkinitcpio -p linux
 
+# Set hostname
 echo $hostname > /etc/hostname
+
+# Setup boot
+pacman -S refind-efi
+refind-install
 
 echo "Done. Unmount and reboot."
 
