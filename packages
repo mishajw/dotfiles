@@ -12,6 +12,7 @@ tree
 htop
 dtrx
 xclip
+traceroute
 
 # OS
 btrfs-progs
@@ -50,10 +51,16 @@ otf-inconsolata-lgc
 # Applications
 google-chrome
 termite
-virtualbox
 vlc
 thunderbird
 tightvnc
+teamspeak3
+transmission-gtk
+
+# Virtualbox
+virtualbox
+qt4
+linux-headers
 
 # Audio
 pulseaudio
