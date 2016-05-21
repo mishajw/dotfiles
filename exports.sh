@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Display
-export MAIN_DISPLAY="eDP-1"
-export SECOND_DISPLAY="DP-2"
+export MAIN_DISPLAY="eDP1"
+export SECOND_DISPLAY="DP2"
 export SECOND_DISPLAY_RES="1920x1080"
 export WINDOW_GAP=15
 
