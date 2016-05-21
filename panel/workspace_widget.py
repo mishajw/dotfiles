@@ -29,12 +29,15 @@ class WorkspaceWidget(CommandWidget):
       # Occupied, not active
       if label == "o":
         title = set_color(title, COLOR_USED)
+      # Empty, active
       elif label == "F":
         title = set_color(title, COLOR_OPEN_EMPTY)
         title = set_underline_color(title, COLOR_OPEN_EMPTY)
+      # Occupied, active
       elif label == "O":
         title = set_color(title, COLOR_USED)
         title = set_underline_color(title, COLOR_USED)
+      # Display separator
       elif label.lower() == 'm':
         title = "|"
         title = set_color(title, COLOR_SEPARATOR)
