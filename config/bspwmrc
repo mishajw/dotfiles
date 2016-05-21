@@ -20,7 +20,7 @@ if [ "$(xrandr | grep ' connected' | wc -l)" -gt 1 ]; then
   bspc monitor "$SECOND_DISPLAY" -d A B
   bspc monitor "$MAIN_DISPLAY" --swap "$SECOND_DISPLAY"
 else
-  bspc monitor "$MAIN_DISPLAY" -d I II III IV V VI VII VIII IX X Dump
+  bspc monitor "$MAIN_DISPLAY" -d I II III IV V VI VII Dump
   bspc monitor "$SECOND_DISPLAY" -d None
 fi
 
