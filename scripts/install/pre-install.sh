@@ -6,6 +6,8 @@
 
 read -p "Device file to install on: " dev
 
+mount /dev/$dev /mnt
+
 # Install arch and base packages on device
 pacstrap -i /mnt base base-devel
 
