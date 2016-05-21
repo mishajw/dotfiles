@@ -18,7 +18,10 @@ ln -s /usr/share/zoneinfo/Europe/London /etc/localetime
 
 # Setup hooks
 hooks="base udev autodetect modconf block encrypt lvm2 btrfs resume filesystems keyboard fsck"
-sed 's/^HOOKS\=\".*\"/HOOKS=\"$hooks\"/g' -i /etc/mkinitcpio.conf
+sed "s/^HOOKS\=\".*\"/HOOKS=\"$hooks\"/g" -i /etc/mkinitcpio.conf
+
+# Install btrfs
+pacman -S btrfs-progs --noconfirm 
 
 # Build kernel
 mkinitcpio -p linux
