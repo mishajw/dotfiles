@@ -24,6 +24,14 @@ alias gs="git status"
 alias gd="git diff"
 alias glog="git log --oneline"
 
+gclone() {
+  if [ -z $1 ]; then
+    echo "Usage: $0 <github username>/<github repo>"
+  fi
+
+  git clone ssh://git@github.com/$1
+}
+
 # SVN
 alias va="svn add"
 alias vu="svn update"
