@@ -59,8 +59,8 @@ transmission-gtk
 intellij-idea-ultimate-edition
 clion
 dropbox
-spotify
 gparted
+cabal-install
 
 # Programming
 jdk8-openjdk
@@ -69,6 +69,9 @@ scala-docs
 sbt
 typesafe-activator
 cmake
+valgrind
+ghc
+hlint
 
 # Virtualbox
 virtualbox
