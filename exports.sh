@@ -26,7 +26,7 @@ export PANEL_FIFO="/tmp/panel-fifo"
 export MAIN_FONT="Monospace:style=Bold:size=10"
 export PANEL_HEIGHT=25
 export BACKGROUND_IMAGE="$imgs/background.jpg"
-
+export SCREENSHOT_LOCATION="/tmp/scr.png"
 
 # Misc
 export LANGUAGE="$LANG"

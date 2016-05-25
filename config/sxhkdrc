@@ -126,7 +126,7 @@ super + Delete
 
 # Screenshot
 super + Print
-  deepin-screenshot
+  import $SCREENSHOT_LOCATION
 
 super + g
   $scr/toggle-gap.sh
