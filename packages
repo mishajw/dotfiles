@@ -13,6 +13,8 @@ htop
 dtrx
 xclip
 traceroute
+iotop
+acpid
 
 # OS
 btrfs-progs
@@ -61,6 +63,7 @@ clion
 dropbox
 gparted
 cabal-install
+spotify
 
 # Programming
 jdk8-openjdk
