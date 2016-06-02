@@ -24,6 +24,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'juanedi/predawn.vim'
+Plugin 'airblade/vim-gitgutter'
 
 " VUNDLE
 call vundle#end()            " required
