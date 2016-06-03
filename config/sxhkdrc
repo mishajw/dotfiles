@@ -97,8 +97,10 @@ super + space
   $scr/launcher.sh
 
 #Volume
+shift + XF86Audio{Lower,Raise}Volume
+  $scr/vol-control.sh {down,up} 1
 XF86Audio{Lower,Raise}Volume
-  $scr/vol-control.sh {down,up}
+  $scr/vol-control.sh {down,up} 5
 XF86AudioMute
   $scr/vol-control.sh toggle
 
