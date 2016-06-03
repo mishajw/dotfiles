@@ -15,6 +15,8 @@ xclip
 traceroute
 iotop
 acpid
+command-not-found
+nmap
 
 # OS
 btrfs-progs
@@ -41,6 +43,7 @@ xf86-input-libinput
 scrot
 imagemagick
 i3lock
+gource
 
 # Fonts
 ttf-inconsolata
@@ -64,6 +67,7 @@ dropbox
 gparted
 cabal-install
 spotify
+mcomix
 
 # Programming
 jdk8-openjdk
