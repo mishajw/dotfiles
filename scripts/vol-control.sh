@@ -1,7 +1,7 @@
 #!/bin/bash
 
 MODE=$1
-CHANGE_AMOUNT=5
+CHANGE_AMOUNT=$2
 
 if [ "$MODE" == "up" ]; then
   MODIFIER="$CHANGE_AMOUNT%+"
