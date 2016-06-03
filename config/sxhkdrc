@@ -44,6 +44,9 @@ super + {comma,period}
 	bspc desktop -C {backward,forward}
 
 super + bracket{left,right}
+	bspc desktop -f {prev,next}.occupied
+
+super + shift + bracket{left,right}
 	bspc desktop -f {prev,next}
 
 super + ctrl + {h,j,k,l}
