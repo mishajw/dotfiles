@@ -15,12 +15,11 @@ bspc config remove_unplugged_monitors true
 bspc config normal_border_color '#333333'
 bspc config focused_border_color '#F9D3A5'
 
+bspc monitor "$MAIN_DISPLAY" -d `echo -e '\uf0ac \uf120 \uf001 \uf02d \u03b1 \u03b2 \u03b3'`
 if [ "$(xrandr | grep ' connected' | wc -l)" -gt 1 ]; then
-  bspc monitor "$MAIN_DISPLAY" -d I II III IV V VI VII Dump
   bspc monitor "$SECOND_DISPLAY" -d A B
   bspc monitor "$MAIN_DISPLAY" --swap "$SECOND_DISPLAY"
 else
-  bspc monitor "$MAIN_DISPLAY" -d I II III IV V VI VII Dump
   bspc monitor "$SECOND_DISPLAY" -d None
 fi
 
