@@ -14,6 +14,7 @@ class WorkspaceWidget(CommandWidget):
     super(WorkspaceWidget, self).__init__("bspc subscribe")
 
   def handle_output(self, output):
+    output = output.decode("utf8")
     workspaces = str(output).split(":")
   
     allWorkspaces = []
