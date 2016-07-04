@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/misha/.oh-my-zsh
+  export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -98,7 +98,7 @@ export LANG=en_GB.UTF-8
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
-source /home/misha/dotfiles/scripts/start/shell.sh
+source $HOME/dotfiles/scripts/start/shell.sh
 
 
 # start x automatically

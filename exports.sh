@@ -10,7 +10,7 @@ export WINDOW_GAP=15
 export MASTER_SOUND="Master"
 
 # Quick directories
-export df="/home/misha/dotfiles"
+export df="$HOME/dotfiles"
 export cnf="$df/config"
 export scr="$df/scripts"
 export imgs="$df/images"
