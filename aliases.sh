@@ -45,8 +45,8 @@ alias ll="ls -lah"
 alias la="ls -a"
 
 # Editing
-alias e="nvim"
-alias se="sudo nvim"
+alias e="$(which nvim > /dev/null && echo nvim || echo vim)"
+# alias se="sudo nvim"
 
 # VM
 alias startcsecvm="VBoxManage startvm 'Intro to Computer Security' --type headless"
