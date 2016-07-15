@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /home/misha/dotfiles/scripts/start/shell.sh
+source $HOME/dotfiles/scripts/start/shell.sh
 
 if [[ "$(bspc config -d focused window_gap)" == "0" ]]; then
   bspc config -d focused window_gap $WINDOW_GAP
