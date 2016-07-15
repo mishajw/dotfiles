@@ -87,22 +87,22 @@ super + @button{1-3}
 #
 
 super + Return
-	termite -e tmux 
+	urxvt -e tmux 
 
 super + shift + Return
-  termite
+  urxvt
 
 # Launcher
 super + space
-  $scr/launcher.sh
+  $HOME/dotfiles/scripts/launcher.sh
 
 #Volume
 shift + XF86Audio{Lower,Raise}Volume
-  $scr/vol-control.sh {down,up} 1
+  $HOME/dotfiles/scripts/vol-control.sh {down,up} 1
 XF86Audio{Lower,Raise}Volume
-  $scr/vol-control.sh {down,up} 5
+  $HOME/dotfiles/scripts/vol-control.sh {down,up} 5
 XF86AudioMute
-  $scr/vol-control.sh toggle
+  $HOME/dotfiles/scripts/vol-control.sh toggle
 
 # Brightness
 XF86MonBrightnessUp
@@ -130,17 +130,16 @@ super + r
 
 # Lock screen
 super + Delete
-  $scr/lock.sh
+  $HOME/dotfiles/scripts/lock.sh
 
 # Screenshot
 super + Print
-  import $SCREENSHOT_LOCATION
-
+  import $SCREENSHOT_LOCATION 
 super + g
-  $scr/toggle-gap.sh
+  $HOME/dotfiles/scripts/toggle-gap.sh
 
 super + p
-  $scr/switch-window.sh
+  $HOME/dotfiles/scripts/switch-window.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
