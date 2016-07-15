@@ -1,3 +1,5 @@
+source $HOME/dotfiles/scripts/start/shell.sh
+
 # Path to your oh-my-zsh installation.
   export ZSH=$HOME/.oh-my-zsh
 
@@ -98,7 +100,8 @@ export LANG=en_GB.UTF-8
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
-source $HOME/dotfiles/scripts/start/shell.sh
+# Turn off autocorrect
+unsetopt correct_all
 
 
 # start x automatically
@@ -106,4 +109,11 @@ pgrep Xorg 1>/dev/null
 if [ "$?" -ne "0" ]; then
   startx
 fi
+
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/usr/local/google/home/mishaw/Documents/prog-files/google-cloud-sdk-116.0.0-linux-x86_64/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/usr/local/google/home/mishaw/Documents/prog-files/google-cloud-sdk-116.0.0-linux-x86_64/google-cloud-sdk/completion.zsh.inc'
 
