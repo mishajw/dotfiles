@@ -175,7 +175,6 @@ super + alt + {h,j,k,l}
 super + alt + shift + {h,j,k,l}
   bspc node {@east -r -320,@north -r +320,@south -r -320,@west -r +320}
 
-# move a floating window
-super + {Left,Down,Up,Right}
-	xdo move {-x -20, -y +20, -y -20, -x +20}
+super + {Left, Right, Up, Down}
+  $scr/tiled-ws/nav-ws {-1 0, 1 0, 0 -1, 0 1}
 
