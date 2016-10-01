@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+cur_ws=$(bspc query -D --desktop focused)
+next_ws=$(( $cur_ws + $1 + ($2 * 3) ))
+
+# Don't allow movement from 3->4 or 4->3
+if (( (cur_ws == 3 && next_ws == 4) || (cur_ws == 4 && next_ws == 3) )); then
+  exit
+fi
+
+bspc desktop --focus $next_ws
+
+notify-send "Workspaces" "$($scr/tiled-ws/print-ws)" "workspaces"
+
