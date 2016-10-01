@@ -10,5 +10,5 @@ fi
 
 bspc desktop --focus $next_ws
 
-notify-send "Workspaces" "$($scr/tiled-ws/print-ws)" "workspaces"
+$scr/tiled-ws/popup "$($scr/tiled-ws/print-ws)"
 

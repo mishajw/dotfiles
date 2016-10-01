@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+message=$1
+
+echo Displaying $message
+
+commands="bspc node --focus last ;\
+    echo '$message' ;\
+    sleep 1"
+
+echo $commands
+
+termite --name Popup -e "bash -c \"$commands\""
+
