@@ -102,7 +102,8 @@ bindkey "^[[1;3D" backward-word
 
 # Turn off autocorrect
 unsetopt correct_all
-
+bindkey "^[j" history-search-forward
+bindkey "^[k" history-search-backward
 
 # start x automatically
 pgrep Xorg 1>/dev/null
