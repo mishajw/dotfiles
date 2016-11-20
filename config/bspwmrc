@@ -32,5 +32,5 @@ feh --bg-scale $BACKGROUND_IMAGE
 # Start bar
 killall panel.py ; $PANEL_PATH/panel.py & 
 # Start compton
-killall compton ; compton
+killall compton ; compton &
 
