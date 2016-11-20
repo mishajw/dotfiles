@@ -178,3 +178,19 @@ super + alt + shift + {h,j,k,l}
 super + {Left, Right, Up, Down}
   $scr/tiled-ws/nav-ws {-1 0, 1 0, 0 -1, 0 1}
 
+#
+# mouse
+#
+
+~button1
+  bspc node -f pointed
+
+super + button{1-3}
+  bspc pointer -g {resize_side,resize_corner,move}
+
+super + !button{1-3}
+  bspc pointer -t %i %i
+
+super + @button{1-3}
+  bspc pointer -u
+
