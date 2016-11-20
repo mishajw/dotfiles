@@ -126,6 +126,8 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
+super + {_,shift + }d
+	bspc {desktop -f,node -d} 'Dump'
 
 #
 # desktops
