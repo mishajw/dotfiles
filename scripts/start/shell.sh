@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source $HOME/dotfiles/exports.sh
-source $HOME/dotfiles/aliases.sh
-
-
+source /home/misha/dotfiles/exports.sh
+source /home/misha/dotfiles/aliases.sh
 
