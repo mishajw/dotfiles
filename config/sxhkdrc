@@ -56,6 +56,9 @@ super + g
 super + p
   $scr/switch-window.sh
 
+super + a
+  pgrep panel.py && killall panel.py || $PANEL_PATH/panel.py &
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
