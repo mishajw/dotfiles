@@ -17,7 +17,7 @@ import re
 import subprocess
 
 colors = ['#f9d3a5', '#dbad72', '#ab9c73']
-backgroundColor = '#bb291f0a'
+backgroundColor = '#ee291f0a'
 foregroundColor = '#774f38'
 
 separator = "  "
