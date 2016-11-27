@@ -102,6 +102,8 @@ bindkey "^[[1;3D" backward-word
 
 # Turn off autocorrect
 unsetopt correct_all
+
+# J&K to scroll through history
 bindkey "^[j" history-search-forward
 bindkey "^[k" history-search-backward
 
