@@ -1,10 +1,6 @@
 # Open terminal
 super + Return
-	termite -e tmux 
-
-# Open terminal without tmux
-super + shift + Return
-  termite
+	termite
 
 # Launcher
 super + space
@@ -36,7 +32,7 @@ super + ctrl + c
 super + grave
   xdotool search --onlyvisible --classname QuakeTerminal windowunmap \
   || xdotool search --classname QuakeTerminal windowmap \
-  || termite --name QuakeTerminal --geometry 960x350+480+$PANEL_HEIGHT -e 'tmux new -s quake'
+  || termite --name QuakeTerminal --geometry 960x350+480+$PANEL_HEIGHT
 
 # Start browser
 super + r
