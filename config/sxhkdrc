@@ -20,6 +20,10 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
   xbacklight -dec 5
 
+# Music apps
+super + XF86Tools
+  spotify & google-chrome-stable "music.google.com" --new-window &
+
 # Change node gaps
 alt + {minus,equal}
 	bspc config -d focused node_gap $((`bspc config -d focused node_gap` {+,-} 2 ))
