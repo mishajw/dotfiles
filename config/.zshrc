@@ -108,8 +108,7 @@ bindkey "^[j" history-search-forward
 bindkey "^[k" history-search-backward
 
 # start x automatically
-pgrep Xorg 1>/dev/null
-if [ "$?" -ne "0" ]; then
+if which startx 1>/dev/null && pgrep Xorg 1>/dev/null; then
   startx
 fi
 
