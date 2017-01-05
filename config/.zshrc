@@ -104,8 +104,8 @@ bindkey "^[[1;3D" backward-word
 unsetopt correct_all
 
 # J&K to scroll through history
-bindkey "^[j" history-search-forward
-bindkey "^[k" history-search-backward
+bindkey "^[j" history-beginning-search-forward
+bindkey "^[k" history-beginning-search-backward
 
 # start x automatically
 if which startx 1>/dev/null && pgrep Xorg 1>/dev/null; then
