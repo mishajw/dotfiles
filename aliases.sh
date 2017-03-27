@@ -5,7 +5,8 @@
 
 # Ubuntu
 alias o="xdg-open"
-alias ai="sudo apt-get install"
+alias ag="sudo apt-get"
+alias ai="ag install"
 alias as="apt-cache search"
 
 # Arch
