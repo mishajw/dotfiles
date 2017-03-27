@@ -24,6 +24,7 @@ alias gpull="git pull --rebase"
 alias gs="git status"
 alias gd="git diff"
 alias glog="git log --oneline"
+alias gmyc="git log --since 7am --oneline --author=\"\$(git config user.name)\" | wc -l"
 
 gclone() {
   if [ -z $1 ]; then
