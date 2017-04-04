@@ -8,8 +8,8 @@
 [alias]
   a = add
   b = branch
-  c = commit -m
-  ca = commit --all -m
+  c = commit --message
+  ca = commit --all --message
   co = checkout
   d = diff
   l = log --oneline --decorate --graph
