@@ -26,6 +26,19 @@ gclone() {
   git clone ssh://git@github.com/$1
 }
 
+make_git_aliases_global() {
+  IFS=$'\n'
+
+  for git_alias in $(git config --get-regexp alias); do
+    final_alias=$(echo $git_alias | sed 's/alias./g/g')
+    alias_name=$(echo $final_alias | awk '{print $1;}')
+    alias_command="git$(echo $final_alias | awk '{$1=""; print $0;}')"
+    alias "$alias_name"="$alias_command"
+  done
+}
+
+make_git_aliases_global
+
 # SVN
 alias va="svn add"
 alias vu="svn update"
