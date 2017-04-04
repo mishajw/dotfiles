@@ -36,6 +36,9 @@
     },
     {
       "src": ".tmux.conf"
+    },
+    {
+      "src": ".gitconfig"
     }
   ]
 }

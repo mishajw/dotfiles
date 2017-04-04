@@ -1,0 +1,24 @@
+[user]
+	email = misha.wagner@hawkeyeinnovations.com
+	name = misha_wagner
+[push]
+	default = current
+[core]
+	editor = vim
+[alias]
+  a = add
+  b = branch
+  c = commit -m
+  ca = commit --all -m
+  co = checkout
+  d = diff
+  l = log --oneline --decorate --graph
+  m = merge
+  ph = push
+  pl = pull
+  psup = push --set-upstream origin $(git_current_branch)
+  s = status
+  sta = stash add
+  std = stash drop
+  stp = stash pop
+
