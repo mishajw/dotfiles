@@ -17,15 +17,7 @@ alias yro="y -Rsn --noconfirm \$(y -Qdtq)"
 alias df-packages="yaourt -Sy --needed --noconfirm $df/packages"
 
 # Git
-alias ga="git add"
-alias gc="git commit -m"
-alias gp="git push"
-alias gpull="git pull --rebase"
-alias gs="git status"
-alias gd="git diff"
-alias glog="git log --oneline"
-alias gmyc="git log --since 7am --oneline --author=\"\$(git config user.name)\" | wc -l"
-
+alias g="git"
 gclone() {
   if [ -z $1 ]; then
     echo "Usage: $0 <github username>/<github repo>"
