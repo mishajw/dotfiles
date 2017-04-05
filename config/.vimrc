@@ -34,6 +34,9 @@ filetype plugin indent on    " required
 " Airline
 let g:airline_powerline_fonts = 1
 
+" CtrlP
+let g:ctrlp_show_hidden = 1
+
 " Enable syntax highlighting
 syntax on
 set t_Co=256
