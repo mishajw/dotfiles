@@ -22,7 +22,7 @@
   rbih = rebase -i HEAD~20
   s = status
   si = submodule init
-  sta = stash add
+  st = stash
   std = stash drop
   stp = stash pop
   su = submodule update
