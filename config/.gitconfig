@@ -18,7 +18,9 @@
   pl = pull
   psup = push --set-upstream origin $(git_current_branch)
   s = status
+  si = submodule init
   sta = stash add
   std = stash drop
   stp = stash pop
+  su = submodule update
 
