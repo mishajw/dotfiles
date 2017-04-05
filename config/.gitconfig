@@ -17,6 +17,9 @@
   ph = push
   pl = pull
   psup = push --set-upstream origin $(git_current_branch)
+  rb = rebase
+  rbi = rebase -i
+  rbih = rebase -i HEAD~20
   s = status
   si = submodule init
   sta = stash add
