@@ -107,8 +107,5 @@ unsetopt correct_all
 bindkey "^[j" history-beginning-search-forward
 bindkey "^[k" history-beginning-search-backward
 
-# start x automatically
-if which startx 1>/dev/null && pgrep Xorg 1>/dev/null; then
-  startx
-fi
+source $scr/start/shell.sh
 
