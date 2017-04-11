@@ -13,29 +13,30 @@ alias as="apt-cache search"
 alias y="yaourt"
 alias yn="y --noconfirm"
 alias yu="yn -Syua ; echo 'UpdatesWidget' > $PANEL_FIFO"
-alias yro="y -Rsn --noconfirm \$(y -Qdtq)"
+alias yro="y -Rsn --noconfirm \(y -Qdtq\)"
 alias df-packages="yaourt -Sy --needed --noconfirm $df/packages"
 
 # Git
 alias g="git"
-gclone() {
-  if [ -z $1 ]; then
+function gclone
+  if test -z $1
     echo "Usage: $0 <github username>/<github repo>"
-  fi
+  end
 
   git clone ssh://git@github.com/$1
-}
+end
 
-make_git_aliases_global() {
-  IFS=$'\n'
+function make_git_aliases_global
+  # IFS=$'\n'
 
-  for git_alias in $(git config --get-regexp alias); do
-    final_alias=$(echo $git_alias | sed 's/alias./g/g')
-    alias_name=$(echo $final_alias | awk '{print $1;}')
-    alias_command="git$(echo $final_alias | awk '{$1=""; print $0;}')"
-    alias "$alias_name"="$alias_command"
-  done
-}
+  for git_alias in (git config --get-regexp alias)
+    set final_alias (echo $git_alias | sed 's/alias./g/g')
+    set alias_name (echo $final_alias | awk '{print $1;}')
+    set alias_command (echo $final_alias | awk '{$1=""; print $0;}')
+    alias "$alias_name"="git$alias_command"
+    echo "$alias_command"
+  end
+end
 
 make_git_aliases_global
 
@@ -52,7 +53,7 @@ alias ll="ls -lah"
 alias la="ls -a"
 
 # Editing
-alias e="\$(which nvim > /dev/null && echo nvim || echo vim)"
+alias e=vim
 # alias se="sudo nvim"
 
 # VM
@@ -63,45 +64,49 @@ alias stopcsecvm="VBoxManage controlvm 'Intro to Computer Security' poweroff"
 alias resint="sudo systemctl restart NetworkManager.service"
 
 # Search in files
-search() {
-  if [ "$#" -ne 2 ]; then
+function search
+  if test (count $argv) -ne 2; then
     echo "Usage: $0 <path> <search term>"
     return
-  fi
+  end
 
   find $1 -type f | xargs grep -iEC 3 --color=always "$2" | less -R
-}
+end
 
 # Mounts
-mycloud () {
-  if [ $# -eq 0 ]; then
-    ip=$MYCLOUD_IP
-  else
-    ip=$1
-  fi
+function mycloud
+  bash -e '
+    if [ $# -eq 0 ]; then
+      ip=$MYCLOUD_IP
+    else
+      ip=$1
+    fi
 
-  sudo mkdir -p /mnt/mycloud
-  sudo mount -t cifs -o user=misha,passwd=,rw,file_mode=0777,dir_mode=0777 //$ip/misha /mnt/mycloud
-}
+    sudo mkdir -p /mnt/mycloud
+    sudo mount -t cifs -o user=misha,passwd=,rw,file_mode=0777,dir_mode=0777 //$ip/misha /mnt/mycloud
+  '
+end
 
 # Displays
-display-start() {
+function display-start
   xrandr --addmode $SECOND_DISPLAY $SECOND_DISPLAY_RES
   xrandr --output $SECOND_DISPLAY --mode $SECOND_DISPLAY_RES --above $MAIN_DISPLAY
   $cnf/bspwmrc
-}
+end
 
-display-stop() {
+function display-stop
   xrandr --output $SECOND_DISPLAY --off
   $cnf/bspwmrc
-}
+end
 
 # Volume
-set-vol() {
-  if [ -z $1 ]; then exit; fi
-  amixer sset $MASTER_SOUND ${1}% > /dev/null
-  echo "VolumeWidget" > $PANEL_FIFO
-}
+function set-vol
+  bash -e '
+    if [ -z $1 ]; then return; fi
+    amixer sset $MASTER_SOUND ${1}% > /dev/null
+    echo "VolumeWidget" > $PANEL_FIFO
+  '
+end
 
 # Networking
 alias ip-pub="curl -s ipinfo.io | grep -oE '\"ip\": \"(.*)\"' | sed 's/\"ip\": //; s/\"//g'"
@@ -113,12 +118,12 @@ alias sysres="sudo systemctl restart"
 
 # Misc
 alias dua="du -sh *"
-csvview () { column -s, -t < $@ | less -#2 -N -S }
+function csvview; column -s, -t < $@ | less -#2 -N -S; end
 alias gourcec="gource -f -s 1 -a 1"
 alias vnc="x11vnc -display :0"
 alias net="slurm -i $NET"
-cdmk () { mkdir -p -- "$1" && cd -P -- "$1" }
-opr () { "$@" > /dev/null 2>&1 & disown }
+function cdmk; mkdir -p -- "$1"; and cd -P -- "$1"; end
+function opr; $argv > /dev/null 2>&1 & disown; end
 alias dmenu="dmenu -o 0.8 -fn $MAIN_FONT -h 50 -w 500 -x 680 -y 490"
 alias go-q="tmux attach -t quake"
 alias sshuttlec="sshuttle --dns -r do 0/0"
