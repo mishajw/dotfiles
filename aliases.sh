@@ -62,6 +62,16 @@ alias stopcsecvm="VBoxManage controlvm 'Intro to Computer Security' poweroff"
 # Restart internet
 alias resint="sudo systemctl restart NetworkManager.service"
 
+# Search in files
+search() {
+  if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <path> <search term>"
+    return
+  fi
+
+  find $1 -type f | xargs grep -iEC 3 --color=always "$2" | less -R
+}
+
 # Mounts
 mycloud () {
   if [ $# -eq 0 ]; then
