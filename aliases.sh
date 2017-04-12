@@ -12,7 +12,7 @@ alias as="apt-cache search"
 # Arch
 alias y="yaourt"
 alias yn="y --noconfirm"
-alias yu="yn -Syua ; echo 'UpdatesWidget' > $PANEL_FIFO"
+alias yu="y -Syyu ; echo 'UpdatesWidget' > $PANEL_FIFO"
 alias yro="y -Rsn --noconfirm \$(y -Qdtq)"
 alias df-packages="yaourt -Sy --needed --noconfirm $df/packages"
 
