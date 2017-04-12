@@ -7,14 +7,17 @@
 	editor = vim
 [alias]
   a = add
+  ap = add --patch
   b = branch
   c = commit --message
   ca = commit --all --message
+  cam = commit --amend
   co = checkout
   d = diff
   l = log --oneline --decorate --graph
   m = merge
-  ph = push
+  p = push
+  pf = push --force
   pl = pull
   psup = push --set-upstream origin $(git_current_branch)
   rb = rebase
