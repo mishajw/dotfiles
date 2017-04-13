@@ -11,6 +11,6 @@ class UpdatesWidget(NumberWidget):
     self.update_time = 60 * 5 
     
   def update_number(self):
-    p = os.popen("yaourt -Qyua | wc -l")
+    p = os.popen("yaourt -Sy; yaourt -Qyyua | wc -l")
     self.number = int(p.read())
 

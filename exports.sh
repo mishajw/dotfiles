@@ -3,7 +3,9 @@
 # Display
 export MAIN_DISPLAY="eDP1"
 export SECOND_DISPLAY="DP2"
-export SECOND_DISPLAY_RES="1920x1080"
+export SECOND_DISPLAY_X="1920"
+export SECOND_DISPLAY_Y="1080"
+export SECOND_DISPLAY_HZ="60"
 export WINDOW_GAP=15
 
 # Sound
