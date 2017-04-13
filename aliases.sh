@@ -30,10 +30,8 @@ make_git_aliases_global() {
   IFS=$'\n'
 
   for git_alias in $(git config --get-regexp alias); do
-    final_alias=$(echo $git_alias | sed 's/alias./g/g')
-    alias_name=$(echo $final_alias | awk '{print $1;}')
-    alias_command="git$(echo $final_alias | awk '{$1=""; print $0;}')"
-    alias "$alias_name"="$alias_command"
+    final_alias=$(echo $git_alias | sed 's/alias.//g' | awk '{print $1;}')
+    alias "g$final_alias"="git $final_alias"
   done
 }
 
