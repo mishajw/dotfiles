@@ -26,6 +26,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'juanedi/predawn.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'zah/nim.vim'
+Plugin 'rust-lang/rust.vim'
 
 " VUNDLE
 call vundle#end()            " required
