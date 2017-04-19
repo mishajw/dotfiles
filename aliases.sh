@@ -107,6 +107,18 @@ set-vol() {
 # Networking
 alias ip-pub="curl -s ipinfo.io | grep -oE '\"ip\": \"(.*)\"' | sed 's/\"ip\": //; s/\"//g'"
 
+check-column-limit() {
+  if [ $# != 2 ]; then
+    echo "Usage: $0 <directory> <column limit>"
+    return
+  fi
+
+  directory=$1
+  column_limit=$2
+
+  search $directory ".{$column_limit}"
+}
+
 # Systemctl
 alias sysstart="sudo systemctl start"
 alias sysstop="sudo systemctl stop"
