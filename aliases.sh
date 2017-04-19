@@ -67,7 +67,7 @@ search() {
     return
   fi
 
-  find $1 -type f | xargs grep -iEC 3 --color=always "$2" | less -R
+  find $1 -type f | xargs grep -niEC 3 --color=always "$2" | less -R
 }
 
 # Mounts
