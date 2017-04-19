@@ -116,7 +116,12 @@ check-column-limit() {
   directory=$1
   column_limit=$2
 
-  search $directory ".{$column_limit}"
+  find $directory -type f | \
+    xargs -I^ bash -c "\
+      echo ^ ; cat ^ | \
+      sed 's/\t/    /g;s/\r//g' | \
+      grep -nP --color=always '.{$column_limit}[^\r]' - /dev/null" | \
+    less
 }
 
 # Systemctl
