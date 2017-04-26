@@ -107,23 +107,6 @@ set-vol() {
 # Networking
 alias ip-pub="curl -s ipinfo.io | grep -oE '\"ip\": \"(.*)\"' | sed 's/\"ip\": //; s/\"//g'"
 
-check-column-limit() {
-  if [ $# != 2 ]; then
-    echo "Usage: $0 <directory> <column limit>"
-    return
-  fi
-
-  directory=$1
-  column_limit=$2
-
-  find $directory -type f | \
-    xargs -I^ bash -c "\
-      echo ^ ; cat ^ | \
-      sed 's/\t/    /g;s/\r//g' | \
-      grep -nP --color=always '.{$column_limit}[^\r]' - /dev/null" | \
-    less
-}
-
 # Systemctl
 alias sysstart="sudo systemctl start"
 alias sysstop="sudo systemctl stop"
