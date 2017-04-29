@@ -60,6 +60,9 @@ alias stopcsecvm="VBoxManage controlvm 'Intro to Computer Security' poweroff"
 # Restart internet
 alias resint="sudo systemctl restart NetworkManager.service"
 
+# Browser
+alias chrome="google-chrome-stable --force-device-scale-factor=1.2"
+
 # Search in files
 search() {
   if [ "$#" -ne 2 ]; then
