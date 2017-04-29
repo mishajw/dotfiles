@@ -22,7 +22,7 @@ XF86MonBrightnessDown
 
 # Music apps
 super + XF86Tools
-  spotify & google-chrome-stable "music.google.com" --new-window &
+  spotify & google-chrome-stable --force-device-scale-factor=1.2 "music.google.com" --new-window &
 
 # Change node gaps
 alt + {minus,equal}
@@ -40,7 +40,7 @@ super + grave
 
 # Start browser
 super + r
-  google-chrome-stable &
+  google-chrome-stable --force-device-scale-factor=1.2 &
 
 # Lock screen
 super + Delete
