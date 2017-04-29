@@ -18,9 +18,13 @@ class BatteryWidget(NumberWidget):
   def update_number(self):
     battery = self.get_battery_dump()
     
-    self.state = battery[0][-1]
+    try:
+        self.state = battery[0][-1]
+        self.number = int(battery[-1][-1][:-1])
+    except IndexError as e:
+        self.state = ""
+        self.number = 0
 
-    self.number = int(battery[-1][-1][:-1])
 
   def update_char(self):
     if self.state == 'charging':
