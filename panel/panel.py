@@ -39,8 +39,8 @@ right_items = [
 ]
 
 lemonbar_command = \
-        'lemonbar -a 100 -u 2 -g x%s -f %s -f FontAwesome -F %s -B %s' % \
-        (os.environ['PANEL_HEIGHT'], "Monospace:style=bold:size=10", foregroundColor, backgroundColor)
+        'lemonbar -a 100 -u 2 -g x%s -F %s -B %s' % \
+        (os.environ['PANEL_HEIGHT'], foregroundColor, backgroundColor)
 
 def main():
   global stdout
