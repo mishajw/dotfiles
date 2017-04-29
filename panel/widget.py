@@ -24,7 +24,7 @@ class Widget:
     while 1:
       try:
         self.update_text()
-      except e:
+      except RuntimeError as e:
         print("Got exception: %s" % e)
 
       registerUpdate()
