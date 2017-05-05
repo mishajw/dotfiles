@@ -3,3 +3,4 @@
 *git_token
 *.swp
 /local-exports.sh
+*/.idea
