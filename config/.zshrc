@@ -51,5 +51,5 @@ bindkey "^[k" history-beginning-search-backward
 # Set autosuggest colour
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=3"
 
-source $scr/start/shell.sh
+source $HOME/dotfiles/scripts/start/shell.sh
 
