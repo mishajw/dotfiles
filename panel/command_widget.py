@@ -3,22 +3,21 @@
 from widget import Widget
 import subprocess
 
+
 class CommandWidget(Widget):
-  def __init__(self, command):
-    self.command = command
-    super(CommandWidget, self).__init__()
+    def __init__(self, command):
+        self.command = command
+        super(CommandWidget, self).__init__()
 
-  
-  def update_loop(self):
-    p = subprocess.Popen([self.command], shell=True, stdout=subprocess.PIPE)
-   
-    while 1:
-      l = p.stdout.readline()
-      self.handle_output(l)
+    def update_loop(self):
+        p = subprocess.Popen([self.command], shell=True, stdout=subprocess.PIPE)
 
-  def handle_output(self):
-    pass
+        while 1:
+            l = p.stdout.readline()
+            self.handle_output(l)
 
-  def update_text(self):
-    pass
+    def handle_output(self, output):
+        pass
 
+    def update_text(self):
+        pass

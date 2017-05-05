@@ -4,14 +4,13 @@ from widget import Widget
 import os
 import re
 
+
 class DateWidget(Widget):
-  
-  def __init__(self):
-    super(DateWidget, self).__init__()
-    self.has_underline = True
-    self.update_time = 1
+    def __init__(self):
+        super(DateWidget, self).__init__()
+        self.has_underline = True
+        self.update_time = 1
 
-  def update_text(self):
-    f = os.popen("date +'%a %e %l:%M:%S %p'")
-    self.text = re.sub(r" +", " ", f.read())
-
+    def update_text(self):
+        f = os.popen("date +'%a %e %l:%M:%S %p'")
+        self.text = re.sub(r" +", " ", f.read())
