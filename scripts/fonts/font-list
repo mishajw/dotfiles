@@ -1,0 +1,18 @@
+adobe-source-han-sans-cn-fonts - Simplified Chinese OpenType/CFF fonts
+adobe-source-han-sans-tw-fonts - Traditional Chinese OpenType/CFF fonts
+ttf-arphic-ukai - Kaiti (brush stroke) Unicode font (enabling anti-aliasing is suggested)
+ttf-arphic-uming - Mingti (printed) Unicode font
+opendesktop-fonts - New Sung font, previously is ttf-fireflysung package
+wqy-microhei - A Sans-Serif style high quality CJKV outline font.
+wqy-zenhei - Hei Ti Style (sans-serif) Chinese Outline font embedded with bitmapped Song Ti (also supporting Japanese (partial) and Korean characters).
+wqy-bitmapfont - Bitmapped Song Ti (serif) Chinese font
+ttf-i.bming - CJK serif font that emphasis on an old-style typeface
+ttf-tw - Kai and Song traditional Chinese font from the Ministry of Education of Taiwan
+adobe-source-han-sans-jp-fonts - Japanese OpenType/CFF fonts
+otf-ipafont - Formal style Japanese Gothic (sans-serif) and Mincho (serif) fonts set; one of the highest quality open source font. Default of openSUSE-ja.
+ttf-hanazono - A free Japanese kanji font, style Mincho (serif).
+ttf-sazanami - Japanese free TrueType font. This is outdated and not maintained any more, but may be defined as a fallback font on several environments.
+ttf-koruri - Japanese TrueType font obtained by mixing ttf-mplusAUR and Open Sans
+ttf-monapo - Japanese fonts to show 2channel Shift JIS art properly.
+ttf-mplus - Modern Gothic style Japanese outline fonts. It includes all of Japanese Hiragana/Katakana, Basic Latin, Latin-1 Supplement, Latin Extended-A, IPA Extensions and most of Japanese Kanji, Greek, Cyrillic, Vietnamese with 7 weights (proportional) or 5 weights (monospace).
+ttf-vlgothic - Japanese Gothic fonts. Default of Debian/Fedora/Vine Linux
