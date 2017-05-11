@@ -17,16 +17,16 @@ map <C-s> :Neomake<CR>
 
 " Other plugins
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'kristijanhusak/vim-hybrid-material'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'juanedi/predawn.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'zah/nim.vim'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'juanedi/predawn.vim'
+Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'rust-lang/rust.vim'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'zah/nim.vim'
 
 " VUNDLE
 call vundle#end()            " required
@@ -81,31 +81,10 @@ colorscheme predawn
 set number
 set relativenumber
 
-" Collapsing
-set foldmethod=indent
-set nofoldenable
-
-" Navigation improved
-" :tnoremap <A-h> <C-\><C-n><C-w>h
-" :tnoremap <A-j> <C-\><C-n><C-w>j
-" :tnoremap <A-k> <C-\><C-n><C-w>k
-" :tnoremap <A-l> <C-\><C-n><C-w>l
-" :nnoremap <A-h> <C-w>h
-" :nnoremap <A-j> <C-w>j
-" :nnoremap <A-k> <C-w>k
-" :nnoremap <A-l> <C-wl
-
-let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
-nnoremap <silent> <A-\> :TmuxNavigatePrevious<cr><Paste>
-
 " Double Esc to save
 map <Esc><Esc> :w<CR>
 
-" Tabs
+" Tabs to 2x space
 set expandtab
 set softtabstop=2
 set tabstop=2
