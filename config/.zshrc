@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # ZSH theme
-ZSH_THEME="bira"
+ZSH_THEME="garyblessington"
 
 # - and _ wont matter in completion
 HYPHEN_INSENSITIVE="true"
