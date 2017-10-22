@@ -31,7 +31,6 @@ middle_items = [
 ]
 
 right_items = [
-    EvpnWidget(),
     VolumeWidget(),
     BatteryWidget(),
     GithubWidget(),
