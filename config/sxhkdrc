@@ -30,7 +30,7 @@ alt + {minus,equal}
 
 # Network dmenu
 super + ctrl + c
-  nmcli_dmenu
+  networkmanager_dmenu
 
 # Quake-like terminal
 super + grave
