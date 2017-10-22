@@ -10,7 +10,7 @@ super + space
 shift + XF86Audio{Lower,Raise}Volume
   $scr/vol-control.sh {down,up} 1
 XF86Audio{Lower,Raise}Volume
-  $scr/vol-control.sh {down,up} 5
+  $scr/vol-control.sh {down,up} 3
 XF86AudioMute
   $scr/vol-control.sh toggle
 
