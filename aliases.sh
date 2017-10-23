@@ -139,7 +139,7 @@ alias sysstop="sudo systemctl stop"
 alias sysres="sudo systemctl restart"
 
 # Python virtualenv
-ve-init() { virtualenv .env && ve-act && ve-inst }
+ve-init() { python -m venv .env && ve-act && ve-inst }
 ve-act() { source .env/bin/activate }
 ve-inst() { pip install -r requirements.txt }
 ve-save-reqs() { pipreqs . }
