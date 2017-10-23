@@ -27,6 +27,8 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'w0rp/ale'
 Plugin 'zah/nim.vim'
 
