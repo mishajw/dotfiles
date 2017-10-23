@@ -20,13 +20,13 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'itchyny/lightline.vim'
 Plugin 'juanedi/predawn.vim'
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'vim-airline/vim-airline'
 Plugin 'w0rp/ale'
 Plugin 'zah/nim.vim'
 
@@ -34,15 +34,15 @@ Plugin 'zah/nim.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" Airline
-let g:airline_powerline_fonts = 1
-
 " CtrlP
 let g:ctrlp_show_hidden = 1
 
 " Enable syntax highlighting
 syntax on
 set t_Co=256
+
+" lightline
+set laststatus=2
 
 " Set leader to space
 let mapleader = " "
