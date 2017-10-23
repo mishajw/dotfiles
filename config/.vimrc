@@ -26,6 +26,7 @@ Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'w0rp/ale'
 Plugin 'zah/nim.vim'
 
 " VUNDLE
@@ -41,6 +42,9 @@ let g:ctrlp_show_hidden = 1
 " Enable syntax highlighting
 syntax on
 set t_Co=256
+
+" Set leader to space
+let mapleader = " "
 
 " Set wrapping key
 set nowrap
@@ -81,6 +85,11 @@ set relativenumber
 
 " Double Esc to save
 map <Esc><Esc> :w<CR>
+
+" ALE keybindings
+nnoremap <leader>j :ALENextWrap<CR>
+nnoremap <leader>k :ALEPreviousWrap<CR>
+nnoremap <leader>i :ALEDetail<CR>
 
 " Tabs to 2x space
 set expandtab
