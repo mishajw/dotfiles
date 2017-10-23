@@ -19,9 +19,9 @@ map <C-s> :Neomake<CR>
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'juanedi/predawn.vim'
+Plugin 'junegunn/fzf.vim'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tomtom/tcomment_vim'
@@ -90,6 +90,12 @@ map <Esc><Esc> :w<CR>
 nnoremap <leader>j :ALENextWrap<CR>
 nnoremap <leader>k :ALEPreviousWrap<CR>
 nnoremap <leader>i :ALEDetail<CR>
+
+" fzf keybindings
+map <C-p> :GFiles<CR>
+map <leader>p :Files<CR>
+map <leader>l :Lines<CR>
+map <leader>a :Ag<CR>
 
 " Tabs to 2x space
 set expandtab
