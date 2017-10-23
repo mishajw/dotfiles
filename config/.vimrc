@@ -131,4 +131,6 @@ set magic               " Use 'magic' patterns (extended regular expressions).
 set splitbelow          " Horizontal split below current.
 set splitright          " Vertical split to right of current.
 
+" Run the last command used in the last window
+nnoremap <leader>r :!$scr/last-command-last-window.sh<CR>
 
