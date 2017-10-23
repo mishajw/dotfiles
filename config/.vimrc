@@ -22,6 +22,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'juanedi/predawn.vim'
 Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/goyo.vim'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tomtom/tcomment_vim'
@@ -133,4 +134,9 @@ set splitright          " Vertical split to right of current.
 
 " Run the last command used in the last window
 nnoremap <leader>r :!$scr/last-command-last-window.sh<CR>
+
+" Goyo options
+map <leader>g :Goyo<CR>
+autocmd! User GoyoEnter nested call ToggleWrap()
+autocmd! User GoyoLeave nested call ToggleWrap()
 
