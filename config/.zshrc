@@ -20,7 +20,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 # Plugins list
-plugins=(sudo zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(sudo zsh-syntax-highlighting zsh-autosuggestions fzf-zsh)
 
 export PATH="$PATH:\
   /usr/local/sbin:\
