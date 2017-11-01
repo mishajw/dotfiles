@@ -5,6 +5,7 @@
 	default = current
 [core]
 	editor = vim
+	excludesfile = /home/misha/.gitignore_global
 [alias]
   a = add
   ap = add --patch
