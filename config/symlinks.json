@@ -39,6 +39,9 @@
     },
     {
       "src": ".gitconfig"
+    },
+    {
+      "src": ".gitignore_global"
     }
   ]
 }
