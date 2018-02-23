@@ -160,4 +160,5 @@ alias dmenu="dmenu -o 0.8 -fn $MAIN_FONT -h 50 -w 500 -x 680 -y 490"
 alias go-q="tmux attach -t quake"
 alias sshuttlec="sshuttle --dns -r do 0/0"
 alias xc="xclip -selection clipboard"
+alias todo="vim ~/src/misc/todo.md"
 
