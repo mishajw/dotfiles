@@ -1,1 +1,4 @@
 *.sw*
+.idea
+.mypy_cache
+
