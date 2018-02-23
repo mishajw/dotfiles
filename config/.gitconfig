@@ -1,6 +1,9 @@
 [user]
 	email = mishajw@gmail.com
 	name = Misha Wagner
+	signingkey = 92271A1D
+[commit]
+	gpgsign = true
 [push]
 	default = current
 [core]
