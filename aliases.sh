@@ -144,6 +144,10 @@ ve-act() { source .env/bin/activate }
 ve-inst() { pip install -r requirements.txt }
 ve-save-reqs() { pipreqs . }
 
+# Cargo
+alias cr="cargo run"
+alias cb="cargo build"
+
 # Misc
 alias dua="du -sh *"
 csvview () { column -s, -t < $@ | less -#2 -N -S }
