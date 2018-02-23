@@ -161,4 +161,5 @@ alias go-q="tmux attach -t quake"
 alias sshuttlec="sshuttle --dns -r do 0/0"
 alias xc="xclip -selection clipboard"
 alias todo="vim ~/src/misc/todo.md"
+alias py="python3 -i <(echo 'import numpy as np\nimport tensorflow as tf')"
 
