@@ -36,7 +36,7 @@ super + ctrl + c
 super + grave
   xdotool search --onlyvisible --classname QuakeTerminal windowunmap \
   || xdotool search --classname QuakeTerminal windowmap \
-  || termite --name QuakeTerminal --geometry 960x350+480+$PANEL_HEIGHT --exec "tmux new -s quake"
+  || termite --name QuakeTerminal --geometry 1916x400+0+$PANEL_HEIGHT --exec "tmux new -s quake"
 
 # Start browser
 super + r
