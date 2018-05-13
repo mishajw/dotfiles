@@ -26,6 +26,7 @@
   pf = push --force
   pl = pull
   psup = push --set-upstream origin $(git_current_branch)
+  rao = remote add origin
   rb = rebase
   rbi = rebase -i
   rbih = rebase -i HEAD~20
@@ -34,6 +35,7 @@
   st = stash
   std = stash drop
   stp = stash pop
+  stsh = stash show --patch
   su = submodule update
 
 [filter "lfs"]
