@@ -111,7 +111,9 @@ let g:ale_linters = {
 map <C-p> :GFiles<CR>
 map <leader>p :Files<CR>
 map <leader>l :Lines<CR>
+map <leader>f :BLines<CR>
 map <leader>a :Ag<CR>
+map Q :Buffers<CR>
 
 " Tabs to 2x space
 set expandtab
