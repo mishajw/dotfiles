@@ -96,6 +96,17 @@ nnoremap <leader>j :ALENextWrap<CR>
 nnoremap <leader>k :ALEPreviousWrap<CR>
 nnoremap <leader>i :ALEDetail<CR>
 
+" ALE linters
+let g:ale_linters = {
+      \'haskell': [
+        \ "brittany",
+        \ "stack-build",
+        \ "ghc-mod",
+        \ "stack-ghc-mod",
+        \ "hlint",
+        \ "hdevtools",
+        \ "hfmt"]}
+
 " fzf keybindings
 map <C-p> :GFiles<CR>
 map <leader>p :Files<CR>
