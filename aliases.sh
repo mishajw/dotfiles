@@ -145,8 +145,11 @@ ve-inst() { pip install -r requirements.txt }
 ve-save-reqs() { pipreqs . }
 
 # Cargo
-alias cr="cargo run"
-alias cb="cargo build"
+alias c="cargo"
+alias cr="c run"
+alias cb="c build"
+alias ct="c test"
+alias cf="c fmt"
 
 # sl
 sl() {
