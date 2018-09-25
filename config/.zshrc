@@ -34,6 +34,9 @@ export PATH="$PATH:\
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+# Set up fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Set language
 export LANG=en_GB.UTF-8
 

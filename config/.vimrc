@@ -6,6 +6,8 @@ call vundle#begin()
 
 " Deoplete
 Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
 let g:deoplete#enable_at_startup = 1
 
 " Neomake
@@ -107,13 +109,17 @@ let g:ale_linters = {
         \ "hdevtools",
         \ "hfmt"]}
 
-" fzf keybindings
+" fzf set up
+set rtp+=~/.fzf
 map <C-p> :GFiles<CR>
 map <leader>p :Files<CR>
 map <leader>l :Lines<CR>
 map <leader>f :BLines<CR>
 map <leader>a :Ag<CR>
 map Q :Buffers<CR>
+
+" gitgutter set up
+set updatetime=100
 
 " Tabs to 2x space
 set expandtab
