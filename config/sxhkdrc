@@ -34,9 +34,7 @@ super + ctrl + c
 
 # Quake-like terminal
 super + grave
-  xdotool search --onlyvisible --classname QuakeTerminal windowunmap \
-  || xdotool search --classname QuakeTerminal windowmap \
-  || termite --name QuakeTerminal --geometry 1916x400+0+$PANEL_HEIGHT --exec "tmux new -s quake"
+  $scr/quake.py
 
 # Start browser
 super + r
