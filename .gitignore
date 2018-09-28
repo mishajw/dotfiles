@@ -4,3 +4,4 @@
 *.swp
 /local-exports.sh
 */.idea
+*.pyc
