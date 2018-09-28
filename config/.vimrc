@@ -164,8 +164,6 @@ nnoremap <leader>r :!$scr/last-command-last-window.sh<CR>
 
 " Goyo options
 map <leader>g :Goyo<CR>
-autocmd! User GoyoEnter nested call ToggleWrap()
-autocmd! User GoyoLeave nested call ToggleWrap()
 
 " Digraphs for subscript letters
 execute "digraphs <~ " . 0x227a
