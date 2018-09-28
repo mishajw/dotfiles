@@ -140,17 +140,17 @@ alias sysstop="sudo systemctl stop"
 alias sysres="sudo systemctl restart"
 
 # Python virtualenv
-ve-init() { python -m venv .env && ve-act && ve-inst }
-ve-act() { source .env/bin/activate }
-ve-inst() { pip install -r requirements.txt }
-ve-save-reqs() { pipreqs . }
+pf() {
+  pip freeze | grep $1 >> requirements.txt
+}
 
 # Cargo
 alias c="cargo"
 alias cr="c run"
 alias cb="c build"
 alias ct="c test"
-alias cf="c fmt"
+alias cf="c +nightly fmt"
+alias cck="c check"
 
 # sl
 sl() {
