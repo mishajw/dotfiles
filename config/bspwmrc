@@ -24,14 +24,13 @@ else
 fi
 
 # Rule for quake-like terminal
-bspc rule -a Termite:QuakeTerminal state=floating sticky=on border=on
-# Rule for popups
-bspc rule -a Termite:Popup state=floating sticky=on border=off
+bspc rule --add *:QuakeTerminal state=floating sticky=on border=on
 
 # Set background
 feh --bg-fill $BACKGROUND_IMAGE
 # Start bar
-killall panel.py ; $PANEL_PATH/panel.py & 
+killall panel.py ; python3 $PANEL_PATH/panel.py &
 # Start compton
 killall compton ; compton &
-
+# Start sxhkd
+killall sxhkd ; sxhkd &
