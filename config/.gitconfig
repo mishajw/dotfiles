@@ -37,6 +37,7 @@
   stp = stash pop
   stsh = stash show --patch
   su = submodule update
+  shf = show --name-only
 
 [filter "lfs"]
 	process = git-lfs filter-process
