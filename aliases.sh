@@ -179,4 +179,5 @@ alias xc="xclip -selection clipboard"
 alias todo="vim ~/src/misc/todo.md"
 alias py="python3 -i <(echo 'import numpy as np\nimport tensorflow as tf')"
 alias pdf="opr evince"
+alias cp="cp -r"
 
