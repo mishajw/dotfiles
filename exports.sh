@@ -27,7 +27,7 @@ export PANEL_FIFO="/tmp/panel-fifo"
 # Visuals
 export MAIN_FONT="Monospace:style=Bold:size=10"
 export PANEL_HEIGHT=25
-export BACKGROUND_IMAGE="$imgs/background.jpg"
+export BACKGROUND_IMAGE="$imgs/backgrounds/boat-builders.jpg"
 export SCREENSHOT_LOCATION="/tmp/scr.png"
 
 # Misc
