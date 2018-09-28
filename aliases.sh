@@ -46,8 +46,9 @@ alias vl="svn log"
 alias vd="svn diff"
 
 # ls
-alias ll="ls -lah"
-alias la="ls -a"
+alias ls="exa --git"
+alias ll="ls -l"
+alias la="ls -la"
 
 # Editing
 alias e="vim"
