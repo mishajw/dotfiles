@@ -21,6 +21,7 @@ map <C-s> :Neomake<CR>
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'derekelkins/agda-vim'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'itchyny/lightline.vim'
 Plugin 'juanedi/predawn.vim'
