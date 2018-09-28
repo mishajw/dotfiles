@@ -165,6 +165,9 @@ nnoremap <leader>r :!$scr/last-command-last-window.sh<CR>
 " Goyo options
 map <leader>g :Goyo<CR>
 
+" Sort lines
+map <leader>s :sort<CR>
+
 " Digraphs for subscript letters
 execute "digraphs <~ " . 0x227a
 execute "digraphs as " . 0x2090
