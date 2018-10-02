@@ -180,4 +180,5 @@ alias todo="vim ~/src/misc/todo.md"
 alias py="python3 -i <(echo 'import numpy as np\nimport tensorflow as tf')"
 alias pdf="opr evince"
 alias cp="cp -r"
+alias np='echo "$(nproc) * 1.5" | bc -l | grep --color=never -Po "^[^\.]*"'
 
