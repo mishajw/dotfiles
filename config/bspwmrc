@@ -15,10 +15,16 @@ bspc config initial_polarity          second_child
 bspc config window_gap                0
 
 # Setup workspaces
-bspc monitor "$MAIN_DISPLAY" -d one two three four five six seven eight nine ten
-if [ "$(xrandr | grep ' connected' | wc -l)" -gt 1 ]; then
-  bspc monitor "$SECOND_DISPLAY" -d A B
-  bspc monitor "$MAIN_DISPLAY" --swap "$SECOND_DISPLAY"
+bspc monitor "$MAIN_DISPLAY" -d one two three four five six seven eight
+
+# Check if the second monitor is connected
+if xrandr | grep connected | grep $SECOND_DISPLAY; then
+  echo Setting up second display
+  bspc monitor "$SECOND_DISPLAY" -d uno dos
+  # Check if the monitors are in the wrong order
+  if ! bspc query --monitors --names | head -1 | grep $MAIN_DISPLAY; then
+    bspc monitor "$MAIN_DISPLAY" --swap "$SECOND_DISPLAY"
+  fi
 else
   bspc monitor "$SECOND_DISPLAY" -d None
 fi
