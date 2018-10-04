@@ -52,7 +52,7 @@ alias la="ls -la"
 
 # Editing
 alias e="vim"
-alias se="sudo vim"
+alias se="EDITOR=vim sudoedit"
 
 # VM
 alias startcsecvm="VBoxManage startvm 'Intro to Computer Security' --type headless"
