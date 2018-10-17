@@ -1,17 +1,17 @@
 #!/bin/sh
 
-bspc config border_width              2
-bspc config top_padding               $PANEL_HEIGHT
-bspc config split_ratio               0.50
-bspc config single_monocle            true
-bspc config gapless_monocle           true
-bspc config borderless_monocle        true
-bspc config remove_disabled_monitors  true
+bspc config border_width 2
+bspc config top_padding $PANEL_HEIGHT
+bspc config split_ratio 0.50
+bspc config single_monocle true
+bspc config gapless_monocle true
+bspc config borderless_monocle true
+bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
-bspc config normal_border_color       '#333333'
-bspc config focused_border_color      '#F9D3A5'
-bspc config initial_polarity          second_child
-bspc config window_gap                0
+bspc config normal_border_color '#333333'
+bspc config focused_border_color '#F9D3A5'
+bspc config initial_polarity second_child
+bspc config window_gap 0
 
 # Setup workspaces
 bspc monitor "$MAIN_DISPLAY" -d one two three four five six seven eight
