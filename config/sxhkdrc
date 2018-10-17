@@ -49,10 +49,10 @@ super + Print
   import $SCREENSHOT_LOCATION
 
 super + g
-  $scr/toggle-gap.sh
+  $scr/toggle_gap.sh
 
 super + p
-  $scr/switch-window.sh
+  $scr/switch_window.sh
 
 super + a
   pgrep panel.py && killall panel.py || $PANEL_PATH/panel.py &
