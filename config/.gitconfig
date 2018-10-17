@@ -22,6 +22,7 @@
   ds = diff --staged
   f = fetch
   l = log --oneline --decorate --graph
+  ls = log --oneline --decorate
   m = merge
   p = push
   pf = push --force
@@ -32,13 +33,14 @@
   rbi = rebase -i
   rbih = rebase -i HEAD~20
   s = status
+  shf = show --name-only
   si = submodule init
   st = stash
   std = stash drop
+  stn = stash push --message
   stp = stash pop
   stsh = stash show --patch
   su = submodule update
-  shf = show --name-only
 
 [filter "lfs"]
 	process = git-lfs filter-process
