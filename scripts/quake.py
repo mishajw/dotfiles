@@ -30,7 +30,10 @@ Popen([
     "termite",
     "--name", TERMINAL_NAME,
     "--exec", "tmux new -s quake"])
-time.sleep(0.1)
+
+# TODO: Find workaround for sleep call
+time.sleep(0.2)
+
 # Set position and size of terminal
 run(XDO_CMD + [
     "--classname", TERMINAL_NAME,
