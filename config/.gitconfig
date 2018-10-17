@@ -16,6 +16,7 @@
   c = "!f() { git commit --message \"$*\"; }; f"
   ca = "!f() { git commit --all --message \"$*\"; }; f"
   cam = commit --amend
+  cl = "!f() { git clone ssh://git@github.com/$*; }; f"
   co = checkout
   d = diff
   ds = diff --staged

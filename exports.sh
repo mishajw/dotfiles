@@ -17,9 +17,6 @@ export cnf="$df/config"
 export scr="$df/scripts"
 export imgs="$df/images"
 
-# Network
-export NET="wlp4s0"
-
 # Directories
 export PANEL_PATH="$df/panel"
 export PANEL_FIFO="/tmp/panel-fifo"
@@ -31,13 +28,11 @@ export BACKGROUND_IMAGE="$imgs/backgrounds/boat-builders.jpg"
 export SCREENSHOT_LOCATION="/tmp/scr.png"
 
 # Misc
+export EDITOR="vim"
 export LANGUAGE="$LANG"
 export LC_ALL="$LANG"
 export PATH=$PATH:/usr/bin/core_perl:$SCRIPTS
 export SXHKD_SHELL="bash"
-
-# SVN
-export SVN_EDITOR="gvim"
 
 source $df/local-exports.sh
 
