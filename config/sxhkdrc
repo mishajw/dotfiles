@@ -1,199 +1,106 @@
-# Open terminal
+# Starting programs
 super + Return
 	termite
-
-# Launcher
+super + r
+  google-chrome-stable &
 super + space
   $scr/launcher.sh
+super + grave
+  $scr/quake.py
+super + ctrl + c
+  networkmanager_dmenu
 
-# Volume
+# Volume and brightness
 shift + XF86Audio{Lower,Raise}Volume
   $scr/vol-control.sh {down,up} 1
 XF86Audio{Lower,Raise}Volume
   $scr/vol-control.sh {down,up} 3
 XF86AudioMute
   $scr/vol-control.sh toggle
-
-# Brightness
 XF86MonBrightnessUp
   xbacklight -inc 5
 XF86MonBrightnessDown
   xbacklight -dec 5
 
-# Music apps
-super + XF86Tools
-  spotify & google-chrome-stable --force-device-scale-factor=1.2 "music.google.com" --new-window &
-
-# Change node gaps
-alt + {minus,equal}
-	bspc config -d focused node_gap $((`bspc config -d focused node_gap` {+,-} 2 ))
-
-# Network dmenu
-super + ctrl + c
-  networkmanager_dmenu
-
-# Quake-like terminal
-super + grave
-  $scr/quake.py
-
-# Start browser
-super + r
-  google-chrome-stable --force-device-scale-factor=1.2 &
-
-# Lock screen
+# Misc utilities
+super + g
+  $scr/toggle_gap.sh
+super + p
+  $scr/switch_window.sh
+super + a
+  pgrep panel.py && killall panel.py || $PANEL_PATH/panel.py &
 super + Delete
   $scr/lock.sh
-
-# Screenshot
 super + Print
   import $SCREENSHOT_LOCATION
 
-super + g
-  $scr/toggle_gap.sh
-
-super + p
-  $scr/switch_window.sh
-
-super + a
-  pgrep panel.py && killall panel.py || $PANEL_PATH/panel.py &
-
-# make sxhkd reload its configuration files:
+# Reload SXHKD configuration
 super + Escape
 	pkill -USR1 -x sxhkd
 
-#
-# bspwm hotkeys
-#
-
-# quit bspwm normally
-super + alt + Escape
-	bspc quit
-
-# close and kill
+# Close windows
 super + {_,shift + }w
 	bspc node -{c,k}
 
-# alternate between the tiled and monocle layout
+# Toggle monacle
 super + m
-	bspc desktop -l next
+	bspc desktop --layout next
 
-# if the current node is automatic, send it to the last manual, otherwise pull the last leaf
-super + y
-	bspc query -N -n focused.automatic && bspc node -n last.!automatic || bspc node last.leaf -n focused
-
-# swap the current node and the biggest node
-super + g
-	bspc node -s biggest
-
-#
-# state/flags
-#
-
-# set the window state
+# BSPWM modifiers
+# Change window to floating/titled/fullscreen
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-
-# # set the node flags
-# super + ctrl + {x,y,z}
-# 	bspc node -g {locked,sticky,private}
-
-#
-# focus/swap
-#
-
-# focus the node in the given direction
+# Focus/move in a direction
 super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
-
-# # focus the node for the given path jump
-# super + {p,b,comma,period}
-# 	bspc node -f @{parent,brother,first,second}
-
-# focus the next/previous node
+	bspc node --{focus,swap} {west,south,north,east}
+# Cycle between nodes in a window
 super + {_,shift + }c
-	bspc node -f {next,prev}.local
-
-# focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
-
-# focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
-
-# focus or send to the given desktop
+	bspc node --focus {next,prev}.local
+# Go to last desktop
+super + Tab
+	bspc desktop --focus last
+# Focus/move to desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
-
+	bspc {desktop --focus,node --to-desktop} '^{1-9,10}'
+# Focus/move to dump desktop
 super + {_,shift + }d
-	bspc {desktop -f,node -d} 'dmp'
-
-#
-# desktops
-#
-
-# focus the next/previous occupied desktop
+	bspc {desktop --focus,node --to-desktop} 'dmp'
+# Focus the next/previous occupied desktop
 super + {q,e}
-	bspc desktop -f {prev,next}.occupied
-
-# focus the next/previous desktop
+	bspc desktop --focus {prev,next}.occupied.local
+# Focus the next/previous desktop
 super + shift + {q,e}
-	bspc desktop -f {prev,next}
+	bspc desktop --focus {prev,next}.local
 
-# swap with the next/previous desktop
-super + ctrl + {q,e}
-  bspc desktop -s {prev,next}
-
-#
-# preselect
-#
-
-# preselect the direction
+# BSPWM preselection
+# Preselect the direction
 super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
-
-# preselect the ratio
+	bspc node --presel-dir {west,south,north,east}
+# Preselect ratio
 super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
-
-# cancel the preselection for the focused node
+	bspc node --presel-ratio 0.{1-9}
+# Cancel preselection
 super + ctrl + space
-	bspc node -p cancel
-
-# cancel the preselection for the focused desktop
+	bspc node --presel-dir cancel
+# Cancel preselection for desktop
 super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+	bspc query --nodes --dump-state | xargs -I id -n 1 bspc node id -p cancel
 
-#
-# move/resize windows
-#
-
-# expand a window by moving one of its side outward
+# BSPWM resizing windows
+# Expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
   bspc node {@west -r -20,@south -r +20,@north -r -20,@east -r +20}
-
-# contract a window by moving one of its side inward
+# Contract a window by moving one of its side inward
 super + alt + shift + {h,j,k,l}
   bspc node {@east -r -20,@north -r +20,@south -r -20,@west -r +20}
 
-super + {Left, Right, Up, Down}
-  $scr/tiled-ws/nav-ws {-1 0, 1 0, 0 -1, 0 1}
-
-#
-# mouse
-#
-
+# BSPWM mouse movements (TODO: fix)
 ~button1
   bspc node -f pointed
-
 super + button{1-3}
   bspc pointer -g {resize_side,resize_corner,move}
-
 super + !button{1-3}
   bspc pointer -t %i %i
-
 super + @button{1-3}
   bspc pointer -u
 
