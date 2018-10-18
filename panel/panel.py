@@ -1,4 +1,5 @@
 #!/usr/bin/env python3.6
+
 from evpn_widget import EvpnWidget
 from volume_widget import VolumeWidget
 from workspace_widget import WorkspaceWidget
@@ -13,8 +14,9 @@ from panel_help import *
 import os
 import re
 import subprocess
+import logging
 
-stdout = None
+LOG = logging.getLogger(__name__)
 
 colors = ['#f9d3a5', '#dbad72', '#ab9c73']
 backgroundColor = '#ee291f0a'
@@ -44,29 +46,26 @@ lemonbar_command = \
 
 
 def main():
-    global stdout
-
-    p = subprocess.Popen(lemonbar_command.split(" "), stdout=subprocess.PIPE, stdin=subprocess.PIPE)
-    subprocess.Popen("sh", stdout=subprocess.PIPE, stdin=p.stdout)
+    LOG.info("Starting")
+    lemonbar_process = subprocess.Popen(
+        lemonbar_command.split(" "),
+        stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+    subprocess.Popen("sh", stdout=subprocess.PIPE, stdin=lemonbar_process.stdout)
     setup_fifo()
-    stdout = p.stdin
+    stdout = lemonbar_process.stdin
 
     start_widgets()
 
-    print_loop()
+    print_loop(stdout)
 
 
-def print_loop():
-    print_full_text()
+def print_loop(stdout):
+    print_full_text(stdout)
 
     f = open(FIFO_PATH, 'r')
 
     while True:
-        line = f.readline()
-        line = re.sub("\n", "", line)
-
-        # print("^" + line + "$")
-
+        line = f.readline().strip()
         should_update = line == "updated"
 
         for w in all_widgets():
@@ -74,11 +73,8 @@ def print_loop():
                 w.update_text()
                 should_update = True
 
-        if line == "":
-            f = open(FIFO_PATH, 'r')
-
         if should_update:
-            print_full_text()
+            print_full_text(stdout)
 
 
 def setup_fifo():
@@ -88,10 +84,8 @@ def setup_fifo():
         pass
 
 
-def print_full_text():
+def print_full_text(stdout):
     full_text = get_full_text()
-
-    global stdout
     stdout.write(full_text.encode())
     stdout.flush()
 
@@ -106,7 +100,7 @@ def get_full_text():
     middle_text = get_items_text(middle_items)
     right_text = get_items_text(right_items)
 
-    full_text = "  %%{Sl}%%{l}%s%%{c}%s%%{r}%s  " % (left_text, middle_text, right_text)
+    full_text = "%%{Sl}%%{l}%s%%{c}%s%%{r}%s\n" % (left_text, middle_text, right_text)
 
     return full_text
 
@@ -135,4 +129,6 @@ def all_widgets():
 
 
 if __name__ == "__main__":
+    logging.basicConfig()
+    logging.getLogger().setLevel(logging.DEBUG)
     main()
