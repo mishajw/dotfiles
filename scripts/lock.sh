@@ -1,10 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-scrot /tmp/screen.png
-convert /tmp/screen.png -scale 25% -blur 0x10 -scale 400% /tmp/screen.png
-convert /tmp/screen.png $imgs/lock.png -gravity center -composite -matte /tmp/screen.png
+IMAGE="/tmp/screen.png"
 
-i3lock -t -e -f -u -i /tmp/screen.png
+scrot $IMAGE
+if [ "$LOCK_MODE" == "blur" ]; then
+  convert $IMAGE -scale 25% -blur 0x10 -scale 400% $IMAGE
+elif [ "$LOCK_MODE" == "pixel" ]; then
+  convert $IMAGE -scale 5% -scale 2000% $IMAGE
+fi
 
-rm /tmp/screen.png
+i3lock --ignore-empty-password --image $IMAGE
+rm $IMAGE
 

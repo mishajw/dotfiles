@@ -33,6 +33,7 @@ export LANGUAGE="$LANG"
 export LC_ALL="$LANG"
 export PATH=$PATH:/usr/bin/core_perl:$SCRIPTS
 export SXHKD_SHELL="bash"
+export LOCK_MODE="pixel"
 
 source $df/local-exports.sh
 
