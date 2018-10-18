@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3.6
 from evpn_widget import EvpnWidget
 from volume_widget import VolumeWidget
 from workspace_widget import WorkspaceWidget
