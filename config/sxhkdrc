@@ -93,14 +93,3 @@ super + alt + {h,j,k,l}
 # Contract a window by moving one of its side inward
 super + alt + shift + {h,j,k,l}
   bspc node {@east -r -20,@north -r +20,@south -r -20,@west -r +20}
-
-# BSPWM mouse movements (TODO: fix)
-~button1
-  bspc node -f pointed
-super + button{1-3}
-  bspc pointer -g {resize_side,resize_corner,move}
-super + !button{1-3}
-  bspc pointer -t %i %i
-super + @button{1-3}
-  bspc pointer -u
-
