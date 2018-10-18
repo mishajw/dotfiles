@@ -1,11 +1,17 @@
 #!/bin/sh
 
+if xrandr | grep connected | grep $SECOND_DISPLAY; then
+  SINGLE_DISPLAY="false"
+else
+  SINGLE_DISPLAY="true"
+fi
+
 bspc config border_width 2
 bspc config top_padding $PANEL_HEIGHT
 bspc config split_ratio 0.50
 bspc config single_monocle true
 bspc config gapless_monocle true
-bspc config borderless_monocle true
+bspc config borderless_monocle $SINGLE_DISPLAY
 bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 bspc config normal_border_color '#333333'
@@ -17,15 +23,15 @@ bspc config window_gap 0
 bspc monitor "$MAIN_DISPLAY" -d one two three four five six seven eight
 
 # Check if the second monitor is connected
-if xrandr | grep connected | grep $SECOND_DISPLAY; then
+if $SINGLE_DISPLAY; then
+  bspc monitor "$SECOND_DISPLAY" -d None
+else
   echo Setting up second display
   bspc monitor "$SECOND_DISPLAY" -d uno dos
   # Check if the monitors are in the wrong order
   if ! bspc query --monitors --names | head -1 | grep $MAIN_DISPLAY; then
     bspc monitor "$MAIN_DISPLAY" --swap "$SECOND_DISPLAY"
   fi
-else
-  bspc monitor "$SECOND_DISPLAY" -d None
 fi
 
 # Rule for quake-like terminal
