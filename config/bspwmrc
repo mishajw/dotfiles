@@ -46,7 +46,7 @@ bspc rule --add *:QuakeTerminal state=floating sticky=on border=on
 # Set background
 feh --bg-fill $BACKGROUND_IMAGE
 # Start bar
-pkill $(pgrep -f panel.py) ; $PANEL_PATH/panel.py &
+kill $(pgrep -f panel.py) ; $PANEL_PATH/panel.py &
 # Start compton
 killall compton ; compton &
 # Start sxhkd
