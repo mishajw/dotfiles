@@ -5,7 +5,7 @@
 
 # Ubuntu
 alias aget="sudo apt-get"
-alias ai="ag install"
+alias ai="aget install"
 alias as="apt-cache search"
 
 # Arch
