@@ -66,6 +66,11 @@ def print_loop(stdout):
 
     while True:
         line = f.readline().strip()
+
+        if line == "":
+            f = open(FIFO_PATH, 'r')
+            continue
+
         should_update = line == "updated"
 
         for w in all_widgets():
