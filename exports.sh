@@ -16,6 +16,7 @@ export df="$HOME/dotfiles"
 export cnf="$df/config"
 export scr="$df/scripts"
 export imgs="$df/images"
+export prog="$HOME/prog" && mkdir -p $prog
 
 # Directories
 export PANEL_PATH="$df/panel"
