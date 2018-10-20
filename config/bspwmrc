@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 if xrandr | grep "\<connected\>" | grep $SECOND_DISPLAY; then
   SINGLE_DISPLAY="false"
