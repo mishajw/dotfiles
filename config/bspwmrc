@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if xrandr | grep connected | grep $SECOND_DISPLAY; then
+if xrandr | grep "\<connected\>" | grep $SECOND_DISPLAY; then
   SINGLE_DISPLAY="false"
 else
   SINGLE_DISPLAY="true"
