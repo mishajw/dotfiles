@@ -112,10 +112,10 @@ sl() {
 
 # Misc
 alias dua="du -sh *"
-csvview () { column -s, -t < $@ | less -#2 -N -S }
+csvview () { column -s, -t < $@ | less -#2 -N -S; }
 alias gourcec="gource -f -s 1 -a 1"
-cdmk () { mkdir -p -- "$1" && cd -P -- "$1" }
-opr () { "$@" > /dev/null 2>&1 & disown }
+cdmk () { mkdir -p -- "$1" && cd -P -- "$1"; }
+opr () { "$@" > /dev/null 2>&1 & disown; }
 alias dmenu="dmenu -o 0.8 -fn $MAIN_FONT -h 50 -w 500 -x 680 -y 490"
 alias sshuttlec="sshuttle --dns -r do 0/0"
 alias xc="xclip -selection clipboard"
@@ -125,5 +125,6 @@ alias pdf="opr evince"
 alias cp="cp -r"
 alias np='echo "$(nproc) * 1.5" | bc -l | grep --color=never -Po "^[^\.]*"'
 alias ip-pub="curl -s ipinfo.io | grep -oE '\"ip\": \"(.*)\"' | sed 's/\"ip\": //; s/\"//g'"
-pf() { pip freeze | grep $1 >> requirements.txt }
+pf() { pip freeze | grep $1 >> requirements.txt; }
+wt() { while true; do $@; done; }
 
