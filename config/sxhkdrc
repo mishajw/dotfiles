@@ -29,7 +29,7 @@ super + p
   $scr/switch_window.sh
 super + a
   pgrep panel.py && killall panel.py || $PANEL_PATH/panel.py &
-super + Delete
+super + ctrl + alt + z
   $scr/lock.sh
 super + Print
   import $SCREENSHOT_LOCATION
