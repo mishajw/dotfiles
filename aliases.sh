@@ -128,3 +128,5 @@ alias ip-pub="curl -s ipinfo.io | grep -oE '\"ip\": \"(.*)\"' | sed 's/\"ip\": /
 pf() { pip freeze | grep $1 >> requirements.txt; }
 wt() { while true; do $@; done; }
 
+source $scr/alias_scripts.sh > /dev/null
+
