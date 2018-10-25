@@ -16,6 +16,7 @@
   c = "!f() { git commit --message \"$*\"; }; f"
   ca = "!f() { git commit --all --message \"$*\"; }; f"
   cam = commit --amend
+  cf = commit --fixup
   cl = "!f() { git clone ssh://git@github.com/$*; }; f"
   co = checkout
   d = diff
@@ -30,6 +31,7 @@
   psup = push --set-upstream origin $(git_current_branch)
   rao = remote add origin
   rb = rebase
+  rbas = rebase --interactive --autosquash
   rbi = rebase -i
   rbih = rebase -i HEAD~20
   s = status
