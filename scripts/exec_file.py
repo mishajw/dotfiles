@@ -3,12 +3,14 @@
 from typing import List, Optional
 import argparse
 import os
+import re
 import subprocess
 
 FALLBACK_EDITOR = "vim"
-FALLBACK_SHELL = "vim"
+FALLBACK_SHELL = "zsh"
+TAG_REGEX = re.compile(" *#([a-zA-Z0-9-]+)")
 
-def main(
+def edit_exec(
         path: str,
         exec_indicator: str,
         editor: Optional[str],
@@ -18,6 +20,11 @@ def main(
     print("Executing commands:\n%s" % "\n".join(commands))
     exec_commands(commands, shell)
     strip_exec_indicator(path, exec_indicator)
+
+def tag_exec(path: str, tag: str, shell: str):
+    commands = get_tagged_commands(path, tag)
+    print("Executing commands:\n%s" % "\n".join(commands))
+    exec_commands(commands, shell)
 
 def edit_file(path: str, editor: Optional[str]):
     editor = resolve(editor, "EDITOR", FALLBACK_EDITOR)
@@ -29,6 +36,21 @@ def get_commands(path: str, exec_indicator: str) -> List[str]:
             line[len(exec_indicator):-1]
             for line in f
             if line.startswith(exec_indicator)]
+
+def get_tagged_commands(path: str, tag: str) -> List[str]:
+    is_in_tag = False
+    commands = []
+    with open(path, "r") as f:
+        for line in f:
+            match = TAG_REGEX.search(line)
+            if match and is_in_tag:
+                break
+            if is_in_tag:
+                commands.append(line[:-1])
+            if match and match.group(1) == tag:
+                is_in_tag = True
+
+    return commands
 
 def exec_commands(commands: List[str], shell: Optional[str]) -> None:
     shell = resolve(shell, "SHELL", FALLBACK_SHELL)
@@ -55,8 +77,14 @@ def resolve(optional: Optional[str], env_name: str, fallback: str) -> str:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Execute commands from a file")
     parser.add_argument("path", type=str, help="File containing commands")
+    parser.add_argument("--tag", "-t", type=str, default=None, help="Execute "
+        "tagged commands in the script")
     parser.add_argument("--exec-indicator", type=str, default="> ")
     parser.add_argument("--editor", type=str, default=None)
     parser.add_argument("--shell", type=str, default=None)
     args = parser.parse_args()
-    main(args.path, args.exec_indicator, args.editor, args.shell)
+
+    if args.tag is None:
+        edit_exec(args.path, args.exec_indicator, args.editor, args.shell)
+    else:
+        tag_exec(args.path, args.tag, args.shell)
