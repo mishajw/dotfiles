@@ -31,9 +31,11 @@
   psup = push --set-upstream origin $(git_current_branch)
   rao = remote add origin
   rb = rebase
-  rbas = rebase --interactive --autosquash
-  rbi = rebase -i
-  rbih = rebase -i HEAD~20
+  rba = rebase --abort
+  rbas = rbi --autosquash
+  rbc = rebase --continue
+  rbi = rb --interactive
+  rbih = rbi HEAD~20
   s = status
   shf = show --name-only
   si = submodule init
@@ -56,3 +58,5 @@
 [pager]
   diff = diff-so-fancy | less --tabs=1,5 -RFX
   show = diff-so-fancy | less --tabs=1,5 -RFX
+[rebase]
+	autoStash = true
