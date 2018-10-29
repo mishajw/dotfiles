@@ -51,8 +51,8 @@ class Delete(Action):
 
 
 def main():
-    parser = argparse.ArgumentParser("dredit")
-    parser.add_argument("--directory", type=str, default=None)
+    parser = argparse.ArgumentParser("diredit")
+    parser.add_argument("--directory", "-d", type=str, default=None)
     parser.add_argument("--editor", type=str, default=None)
 
     # Get arguments
@@ -110,7 +110,7 @@ def __get_edited_text(initial_text: str, editor: str) -> str:
 
 
 def __files_to_text(files: Files) -> str:
-    return "\n".join([f"{i}: {files[i]}" for i in files])
+    return "\n".join([f"{i:03}: {files[i]}" for i in files])
 
 
 def __text_to_files(text: str) -> Files:
