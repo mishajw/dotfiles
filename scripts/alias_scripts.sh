@@ -5,7 +5,7 @@ cd $(dirname $0)
 
 if [ ! -d ".env" ]; then
   python3 -m venv .env
-  ./env/bin/pip install -r requirements.txt
+  ./.env/bin/pip install -r requirements.txt
 fi
 
 for file in ./*.{sh,py}; do
