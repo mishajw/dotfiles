@@ -21,8 +21,8 @@ def edit_exec(
     exec_commands(commands, shell)
     strip_exec_indicator(path, exec_indicator)
 
-def tag_exec(path: str, tag: str, shell: str):
-    commands = get_tagged_commands(path, tag)
+def tag_exec(path: str, tags: List[str], shell: str):
+    commands = get_tagged_commands(path, tags)
     print("Executing commands:\n%s" % "\n".join(commands))
     exec_commands(commands, shell)
 
@@ -37,18 +37,17 @@ def get_commands(path: str, exec_indicator: str) -> List[str]:
             for line in f
             if line.startswith(exec_indicator)]
 
-def get_tagged_commands(path: str, tag: str) -> List[str]:
-    is_in_tag = False
+def get_tagged_commands(path: str, tags: List[str]) -> List[str]:
+    current_tag = None
     commands = []
     with open(path, "r") as f:
         for line in f:
             match = TAG_REGEX.search(line)
-            if match and is_in_tag:
-                break
-            if is_in_tag:
+            if match:
+                current_tag = match.group(1)
+                continue
+            if current_tag is None or current_tag in tags:
                 commands.append(line[:-1])
-            if match and match.group(1) == tag:
-                is_in_tag = True
 
     return commands
 
@@ -77,8 +76,8 @@ def resolve(optional: Optional[str], env_name: str, fallback: str) -> str:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Execute commands from a file")
     parser.add_argument("path", type=str, help="File containing commands")
-    parser.add_argument("--tag", "-t", type=str, default=None, help="Execute "
-        "tagged commands in the script")
+    parser.add_argument("--tag", "-t", type=str, default=None, nargs="+",
+        help="Execute tagged commands in the script")
     parser.add_argument("--exec-indicator", type=str, default="> ")
     parser.add_argument("--editor", type=str, default=None)
     parser.add_argument("--shell", type=str, default=None)
