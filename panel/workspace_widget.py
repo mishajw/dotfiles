@@ -6,6 +6,7 @@ from panel_help import *
 colors = ['#dbad72', '#f9d3a5', '#ab9c73']
 COLOR_USED = '#f9d3a5'
 COLOR_OPEN_EMPTY = '#ab9c73'
+COLOR_URGENT = '#fcff60'
 COLOR_SEPARATOR = '#e4a972'
 
 
@@ -37,6 +38,12 @@ class WorkspaceWidget(CommandWidget):
             # Occupied, active
             elif label == "O":
                 title = set_color(title, COLOR_USED)
+                title = set_underline_color(title, COLOR_USED)
+            # Occupied, active
+            elif label == "u":
+                title = set_color(title, COLOR_URGENT)
+            elif label == "U":
+                title = set_color(title, COLOR_URGENT)
                 title = set_underline_color(title, COLOR_USED)
             # Display separator
             elif label.lower() == 'm':
