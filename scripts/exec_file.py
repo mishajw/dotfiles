@@ -53,7 +53,7 @@ def get_tagged_commands(path: str, tags: List[str]) -> List[str]:
 
 def exec_commands(commands: List[str], shell: Optional[str]) -> None:
     shell = resolve(shell, "SHELL", FALLBACK_SHELL)
-    subprocess.run([shell, "-c", "\n".join(commands)])
+    subprocess.run([shell, "-i", "-c", "\n".join(commands)])
 
 def strip_exec_indicator(path: str, exec_indicator: str) -> None:
     with open(path, "r") as f:
