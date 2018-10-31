@@ -22,8 +22,8 @@
   d = diff
   ds = diff --staged
   f = fetch
-  l = log --oneline --decorate --graph
-  ls = log --oneline --decorate
+  l = log --oneline --decorate
+  lg = log --oneline --decorate --graph
   m = merge
   p = push
   pf = push --force
