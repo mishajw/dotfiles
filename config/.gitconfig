@@ -32,10 +32,10 @@
   rao = remote add origin
   rb = rebase
   rba = rebase --abort
-  rbas = rbi --autosquash
+  rbas = rebase --interactive --autosquash
   rbc = rebase --continue
-  rbi = rb --interactive
-  rbih = rbi HEAD~20
+  rbi = rebase --interactive
+  rbih = rebase --interactive HEAD~20
   s = status
   shf = show --name-only
   si = submodule init
