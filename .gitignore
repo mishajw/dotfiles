@@ -1,8 +1,9 @@
 *.log
+*.pyc
+*.swp
+*/.idea
 *__
 *git_token
-*.swp
-/local-exports.sh
-*/.idea
-*.pyc
 .env
+init/local_interactive.sh
+init/local_scripting.sh

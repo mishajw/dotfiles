@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source $HOME/dotfiles/init/scripting.sh
+
 if xrandr | grep "\<connected\>" | grep $SECOND_DISPLAY; then
   SINGLE_DISPLAY="false"
 else
@@ -46,7 +48,7 @@ bspc rule --add *:QuakeTerminal state=floating sticky=on border=on
 # Set background
 feh --bg-fill $BACKGROUND_IMAGE
 # Start bar
-kill $(pgrep -f panel.py) ; $PANEL_PATH/panel.py &
+kill $(pgrep -f panel.py) ; $df/panel/panel.py &
 # Start compton
 killall compton ; compton &
 # Start sxhkd
