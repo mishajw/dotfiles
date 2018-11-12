@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
 display-start() {
-  MODE_NAME="${SECOND_DISPLAY_X}x${SECOND_DISPLAY_Y}_${SECOND_DISPLAY_HZ}"
-  echo "Adding mode $MODE_NAME"
-  xrandr --newmode $MODE_NAME \
-    `gtf $SECOND_DISPLAY_X $SECOND_DISPLAY_Y $SECOND_DISPLAY_HZ | \
+  mode_name="custom_${DISPLAY2_X}x${DISPLAY2_Y}_${DISPLAY2_HZ}"
+  echo "Adding mode $mode_name"
+  eval xrandr --newmode $mode_name \
+    $(gtf $DISPLAY2_X $DISPLAY2_Y $DISPLAY2_HZ | \
       grep Modeline | \
-      sed -E 's/Modeline "[^ ]*"//g'`
-  xrandr --addmode $SECOND_DISPLAY $MODE_NAME
-  xrandr --output $SECOND_DISPLAY --mode $MODE_NAME --above $MAIN_DISPLAY
-  $cnf/bspwmrc
+      sed -E 's/Modeline "[^ ]*" +//g')
+  xrandr --addmode $DISPLAY2_NAME $mode_name
+  xrandr --output $DISPLAY2_NAME --mode $mode_name $DISPLAY2_REL
+  eval xrandr --output $DISPLAY2_NAME $DISPLAY2_REL
+  $cnf/bspwmrc > /dev/null
 }
 
 display-stop() {

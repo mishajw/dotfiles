@@ -9,11 +9,12 @@ export init="$df/init"
 export prog="$HOME/prog" && mkdir -p $prog
 
 # Display and sound names
-export MAIN_DISPLAY="eDP1"
-export SECOND_DISPLAY="DP2"
-export SECOND_DISPLAY_X="1920"
-export SECOND_DISPLAY_Y="1080"
-export SECOND_DISPLAY_HZ="60"
+export DISPLAY1_NAME="eDP1"
+export DISPLAY2_NAME="DP2"
+export DISPLAY2_X="1920"
+export DISPLAY2_Y="1080"
+export DISPLAY2_HZ="60"
+export DISPLAY2_REL="--above $DISPLAY1_NAME"
 export MASTER_SOUND="Master"
 
 # Window manager
@@ -26,6 +27,7 @@ export WINDOW_GAP=15
 
 # Misc
 export EDITOR="vim"
+export LANG=en_GB.UTF-8
 export LANGUAGE="$LANG"
 export LC_ALL="$LANG"
 export MAIN_FONT="Monospace:style=Bold:size=10"
