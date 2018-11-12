@@ -123,7 +123,7 @@ alias todo="vim ~/src/misc/todo.md"
 alias py="python3 -i <(echo 'import numpy as np\nimport tensorflow as tf')"
 alias pdf="opr evince"
 alias cp="cp -r"
-alias np='echo "$(nproc) * 1.5" | bc -l | grep --color=never -Po "^[^\.]*"'
+np() { nproc | awk "{print int(\$1 * ${1:-1.5})}"; }
 alias ip-pub="curl -s ipinfo.io | grep -oE '\"ip\": \"(.*)\"' | sed 's/\"ip\": //; s/\"//g'"
 pf() { pip freeze | grep $1 >> requirements.txt; }
 wt() { while true; do $@; done; }
