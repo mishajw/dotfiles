@@ -2,7 +2,7 @@
 
 source $HOME/dotfiles/init/scripting.sh
 
-if xrandr | grep "\<connected\>" | grep $SECOND_DISPLAY; then
+if xrandr | grep "\<connected\>" | grep $DISPLAY2_NAME; then
   SINGLE_DISPLAY="false"
 else
   SINGLE_DISPLAY="true"
@@ -28,17 +28,17 @@ bspc config pointer_action2 resize_side
 bspc config pointer_action3 move
 
 # Setup workspaces
-bspc monitor "$MAIN_DISPLAY" -d one two three four five six seven eight dmp
+bspc monitor "$DISPLAY1_NAME" -d one two three four five six seven eight dmp
 
 # Check if the second monitor is connected
 if $SINGLE_DISPLAY; then
-  bspc monitor "$SECOND_DISPLAY" -d None
+  bspc monitor "$DISPLAY2_NAME" -d None
 else
   echo Setting up second display
-  bspc monitor "$SECOND_DISPLAY" -d uno dos
+  bspc monitor "$DISPLAY2_NAME" -d uno dos
   # Check if the monitors are in the wrong order
-  if ! bspc query --monitors --names | head -1 | grep $MAIN_DISPLAY; then
-    bspc monitor "$MAIN_DISPLAY" --swap "$SECOND_DISPLAY"
+  if ! bspc query --monitors --names | head -1 | grep $DISPLAY1_NAME; then
+    bspc monitor "$DISPLAY1_NAME" --swap "$DISPLAY2_NAME"
   fi
 fi
 
