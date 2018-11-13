@@ -1,7 +1,7 @@
 #!/bin/bash
 # Default acpi script that takes an entry for all actions
 
-source /home/misha/dotfiles/scripts/start/shell.sh
+source /home/misha/dotfiles/init/scripting.sh
 
 case "$1" in
     button/power)
