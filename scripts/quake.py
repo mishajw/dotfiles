@@ -4,7 +4,7 @@
 Toggle a drop-down terminal using termite and xdotool
 """
 
-from subprocess import run, Popen
+from subprocess import run, call, Popen, DEVNULL
 import time
 import os
 
@@ -30,6 +30,12 @@ Popen([
     "termite",
     "--name", TERMINAL_NAME,
     "--exec", "tmux new -s quake"])
+
+# Wait until window appears
+while call(
+        XDO_CMD + ["--onlyvisible", "--classname", TERMINAL_NAME],
+        stdout=DEVNULL):
+    pass
 
 # TODO: Find workaround for sleep call
 time.sleep(0.2)
