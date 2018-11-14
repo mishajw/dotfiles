@@ -27,14 +27,13 @@ bspc config pointer_action1 resize_corner
 bspc config pointer_action2 resize_side
 bspc config pointer_action3 move
 
-# Setup workspaces
-bspc monitor "$DISPLAY1_NAME" -d one two three four five six seven eight dmp
-
 # Check if the second monitor is connected
 if $SINGLE_DISPLAY; then
+  bspc monitor "$DISPLAY1_NAME" -d one two three four five six seven eight nine ten dmp
   bspc monitor "$DISPLAY2_NAME" -d None
 else
   echo Setting up second display
+  bspc monitor "$DISPLAY1_NAME" -d one two three four five six seven dmp
   bspc monitor "$DISPLAY2_NAME" -d uno dos
   # Check if the monitors are in the wrong order
   if ! bspc query --monitors --names | head -1 | grep $DISPLAY1_NAME; then
