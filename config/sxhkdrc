@@ -1,8 +1,8 @@
 # Starting programs
 super + Return
-	termite
+  eval $TERMINAL
 super + r
-  google-chrome-stable &
+  eval $BROWSER
 super + space
   $scr/launcher.sh
 super + grave

@@ -34,5 +34,10 @@ export LC_ALL="$LANG"
 export MAIN_FONT="Monospace:style=Bold:size=10"
 export PATH=$PATH:/usr/bin/core_perl
 export SCREENSHOT_LOCATION="/tmp/scr.png"
+export CHROME_SCALE_FACTOR="1.2"
+
+# Default applications for use in dotfiles
+export TERMINAL="termite"
+export BROWSER="google-chrome-stable --force-device-scale-factor=\$CHROME_SCALE_FACTOR"
 
 [ -f $init/local_scripting.sh ] && source $init/local_scripting.sh
