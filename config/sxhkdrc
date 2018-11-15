@@ -12,11 +12,11 @@ super + ctrl + c
 
 # Volume and brightness
 shift + XF86Audio{Lower,Raise}Volume
-  $scr/vol-control.sh {down,up} 1
+  $scr/vol_control.sh {down,up} 1
 XF86Audio{Lower,Raise}Volume
-  $scr/vol-control.sh {down,up} 3
+  $scr/vol_control.sh {down,up} 3
 XF86AudioMute
-  $scr/vol-control.sh toggle
+  $scr/vol_control.sh toggle
 XF86MonBrightnessUp
   xbacklight -inc 5
 XF86MonBrightnessDown
