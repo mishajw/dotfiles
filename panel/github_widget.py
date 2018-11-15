@@ -62,8 +62,7 @@ class GithubWidget(NumberWidget):
 
     @staticmethod
     def get_url():
-        token_path = os.environ['PANEL_PATH'] + "/git_token"
-        f = open(token_path, 'r')
-        token = f.read()
+        with open( "./git_token", 'r') as f:
+            token = f.read()
 
         return 'https://api.github.com/users/mishajw/events?access_token=' + token
