@@ -24,6 +24,7 @@ export PANEL_FIFO="/tmp/panel-fifo"
 export PANEL_HEIGHT=25
 export SXHKD_SHELL="bash"
 export WINDOW_GAP=15
+export WINDOW_RESIZE_INCREMENTS=200
 
 # Misc
 export EDITOR="vim"

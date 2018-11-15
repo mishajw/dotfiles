@@ -89,7 +89,15 @@ super + ctrl + shift + space
 # BSPWM resizing windows
 # Expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
-  bspc node {@west -r -20,@south -r +20,@north -r -20,@east -r +20}
+  bspc node {\
+    @west -r -$WINDOW_RESIZE_INCREMENTS,\
+    @south -r +$WINDOW_RESIZE_INCREMENTS,\
+    @north -r -$WINDOW_RESIZE_INCREMENTS,\
+    @east -r +$WINDOW_RESIZE_INCREMENTS}
 # Contract a window by moving one of its side inward
 super + alt + shift + {h,j,k,l}
-  bspc node {@east -r -20,@north -r +20,@south -r -20,@west -r +20}
+  bspc node {\
+    @east -r -$WINDOW_RESIZE_INCREMENTS,\
+    @north -r +$WINDOW_RESIZE_INCREMENTS,\
+    @south -r -$WINDOW_RESIZE_INCREMENTS,\
+    @west -r +$WINDOW_RESIZE_INCREMENTS}
