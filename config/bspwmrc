@@ -47,9 +47,24 @@ bspc rule --add *:QuakeTerminal state=floating sticky=on border=on
 
 # Set background
 feh --bg-fill $BACKGROUND_IMAGE
-# Start bar
-kill $(pgrep -f panel.py) ; (cd $df/panel ; ./panel.py &)
-# Start compton
-killall compton ; compton &
-# Start sxhkd
-killall sxhkd ; sxhkd &
+
+pid_dir=/tmp/dotfiles_pids
+panel_pid_file=$pid_dir/panel$DISPLAY
+compton_pid_file=$pid_dir/compton$DISPLAY
+sxhkd_pid_file=$pid_dir/sxhkd$DISPLAY
+mkdir -p $pid_dir
+
+# Kill old applications
+[ -f $panel_pid_file ] && kill $(cat $panel_pid_file)
+[ -f $compton_pid_file ] && kill $(cat $compton_pid_file)
+[ -f $sxhkd_pid_file ] && kill $(cat $sxhkd_pid_file)
+
+# Start applications
+python3.6 $df/panel/panel.py & panel_pid=$!
+compton & compton_pid=$!
+sxhkd & sxhkd_pid=$!
+
+# Record spawned PIDs
+echo $panel_pid > $panel_pid_file
+echo $compton_pid > $compton_pid_file
+echo $sxhkd_pid > $sxhkd_pid_file
