@@ -8,12 +8,12 @@ display-start() {
       grep Modeline | \
       sed -E 's/Modeline "[^ ]*" +//g')
   xrandr --addmode $DISPLAY2_NAME $mode_name
-  xrandr --output $DISPLAY2_NAME --mode $mode_name $DISPLAY2_REL
+  xrandr --output $DISPLAY2_NAME --mode $mode_name
   eval xrandr --output $DISPLAY2_NAME $DISPLAY2_REL
-  $cnf/bspwmrc > /dev/null
+  opr $cnf/bspwmrc
 }
 
 display-stop() {
-  xrandr --output $SECOND_DISPLAY --off
-  $cnf/bspwmrc
+  xrandr --output $DISPLAY2_NAME --off
+  opr $cnf/bspwmrc
 }
