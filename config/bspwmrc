@@ -42,9 +42,6 @@ else
   fi
 fi
 
-# Rule for quake-like terminal
-bspc rule --add *:QuakeTerminal state=floating sticky=on border=on
-
 # Set background
 feh --bg-fill $BACKGROUND_IMAGE
 

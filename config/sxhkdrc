@@ -6,7 +6,7 @@ super + r
 super + space
   $scr/launcher.sh
 super + grave
-  $scr/quake.py
+  $scr/quake.py --tag term --command termite
 super + ctrl + c
   networkmanager_dmenu
 
