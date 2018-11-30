@@ -10,6 +10,7 @@ import os
 import argparse
 from typing import Optional
 
+CLASS_NAME = "quake"
 DISPLAY = os.environ["DISPLAY"]
 
 def main(tag: str, command: str, window_id_directory: str):
@@ -24,14 +25,13 @@ def main(tag: str, command: str, window_id_directory: str):
         window_id = create_window(command)
         is_new_window = True
         store_window_id(window_id, tag, window_id_directory)
-
+    set_window_geom(window_id)
     if is_window_visible(window_id) and not is_new_window:
         print("Making window invisible")
         set_window_visible(window_id, False)
     else:
         print("Making window visible")
         set_window_visible(window_id, True)
-        set_window_geom(window_id)
 
 def get_window_id(tag: str, window_id_directory: str) -> Optional[int]:
     window_id_path = os.path.join(window_id_directory, tag + DISPLAY)
@@ -54,6 +54,7 @@ def create_window(command: str) -> int:
     while True:
         current = get_active_window_id()
         if current != previous:
+            set_window_visible(current, False)
             return current
 
 def get_active_window_id() -> int:
@@ -75,7 +76,11 @@ def set_window_visible(window_id: int, visible: bool):
 
 def set_window_geom(window_id: int):
     height = os.environ["PANEL_HEIGHT"]
-    run(["bspc", "node", "-t", "floating"], check=True)
+    run(
+        ["xdotool", "set_window", "--classname", CLASS_NAME, str(window_id)],
+        check=True)
+    run(["bspc", "rule", "--add", "*:" + CLASS_NAME,
+        "state=floating", "sticky=on", "border=on"], check=True)
     run(
         ["xdotool", "windowmove", str(window_id), "0", height],
         check=True)
