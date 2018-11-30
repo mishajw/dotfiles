@@ -7,6 +7,8 @@ super + space
   $scr/launcher.sh
 super + grave
   $scr/quake.py --tag term --command termite
+super + shift + grave
+  $scr/quake.py --tag browse --command google-chrome-stable
 super + ctrl + c
   networkmanager_dmenu
 
@@ -50,9 +52,12 @@ super + m
 # Change window to floating/titled/fullscreen
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-# Focus/move in a direction
-super + {_,shift + }{h,j,k,l}
-	bspc node --{focus,swap} {west,south,north,east}
+# Focus in a direction
+super + {h,j,k,l}
+	bspc node --focus {west,south,north,east}
+# Move in a direction
+super + shift + {h,j,k,l}
+	bspc node --swap {west,south,north,east} --follow
 # Cycle between nodes in a window
 super + {_,shift + }c
 	bspc node --focus {next,prev}.local
