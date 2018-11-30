@@ -37,6 +37,7 @@
   rbi = rebase --interactive
   rbih = rebase --interactive HEAD~20
   s = status
+  sh = show
   shf = show --name-only
   si = submodule init
   st = stash
