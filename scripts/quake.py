@@ -25,12 +25,12 @@ def main(tag: str, command: str, window_id_directory: str):
         window_id = create_window(command)
         is_new_window = True
         store_window_id(window_id, tag, window_id_directory)
-    set_window_geom(window_id)
     if is_window_visible(window_id) and not is_new_window:
         print("Making window invisible")
         set_window_visible(window_id, False)
     else:
         print("Making window visible")
+        set_window_geom(window_id)
         set_window_visible(window_id, True)
 
 def get_window_id(tag: str, window_id_directory: str) -> Optional[int]:
