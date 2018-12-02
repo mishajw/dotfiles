@@ -14,8 +14,6 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Change timestamps
 HIST_STAMPS="yyyy-mm-dd"
-# Turn off autocorrect
-unsetopt correct_all
 # Word navigation
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
@@ -27,5 +25,8 @@ bindkey "^[k" history-beginning-search-backward
 plugins=(sudo zsh-syntax-highlighting zsh-autosuggestions fzf-zsh)
 source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Turn off autocorrect
+unsetopt correct_all
 
 source $HOME/dotfiles/init/interactive.sh
