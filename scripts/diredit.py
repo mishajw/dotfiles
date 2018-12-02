@@ -96,16 +96,18 @@ def main():
 
 
 def __get_edited_text(initial_text: str, editor: str) -> str:
-    with tempfile.NamedTemporaryFile() as editor_file:
+    temp_dir = tempfile.gettempdir()
+    temp_path = os.path.join(temp_dir, "diredit.txt")
+
+    with open(temp_path, "wb") as editor_file:
         # Write the directory contents
         editor_file.write(initial_text.encode())
         editor_file.flush()
 
-        # Show editor to user
-        subprocess.call([editor, editor_file.name])
+    # Show editor to user
+    subprocess.call([editor, editor_file.name])
 
-        # Read the file back in
-        editor_file.seek(0)
+    with open(temp_path, "rb") as editor_file:
         return editor_file.read().decode()
 
 
