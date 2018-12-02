@@ -3,11 +3,6 @@
 original_dir=$(pwd)
 cd $(dirname $0)
 
-if [ ! -d ".env" ]; then
-  python3 -m venv .env
-  ./.env/bin/pip install -r requirements.txt
-fi
-
 for file in ./*.{sh,py}; do
   file_name=$(echo $file | sed 's/[a-z]\+$//g;s/[\./]//g')
   extension=$(echo $file | grep -Po '[^\.]+$')
@@ -17,7 +12,7 @@ for file in ./*.{sh,py}; do
   if [ "$extension" = "sh" ]; then
     alias $file_name="$(realpath $file)"
   elif [ "$extension" = "py" ]; then
-    alias $file_name="$(realpath .env/bin/python) $(realpath $file)"
+    alias $file_name="$DF_PYTHON $(realpath $file)"
   else
     echo "Unrecognized file"
     exit -1
@@ -25,4 +20,3 @@ for file in ./*.{sh,py}; do
 done
 
 cd $original_dir
-

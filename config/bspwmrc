@@ -57,7 +57,7 @@ mkdir -p $pid_dir
 [ -f $sxhkd_pid_file ] && kill $(cat $sxhkd_pid_file)
 
 # Start applications
-python3.6 $df/panel/panel.py & panel_pid=$!
+$DF_PYTHON $df/panel/panel.py & panel_pid=$!
 compton & compton_pid=$!
 sxhkd & sxhkd_pid=$!
 
