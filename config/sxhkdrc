@@ -12,11 +12,11 @@ super + ctrl + c
 
 # Volume and brightness
 shift + XF86Audio{Lower,Raise}Volume
-  $scr/vol_control.sh {down,up} 1
+  $scr/vol-control.sh {down,up} 1
 XF86Audio{Lower,Raise}Volume
-  $scr/vol_control.sh {down,up} 3
+  $scr/vol-control.sh {down,up} 3
 XF86AudioMute
-  $scr/vol_control.sh toggle
+  $scr/vol-control.sh toggle
 XF86MonBrightnessUp
   xbacklight -inc 5
 XF86MonBrightnessDown
@@ -24,9 +24,9 @@ XF86MonBrightnessDown
 
 # Misc utilities
 super + g
-  $scr/toggle_gap.sh
+  $scr/toggle-gap.sh
 super + p
-  $scr/switch_window.sh
+  $scr/switch-window.sh
 super + a
   pgrep panel.py && killall panel.py || $PANEL_PATH/panel.py &
 super + ctrl + alt + z

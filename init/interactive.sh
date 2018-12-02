@@ -13,7 +13,7 @@ source $init/modules/sl.sh
 source $init/modules/systemctl.sh
 source $init/modules/vim.sh
 source $init/modules/yaourt.sh
-source $scr/alias_scripts.sh > /dev/null
+source $scr/alias-scripts.sh > /dev/null
 
 # Misc aliases and functions
 alias dua="du -sh *"

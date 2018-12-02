@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-$scr/util/fix_intellij.sh
+$scr/util/fix-intellij.sh
 xset b off
 setxkbmap gb
 # Stop pointer from being X sometimes
