@@ -1,45 +1,60 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import json
 import os
 
-srcPath = os.environ["cnf"] + "/"
-dstPath = os.environ["HOME"] + "/"
+def is_absolute(path: str) -> bool:
+    return len(path) > 0 and (path[0] == "~" or path[0] == "/")
 
-def main():
-  jsonRaw = getJson()
-  jsonParsed = json.loads(jsonRaw)
+default_src_dir = os.environ["cnf"] if "cnf" in os.environ else \
+    os.path.join(os.environ["HOME"], "dotfiles", "config")
+default_dst_dir = os.environ["HOME"]
 
-  for link in jsonParsed["symlinks"]:
-    src  = srcPath + link["src"]
-    
+with open(os.path.join(default_src_dir, "symlinks.json")) as f:
+    json = json.load(f)
+
+success = True
+
+for link in json:
+    link_src = link["src"]
     if "dst" in link:
-      dst = dstPath + link["dst"]
+        link_dst = link["dst"]
     else:
-      dst = dstPath + link["src"]
+        assert not is_absolute("link_src"), \
+            "If src is absolute, dst must be given"
+        link_dst = os.path.join(default_dst_dir, link_src)
 
-    try:
-      os.symlink(src, dst)
-      print("Made symlink %s -> %s" % (src, dst))
-    except FileExistsError:
-      print("Couldn't make symlink %s -> %s because file already exists" % (src, dst))
-      if os.path.islink(dst) and input("File is symlink. Replace? (y/n)") == "y":
-        os.remove(dst)
-        os.symlink(src, dst)
-        print("Replaced.")
+    if not is_absolute(link_src):
+        link_src = os.path.join(default_src_dir, link_src)
+    if not is_absolute(link_dst):
+        link_dst = os.path.join(default_dst_dir, link_dst)
 
-    except Exception as e:
-      print("Unexpected error: " + str(e))
+    print(f"> Making symlink: {link_src} -> {link_dst}")
 
-def getJson():
-  f = open("symlinks.json", 'r')
-  text = ""
-  
-  for line in f:
-    text += line
+    # Perform checks on whether the symlink exists already
+    if os.path.isfile(link_dst):
+        if os.path.islink(link_dst):
+            current_link = os.readlink(link_dst)
+            if current_link == link_src:
+                print("Correct symlink already exists")
+            else:
+                print(f"ERROR: symlink exists, but points to {current_link} "
+                      f"(expected {link_src})")
+                success = False
+        else:
+            print("ERROR: normal file exists at symlink dst")
+            success = False
+        continue
 
-  return text
+    # Create the destination directory if it doesn't exist
+    link_dst_directory, _ = os.path.split(link_dst)
+    if not os.path.isdir(link_dst_directory):
+        os.makedirs(link_dst_directory)
+    # Make the symlink
+    os.symlink(link_src, link_dst)
+    print("Made symlink")
 
-if __name__ == "__main__":
-  main()
-
+if success:
+    print("Symlink creation success!")
+else:
+    print("Errors occured, check logs")
