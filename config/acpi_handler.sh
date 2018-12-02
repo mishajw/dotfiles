@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Default acpi script that takes an entry for all actions
 
 source /home/misha/dotfiles/init/scripting.sh

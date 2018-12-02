@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 from widget import Widget
 import os
 import re

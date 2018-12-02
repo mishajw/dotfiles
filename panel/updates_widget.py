@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 from number_widget import NumberWidget
 import os
 

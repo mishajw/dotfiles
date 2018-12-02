@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 cd /tmp
 git clone https://aur.archlinux.org/package-query.git

@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 from threading import Thread
 import time
 from panel_help import *

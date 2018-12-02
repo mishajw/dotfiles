@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Fix X window manager name properties to work around java bugs with
 # non-reparenting window managers.  This is a different solution from

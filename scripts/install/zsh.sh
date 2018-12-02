@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Get oh my zsh
 sh -c "$(curl -fsSL \

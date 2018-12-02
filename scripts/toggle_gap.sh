@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source /home/misha/dotfiles/init/scripting.sh
 

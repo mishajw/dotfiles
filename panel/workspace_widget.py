@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 from command_widget import CommandWidget
 from panel_help import *
 

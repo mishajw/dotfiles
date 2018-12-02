@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 locale="en_GB.UTF-8"
 keyboard="uk"

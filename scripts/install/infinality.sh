@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 pacman-key --recv-keys AE6866C7962DDE58 962DDE58
 pacman-key --lsign-key 962DDE58

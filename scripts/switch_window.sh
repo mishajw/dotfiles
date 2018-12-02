@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 source $df/aliases.sh
 echo $(alias dmenu) >> /tmp/test
