@@ -8,6 +8,7 @@ export imgs="$df/images"
 export init="$df/init"
 export local="$df/local"
 export prog="$HOME/prog" && mkdir -p $prog
+export dflogs="/tmp/dflogs" && mkdir -p $dflogs
 
 # Display and sound names
 export DISPLAY1_NAME="eDP1"

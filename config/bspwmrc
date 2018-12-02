@@ -45,23 +45,20 @@ fi
 # Set background
 feh --bg-fill $BACKGROUND_IMAGE
 
+# Start processes needed for BSPWM
 pid_dir=/tmp/dotfiles_pids
-panel_pid_file=$pid_dir/panel$DISPLAY
-compton_pid_file=$pid_dir/compton$DISPLAY
-sxhkd_pid_file=$pid_dir/sxhkd$DISPLAY
 mkdir -p $pid_dir
-
-# Kill old applications
-[ -f $panel_pid_file ] && kill $(cat $panel_pid_file)
-[ -f $compton_pid_file ] && kill $(cat $compton_pid_file)
-[ -f $sxhkd_pid_file ] && kill $(cat $sxhkd_pid_file)
-
-# Start applications
-$DF_PYTHON $df/panel/panel.py & panel_pid=$!
-compton & compton_pid=$!
-sxhkd & sxhkd_pid=$!
-
-# Record spawned PIDs
-echo $panel_pid > $panel_pid_file
-echo $compton_pid > $compton_pid_file
-echo $sxhkd_pid > $sxhkd_pid_file
+start-process() {
+  tag=$1
+  comm=$2
+  # FIle containing PID of the running process
+  pid_file=$pid_dir/$tag$DISPLAY
+  # Kill it if it exists
+  [ -f $pid_file ] && kill $(cat $pid_file)
+  # Start it, writing logs to $dflogs
+  eval $comm > $dflogs/$tag.log & new_pid=$!
+  echo $pid > $pid_file
+}
+start-process panel "$DF_PYTHON $df/panel/panel.py"
+start-process compton "compton"
+start-process sxhkd "sxhkd"
