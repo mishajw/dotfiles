@@ -7,3 +7,4 @@
 .env
 init/local_interactive.sh
 init/local_scripting.sh
+config/.gitconfig_local
