@@ -16,15 +16,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
 # Turn off autocorrect
 unsetopt correct_all
-# TODO: Is this needed?
-export PATH="$PATH:\
-  /usr/local/sbin:\
-  /usr/local/bin:\
-  /usr/bin:\
-  /usr/lib/jvm/default/bin:\
-  /usr/bin/site_perl:\
-  /usr/bin/vendor_perl:\
-  /usr/bin/core_perl"
 # Word navigation
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word

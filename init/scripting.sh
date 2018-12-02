@@ -34,7 +34,6 @@ export LANG=en_GB.UTF-8
 export LANGUAGE="$LANG"
 export LC_ALL="$LANG"
 export MAIN_FONT="Monospace:style=Bold:size=10"
-export PATH=$PATH:/usr/bin/core_perl
 export SCREENSHOT_LOCATION="/tmp/scr.png"
 export CHROME_SCALE_FACTOR="1.2"
 export SYSTEM_PYTHON=$(which python3)
