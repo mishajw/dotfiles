@@ -3,10 +3,10 @@
 source $HOME/dotfiles/init/scripting.sh
 
 source $init/modules/apt-get.sh
+source $init/modules/brew.sh
 source $init/modules/cargo.sh
 source $init/modules/displays.sh
 source $init/modules/exa.sh
-source $init/modules/git.sh
 source $init/modules/git.sh
 source $init/modules/sl.sh
 source $init/modules/systemctl.sh
