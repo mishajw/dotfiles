@@ -34,7 +34,7 @@ pf() { pip freeze | grep $1 >> requirements.txt; }
 wt() { while true; do $@; done; }
 alias browse="google-chrome-stable --force-device-scale-factor=1.2"
 
-[ -f $init/local_interactive.sh ] && source $init/local_interactive.sh
+[ -f $local/interactive.sh ] && source $local/interactive.sh
 
 # Start x if it isn't already started
 pgrep X 1>/dev/null || ([ -z "$TMUX" ] && startx)

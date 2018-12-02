@@ -62,7 +62,7 @@ class GithubWidget(NumberWidget):
 
     @staticmethod
     def get_url():
-        with open("./dotfiles/panel/git_token", 'r') as f:
+        with open("./dotfiles/local/git_token", 'r') as f:
             token = f.read()
 
         return 'https://api.github.com/users/mishajw/events?access_token=' + token

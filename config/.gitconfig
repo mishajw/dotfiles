@@ -61,4 +61,4 @@
 [rebase]
 	autoStash = true
 [include]
-  path = ~/dotfiles/config/.gitconfig_local
+  path = ~/dotfiles/local/.gitconfig

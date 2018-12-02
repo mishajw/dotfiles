@@ -6,6 +6,7 @@ export cnf="$df/config"
 export scr="$df/scripts"
 export imgs="$df/images"
 export init="$df/init"
+export local="$df/local"
 export prog="$HOME/prog" && mkdir -p $prog
 
 # Display and sound names
@@ -41,6 +42,6 @@ export SYSTEM_PYTHON=$(which python3)
 export TERMINAL="termite"
 export BROWSER="google-chrome-stable --force-device-scale-factor=\$CHROME_SCALE_FACTOR"
 
-[ -f $init/local_scripting.sh ] && source $init/local_scripting.sh
+[ -f $local/scripting.sh ] && source $local/scripting.sh
 
 source $init/modules/python.sh
