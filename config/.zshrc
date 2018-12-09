@@ -17,9 +17,10 @@ HIST_STAMPS="yyyy-mm-dd"
 # Word navigation
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
-# jk to scroll through history
+# M-jk to scroll through history
 bindkey "^[j" history-beginning-search-forward
 bindkey "^[k" history-beginning-search-backward
+# TODO: Add M-h,l to switch words
 
 # Load oh-my-zsh
 plugins=(sudo zsh-syntax-highlighting zsh-autosuggestions fzf-zsh)

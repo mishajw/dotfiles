@@ -3,3 +3,5 @@
 source $init/modules/brew.sh
 bindkey "∆" history-beginning-search-forward
 bindkey "˚" history-beginning-search-backward
+bindkey "¬" forward-word
+bindkey "˙" backward-word
