@@ -32,7 +32,7 @@ super + a
 super + ctrl + alt + z
   $scr/lock.sh
 super + Print
-  import $SCREENSHOT_LOCATION
+  eval $SCREENSHOT_COMMAND
 
 # Reload SXHKD configuration
 super + Escape

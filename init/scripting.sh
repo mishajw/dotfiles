@@ -37,6 +37,7 @@ export MAIN_FONT="Monospace:style=Bold:size=10"
 export SCREENSHOT_LOCATION="/tmp/scr.png"
 export CHROME_SCALE_FACTOR="1.2"
 export SYSTEM_PYTHON=$(which python3)
+export SCREENSHOT_COMMAND='import $SCREENSHOT_LOCATION'
 
 # Default applications for use in dotfiles
 export TERMINAL="termite"
