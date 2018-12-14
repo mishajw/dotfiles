@@ -1,4 +1,3 @@
-from evpn_widget import EvpnWidget
 from volume_widget import VolumeWidget
 from workspace_widget import WorkspaceWidget
 from title_widget import TitleWidget
