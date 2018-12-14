@@ -5,6 +5,7 @@ from battery_widget import BatteryWidget
 from date_widget import DateWidget
 from github_widget import GithubWidget
 from updates_widget import UpdatesWidget
+from storage_widget import StorageWidget
 
 from panel_help import *
 
@@ -30,6 +31,7 @@ middle_items = [
 ]
 
 right_items = [
+    StorageWidget(),
     VolumeWidget(),
     BatteryWidget(),
     GithubWidget(),
