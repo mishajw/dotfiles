@@ -16,9 +16,9 @@ with open(os.path.join(default_src_dir, "symlinks.json")) as f:
 success = True
 
 for link in json:
-    link_src = link["src"]
+    link_src = os.path.expanduser(link["src"])
     if "dst" in link:
-        link_dst = link["dst"]
+        link_dst = os.path.expanduser(link["dst"])
     else:
         assert not is_absolute("link_src"), \
             "If src is absolute, dst must be given"
