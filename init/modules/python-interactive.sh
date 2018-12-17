@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-PATH="$DF_PYTHON_DIR/bin:$PATH"
+alias python="$DF_PYTHON_DIR/bin/python"
+alias pip="$DF_PYTHON_DIR/bin/pip"
