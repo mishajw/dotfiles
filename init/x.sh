@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
-$scr/util/fix-intellij.sh
+
+# Turn terminal bell off
 xset b off
-setxkbmap gb
+
 # Stop pointer from being X sometimes
 xsetroot -cursor_name left_ptr
+
+# Set up key map
+setxkbmap gb
+setxkbmap -option caps:swapescape
