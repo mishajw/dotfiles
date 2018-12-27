@@ -1,0 +1,45 @@
+font-path: /usr/share/fonts/TTF/DejaVuSansMono.ttf
+font-size: 18
+grid-size: 40
+grid-width: 6
+grid-height: 4
+edge-distance: 10
+
+items:
+- name: pulled-command
+  command: [date, "+%a %e %l:%M:%S %p"]
+  interval-sec: 1.0
+  horizontal-padding: 10
+
+- name: pushed-command
+  interpreter: bash
+  script: $DF_PYTHON $scr/bspwm-workspaces.py
+  trigger-show: true
+
+- name: pulled-command
+  interpreter: bash
+  script: |
+    echo -n "bat: "
+    upower --show-info $(upower --enumerate | grep BAT) | \
+      grep percentage | \
+      grep -Po "[0-9]+%"
+  interval-sec: 60.0
+
+- name: pushed-command
+  interpreter: bash
+  script: |
+    print-vol() {
+      echo -n "vol: "
+      amixer sget Master | grep "Front Left: Playback" | grep -Po "[0-9]+%"
+    }
+    rm $VOLUME_FIFO
+    mkfifo $VOLUME_FIFO
+    print-vol
+    cat $VOLUME_FIFO | while read line; do print-vol; done
+  trigger-show: true
+
+- name: pulled-command
+  interpreter: bash
+  script: |
+    echo "upd: $(yaourt -Qua | wc -l)"
+  interval-sec: 60.0

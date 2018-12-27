@@ -41,5 +41,9 @@
   },
   {
     "src": ".gitignore_global"
+  },
+  {
+    "src": "incredi.yaml",
+    "dst": ".config/incredi/config.yaml"
   }
 ]

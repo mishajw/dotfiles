@@ -22,11 +22,10 @@ export MASTER_SOUND="Master"
 # Window manager
 export BACKGROUND_IMAGE="$imgs/backgrounds/boat-builders.jpg"
 export LOCK_MODE="pixel"
-export PANEL_FIFO="/tmp/panel-fifo"
-export PANEL_HEIGHT=25
 export SXHKD_SHELL="bash"
 export WINDOW_GAP=15
 export WINDOW_RESIZE_INCREMENTS=200
+export VOLUME_FIFO="/tmp/df_volume_fifo"
 
 # Misc
 export EDITOR="vim"
