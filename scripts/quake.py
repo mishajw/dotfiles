@@ -4,7 +4,7 @@
 Toggle a drop-down terminal using termite and xdotool
 """
 
-from subprocess import run, call, Popen, DEVNULL, PIPE
+from subprocess import run, Popen, DEVNULL, PIPE
 from typing import Optional, Tuple
 import argparse
 import os
@@ -38,9 +38,12 @@ def main(
         window_id = create_window(command)
         is_new_window = True
         store_window_id(window_id, tag, window_id_directory)
-    if is_window_visible(window_id) and not is_new_window:
-        LOG.info("Making window invisible")
-        set_window_visible(window_id, False)
+    if is_window_visible(window_id):
+        if not is_window_focused(window_id):
+            focus_window(window_id)
+        elif not is_new_window:
+            LOG.info("Making window invisible")
+            set_window_visible(window_id, False)
     else:
         set_window_geom(window_id, location)
         set_window_visible(window_id, True)
@@ -147,6 +150,14 @@ def get_desktop_size() -> Tuple[int, int]:
         ["xdotool", "getdisplaygeometry"], stdout=PIPE).stdout.decode()
     desktop_x_str, desktop_y_str = desktop_size_str.strip().split()
     return int(desktop_x_str), int(desktop_y_str)
+
+def is_window_focused(window_id: int) -> bool:
+    focused_id = run(
+        ["xdotool", "getwindowfocus"], stdout=PIPE).stdout.decode().strip()
+    return int(focused_id) == window_id
+
+def focus_window(window_id: int):
+    focused_id = run(["xdotool", "windowactivate", str(window_id)], check=True)
 
 if __name__ == "__main__":
     # Set up logging
