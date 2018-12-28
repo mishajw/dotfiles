@@ -6,7 +6,10 @@ super + r
 super + space
   $scr/launcher.sh
 super + grave
-  $DF_PYTHON $scr/quake.py --tag term --command termite
+  $DF_PYTHON $scr/quake.py --tag term --command termite --border 2
+super + shift + grave
+  $DF_PYTHON $scr/quake.py --tag browse --command "$BROWSER" \
+    --side right --percent 0.45 --border 4
 super + ctrl + c
   networkmanager_dmenu
 

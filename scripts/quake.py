@@ -5,32 +5,44 @@ Toggle a drop-down terminal using termite and xdotool
 """
 
 from subprocess import run, call, Popen, DEVNULL, PIPE
-import time
-import os
+from typing import Optional, Tuple
 import argparse
-from typing import Optional
+import os
+import re
+import time
+import logging
+from collections import namedtuple
 
+LOG = logging.getLogger(__name__)
 CLASS_NAME = "quake"
 DISPLAY = os.environ["DISPLAY"]
 
-def main(tag: str, command: str, window_id_directory: str):
+LocationConfig = namedtuple(
+    "LocationConfig",
+    ["side", "percent", "padding", "edge_distance", "border"])
+
+def main(
+        tag: str,
+        command: str,
+        window_id_directory: str,
+        location: LocationConfig):
     if not os.path.isdir(window_id_directory):
+        LOG.debug("Creating directory to store window IDs")
         os.makedirs(window_id_directory)
 
     # Get the window ID, creating the window if it doesn't exist
     window_id = get_window_id(tag, window_id_directory)
     is_new_window = False
     if not window_id or not is_window_alive(window_id):
-        print("Creating windows")
+        LOG.info("Creating windows")
         window_id = create_window(command)
         is_new_window = True
         store_window_id(window_id, tag, window_id_directory)
     if is_window_visible(window_id) and not is_new_window:
-        print("Making window invisible")
+        LOG.info("Making window invisible")
         set_window_visible(window_id, False)
     else:
-        print("Making window visible")
-        set_window_geom(window_id)
+        set_window_geom(window_id, location)
         set_window_visible(window_id, True)
 
 def get_window_id(tag: str, window_id_directory: str) -> Optional[int]:
@@ -69,29 +81,99 @@ def is_window_visible(window_id: int) -> bool:
     return str(window_id) in visible_windows
 
 def set_window_visible(window_id: int, visible: bool):
+    LOG.info("Setting window visible to %s", visible)
     if visible:
         run(["xdotool", "windowmap", str(window_id)]);
     else:
         run(["xdotool", "windowunmap", str(window_id)]);
 
-def set_window_geom(window_id: int):
-    height = os.environ["PANEL_HEIGHT"]
+def set_window_geom(window_id: int, location: LocationConfig):
+    set_window_floating(window_id)
+    desktop_width, desktop_height = get_desktop_size()
+    LOG.debug("Found desktop size of %d, %d", desktop_width, desktop_height)
+
+    if location.side == "top" or location.side == "bottom":
+        window_width = desktop_width \
+            - location.border * 2 - location.padding * 2
+        window_height = int(desktop_height * location.percent)
+    else:
+        window_width = int(desktop_width * location.percent)
+        window_height = desktop_height \
+            - location.border * 2 - location.padding * 2
+    LOG.debug("Setting window size to %d, %d", window_width, window_height)
+
+    # TODO: Can we simplify this?
+    if location.side == "top" :
+        window_x = location.padding
+        window_y = location.edge_distance
+    elif location.side == "left":
+        window_x = location.edge_distance
+        window_y = location.padding
+    elif location.side == "bottom":
+        window_x = location.padding
+        window_y = desktop_height - window_height \
+            - location.border * 2 - location.edge_distance
+    elif location.side == "right":
+        window_x = desktop_width - window_width \
+            - location.border * 2 - location.edge_distance
+        window_y = location.padding
+    LOG.debug("Setting window location to %d, %d", window_x, window_y)
+
+    # Fix strange issue with y=0 making window appear in middle of screen
+    if window_y == 0:
+        window_y = 1
+
+    run(
+        ["xdotool", "windowmove", str(window_id), str(window_x), str(window_y)],
+        check=True)
+    run(["xdotool", "windowsize", str(window_id),
+        str(window_width), str(window_height)],
+        check=True)
+
+def set_window_floating(window_id: int):
+    LOG.debug("Setting window classname to %s", CLASS_NAME)
     run(
         ["xdotool", "set_window", "--classname", CLASS_NAME, str(window_id)],
         check=True)
-    run(["bspc", "rule", "--add", "*:" + CLASS_NAME,
-        "state=floating", "sticky=on", "border=on"], check=True)
-    run(
-        ["xdotool", "windowmove", str(window_id), "0", height],
-        check=True)
-    run(["xdotool", "windowsize", str(window_id), "2556", "400"], check=True)
+
+    rules = run(["bspc", "rule", "--list"], stdout=PIPE).stdout.decode()
+    if CLASS_NAME not in rules:
+        LOG.debug("Adding BSPWM rule to float classnmae")
+        run(["bspc", "rule", "--add", "*:" + CLASS_NAME,
+            "state=floating", "sticky=on"], check=True)
+
+def get_desktop_size() -> Tuple[int, int]:
+    desktop_size_str = run(
+        ["xdotool", "getdisplaygeometry"], stdout=PIPE).stdout.decode()
+    desktop_x_str, desktop_y_str = desktop_size_str.strip().split()
+    return int(desktop_x_str), int(desktop_y_str)
 
 if __name__ == "__main__":
+    # Set up logging
+    logging.basicConfig()
+    logging.getLogger().setLevel(logging.DEBUG)
+
+    # Set up command line arguments
     parser = argparse.ArgumentParser("quake")
     parser.add_argument("--tag", type=str, required=True)
     parser.add_argument("--command", type=str, required=True)
     parser.add_argument("--window-id-directory", type=str,
         default="/tmp/quake-window-ids")
+    parser.add_argument("--side", choices=["top", "bottom", "left", "right"],
+        default="top")
+    parser.add_argument("--percent", type=float, default=0.3)
+    parser.add_argument("--padding", type=int, default=20)
+    parser.add_argument("--edge-distance", type=int, default=0)
+    parser.add_argument("--border", type=int, default=0)
     args = parser.parse_args()
 
-    main(args.tag, args.command, args.window_id_directory)
+    main(
+        args.tag,
+        args.command,
+        args.window_id_directory,
+        LocationConfig(
+            args.side,
+            args.percent,
+            args.padding,
+            args.edge_distance,
+            args.border))
