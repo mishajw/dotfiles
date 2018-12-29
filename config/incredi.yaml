@@ -1,9 +1,4 @@
 font-path: /usr/share/fonts/TTF/DejaVuSansMono.ttf
-font-size: 18
-grid-size: 40
-grid-width: 6
-grid-height: 4
-edge-distance: 10
 
 items:
 - name: pulled-command
