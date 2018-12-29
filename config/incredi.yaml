@@ -7,7 +7,7 @@ edge-distance: 10
 
 items:
 - name: pulled-command
-  command: [date, "+%a %e %l:%M:%S %p"]
+  command: [date, "+%a %e %-l:%M:%S %p"]
   interval-sec: 1.0
   horizontal-padding: 10
 
