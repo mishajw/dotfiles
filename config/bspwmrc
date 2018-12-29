@@ -69,6 +69,7 @@ start-process() {
   new_pid=$!
   echo $new_pid > $pid_file
 }
-start-process incredi "$HOME/.cargo/bin/incredi-panel"
+start-process incredi "$HOME/.cargo/bin/incredi"
+start-process incredi-super-tap "$DF_PYTHON $scr/incredi-super-tap.py"
 start-process compton "compton"
 start-process sxhkd "sxhkd"
