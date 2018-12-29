@@ -30,3 +30,7 @@ items:
   interpreter: bash
   script: "echo upd: $(yaourt -Qua | wc -l)"
   interval-sec: 60.0
+
+- name: pulled-command
+  command: [env, "TZ=America/Los_Angeles", date, "+%-l%p PST"]
+  interval-sec: 1.0
