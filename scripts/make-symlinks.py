@@ -2,6 +2,7 @@
 
 import json
 import os
+import argparse
 
 def is_absolute(path: str) -> bool:
     return len(path) > 0 and (path[0] == "~" or path[0] == "/")
@@ -9,13 +10,19 @@ def is_absolute(path: str) -> bool:
 default_src_dir = os.environ["cnf"] if "cnf" in os.environ else \
     os.path.join(os.environ["HOME"], "dotfiles", "config")
 default_dst_dir = os.environ["HOME"]
+default_symlinks_path = os.path.join(default_src_dir, "symlinks.json")
 
-with open(os.path.join(default_src_dir, "symlinks.json")) as f:
-    json = json.load(f)
+parser = argparse.ArgumentParser("make-symlinks")
+parser.add_argument("--symlinks", type=str, default=default_symlinks_path)
+args = parser.parse_args()
+symlinks_path = args.symlinks
+
+with open(symlinks_path) as f:
+    links_json = json.load(f)
 
 success = True
 
-for link in json:
+for link in links_json:
     link_src = os.path.expanduser(link["src"])
     if "dst" in link:
         link_dst = os.path.expanduser(link["dst"])
