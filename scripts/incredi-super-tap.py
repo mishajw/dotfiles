@@ -1,18 +1,20 @@
 #!/usr/bin/env python
 
-import subprocess
 import io
 import os
+import subprocess
 
-KEYBOARD_ID = 10
 SUPER_KEY_ID = 133
 INCREDIC = os.path.join(os.environ["HOME"], ".cargo/bin/incredic")
+KEYBOARD_NAME = os.environ["KEYBOARD_NAME"]
 
 def super_tapped():
     subprocess.run([INCREDIC, "--command", "show"])
 
+keyboard_id = int(subprocess.check_output(
+    ["xinput", "--list", "--id-only", KEYBOARD_NAME]))
 xinput_process = subprocess.Popen(
-    ["xinput", "test", str(KEYBOARD_ID)], stdout=subprocess.PIPE)
+    ["xinput", "test", str(keyboard_id)], stdout=subprocess.PIPE)
 last_pressed = None
 for line in io.TextIOWrapper(xinput_process.stdout, encoding="utf-8"):
     _, mode, key_id = line.strip().split()

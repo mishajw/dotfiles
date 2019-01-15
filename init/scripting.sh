@@ -26,6 +26,7 @@ export SXHKD_SHELL="bash"
 export WINDOW_GAP=15
 export WINDOW_RESIZE_INCREMENTS=200
 export VOLUME_FIFO="/tmp/df_volume_fifo"
+export KEYBOARD_NAME="LiteOn Lenovo Traditional USB Keyboard"
 
 # Misc
 export EDITOR="vim"
