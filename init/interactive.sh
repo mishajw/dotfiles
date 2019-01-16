@@ -33,6 +33,7 @@ alias ip-pub="curl -s ipinfo.io | grep -oE '\"ip\": \"(.*)\"' | sed 's/\"ip\": /
 pf() { pip freeze | grep $1 >> requirements.txt; }
 wt() { while true; do $@; done; }
 alias browse="google-chrome-stable --force-device-scale-factor=1.2"
+loop() { while true; do eval $@; done; }
 
 [ -f $local/interactive.sh ] && source $local/interactive.sh
 
