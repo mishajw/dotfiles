@@ -18,7 +18,7 @@
   cam = commit --amend
   cf = commit --fixup
   cl = "!f() { git clone ssh://git@github.com/$*; }; f"
-  bl = "!f() { git branch --list | fzf | sed 's/\\*//g' | xargs git checkout; }' f"
+  bl = "!f() { git branch --list | fzf | sed 's/\\*//g' | xargs git checkout; }; f"
   co = checkout
   d = diff
   ds = diff --staged
