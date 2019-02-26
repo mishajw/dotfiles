@@ -16,7 +16,7 @@
   c = "!f() { git commit --message \"$*\"; }; f"
   ca = "!f() { git commit --all --message \"$*\"; }; f"
   cam = commit --amend
-  cf = commit --fixup
+  cf = "!f() { git log --oneline --author Misha | fzf | awk '{print $1}' | xargs -I% git commit --fixup %; }; f"
   cl = "!f() { git clone ssh://git@github.com/$*; }; f"
   bl = "!f() { git branch --list | fzf | sed 's/\\*//g' | xargs git checkout; }; f"
   co = checkout
