@@ -46,7 +46,7 @@ fi
 feh --bg-fill $BACKGROUND_IMAGE
 
 # Set rules for panel
-bspc rule --add incredi sticky=on border=off
+bspc rule --add incredi sticky=on border=off layer=above
 
 # Start processes needed for BSPWM
 pid_dir=/tmp/dotfiles_pids
