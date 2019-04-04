@@ -31,12 +31,10 @@
   pl = pull
   psup = push --set-upstream origin $(git_current_branch)
   rao = remote add origin
-  rb = rebase
+  rb = rebase --interactive --autosquash
   rba = rebase --abort
-  rbas = rebase --interactive --autosquash
   rbc = rebase --continue
-  rbi = rebase --interactive
-  rbih = rebase --interactive HEAD~20
+  rbh = rebase --interactive HEAD~20
   s = status
   sh = show
   shf = show --name-only
