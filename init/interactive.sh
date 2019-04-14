@@ -9,6 +9,7 @@ source $init/modules/exa.sh
 source $init/modules/git.sh
 source $init/modules/global-aliases.sh
 source $init/modules/mac.sh
+source $init/modules/mycloud.sh
 source $init/modules/python-interactive.sh
 source $init/modules/sl.sh
 source $init/modules/systemctl.sh
