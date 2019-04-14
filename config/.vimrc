@@ -45,6 +45,10 @@ filetype plugin indent on    " required
 " CtrlP
 let g:ctrlp_show_hidden = 1
 
+" Vimtex
+let g:vimtex_view_general_viewer = 'evince'
+let g:vimtex_compiler_latexmk = {'build_dir': './.vimtex-output'}
+
 " Enable syntax highlighting
 syntax on
 set t_Co=256
