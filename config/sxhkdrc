@@ -72,6 +72,9 @@ super + {q,e}
 # Focus the next/previous desktop
 super + shift + {q,e}
 	bspc desktop --focus {prev,next}.local
+# Rotate the root node on the current workspace
+super + shift + r
+  bspc node @/ --rotate 90
 
 # BSPWM preselection
 # Preselect the direction
