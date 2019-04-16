@@ -5,6 +5,5 @@ URL="https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party
 INSTALL_DIR="$prog/diff-so-fancy"
 INSTALL_PATH="$INSTALL_DIR/diff-so-fancy"
 mkdir -p $INSTALL_DIR
-curl $URL > $INSTALL_PATH
+curl $URL >$INSTALL_PATH
 chmod +x $INSTALL_PATH
-

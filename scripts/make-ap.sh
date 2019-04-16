@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 if [[ $EUID -ne 0 ]]; then
-   echo "Root required to make AP"
-   exit 1
+  echo "Root required to make AP"
+  exit 1
 fi
 
 rfkill unblock all

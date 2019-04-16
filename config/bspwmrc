@@ -67,7 +67,7 @@ start-process() {
     >$dflogs/${tag}_stdout$DISPLAY.log \
     2>$dflogs/${tag}_stderr$DISPLAY.log &"
   new_pid=$!
-  echo $new_pid > $pid_file
+  echo $new_pid >$pid_file
 }
 start-process incredi "$HOME/.cargo/bin/incredi"
 start-process incredi-super-tap "$DF_PYTHON $scr/incredi-super-tap.py"

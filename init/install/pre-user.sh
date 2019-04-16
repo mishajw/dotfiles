@@ -7,11 +7,11 @@ read -p "Hostname: " hostname
 
 # Setup locale
 locale-gen
-echo "LANG=$locale" > /etc/locale.conf
+echo "LANG=$locale" >/etc/locale.conf
 
 # Setup keyboard layout
 loadkeys $keyboard
-echo "KEYMAP=$keyboard" >> /etc/vconsole.conf
+echo "KEYMAP=$keyboard" >>/etc/vconsole.conf
 
 # Setup time
 ln -s /usr/share/zoneinfo/Europe/London /etc/localetime
@@ -21,17 +21,16 @@ hooks="base udev autodetect modconf block encrypt lvm2 btrfs resume filesystems 
 sed "s/^HOOKS\=\".*\"/HOOKS=\"$hooks\"/g" -i /etc/mkinitcpio.conf
 
 # Install btrfs
-pacman -S btrfs-progs --noconfirm 
+pacman -S btrfs-progs --noconfirm
 
 # Build kernel
 mkinitcpio -p linux
 
 # Set hostname
-echo $hostname > /etc/hostname
+echo $hostname >/etc/hostname
 
 # Setup boot
 pacman -S refind-efi --noconfirm
 refind-install
 
 echo "Done. Unmount and reboot."
-

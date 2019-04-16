@@ -9,4 +9,3 @@ else
   bspc config -d focused window_gap 0
   echo "Removing gap"
 fi
-

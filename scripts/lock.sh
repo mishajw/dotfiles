@@ -11,4 +11,3 @@ fi
 
 i3lock --ignore-empty-password --image $IMAGE
 rm $IMAGE
-

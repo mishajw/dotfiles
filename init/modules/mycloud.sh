@@ -3,7 +3,7 @@
 MYCLOUD_IP=192.168.1.218
 MYCLOUD_DIRECTORY=/mnt/mycloud
 
-mycloud () {
+mycloud() {
   echo Mounting mycloud at $MYCLOUD_IP at $MYCLOUD_DIRECTORY
   mkdir -p $MYCLOUD_DIRECTORY
   sudo mount --types cifs \

@@ -14,6 +14,5 @@ else
   exit
 fi
 
-amixer sset $MASTER_SOUND $MODIFIER > /dev/null
-echo "updated" > $VOLUME_FIFO
-
+amixer sset $MASTER_SOUND $MODIFIER >/dev/null
+echo "updated" >$VOLUME_FIFO

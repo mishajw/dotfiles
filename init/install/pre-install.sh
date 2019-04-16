@@ -12,7 +12,6 @@ mount /dev/$dev /mnt
 pacstrap -i /mnt base base-devel
 
 # Generate FSTAB file
-genfstab -U /mnt >> /mnt/etc/fstab
+genfstab -U /mnt >>/mnt/etc/fstab
 
 echo "Done. Run 'arch-chroot /mnt' and run the root script."
-

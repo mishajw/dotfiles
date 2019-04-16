@@ -5,4 +5,3 @@ bspc node --focus last &&
   sleep 0.1 &&
   xdotool key Return &&
   bspc node --focus last.local
-
