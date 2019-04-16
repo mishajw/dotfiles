@@ -18,7 +18,7 @@ source $init/modules/yaourt.sh
 source $scr/alias-scripts.sh > /dev/null
 
 # Misc aliases and functions
-alias res="exec zsh"
+alias res='exec /proc/$$/exe'
 alias dua="du -sh *"
 csvview () { column -s, -t < $@ | less -#2 -N -S; }
 alias gourcec="gource -f -s 1 -a 1"
