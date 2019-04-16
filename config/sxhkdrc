@@ -30,8 +30,6 @@ super + g
   $scr/toggle-gap.sh
 super + p
   $scr/switch-window.sh
-super + a
-  pgrep panel.py && killall panel.py || $PANEL_PATH/panel.py &
 super + ctrl + alt + z
   $scr/lock.sh
 super + Print
