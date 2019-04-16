@@ -2,7 +2,7 @@ font-path: /usr/share/fonts/TTF/DejaVuSansMono.ttf
 
 items:
 - name: pulled-command
-  command: [date, "+%a %e %-l:%M:%S %p"]
+  command: [date, "+%a %e %l:%M:%S %p"]
   interval-sec: 1.0
   horizontal-padding: 10
 
