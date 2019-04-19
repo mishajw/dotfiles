@@ -11,7 +11,7 @@ else
       grep -Po "[0-9]+"
   )
   if upower --show-info $battery_name |
-    grep 'state:.*charging' >/dev/null; then
+    grep 'state:.*\bcharging' >/dev/null; then
     percentage="+$percentage"
   fi
 fi
