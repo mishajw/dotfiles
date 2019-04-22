@@ -1,4 +1,5 @@
 font-path: /usr/share/fonts/TTF/DejaVuSansMono.ttf
+grid-height: 5
 
 items:
 - name: pulled-command
@@ -29,3 +30,8 @@ items:
 - name: pulled-command
   command: [env, "TZ=America/Los_Angeles", date, "+%-l%p PST"]
   interval-sec: 1.0
+
+- name: pulled-command
+  interpreter: bash
+  script: $scr/panel/ip.sh
+  interval-sec: 10.0

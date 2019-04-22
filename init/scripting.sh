@@ -29,6 +29,7 @@ export VOLUME_FIFO="/tmp/df_volume_fifo"
 export KEYBOARD_NAME="LiteOn Lenovo Traditional USB Keyboard"
 
 # Misc
+export IP_DEVICE="wlan0"
 export EDITOR="vim"
 export LANG=en_GB.UTF-8
 export LANGUAGE="$LANG"
