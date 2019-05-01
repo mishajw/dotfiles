@@ -15,6 +15,7 @@ source $init/modules/sl.sh
 source $init/modules/systemctl.sh
 source $init/modules/vim.sh
 source $init/modules/yaourt.sh
+source $init/modules/ydiff.sh
 source $scr/alias-scripts.sh >/dev/null
 
 # Misc aliases and functions

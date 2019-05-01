@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+$DF_PIP freeze | grep -i ydiff > /dev/null || return
+alias yd="git diff | python -m ydiff --side-by-side --width 100"
+alias yds="git diff --staged | python -m ydiff --side-by-side --width 100"
