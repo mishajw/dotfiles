@@ -3,6 +3,7 @@
 source $HOME/dotfiles/init/scripting.sh
 
 source $init/modules/apt-get.sh
+source $init/modules/calc.sh
 source $init/modules/cargo.sh
 source $init/modules/displays.sh
 source $init/modules/exa.sh
@@ -41,7 +42,6 @@ pf() { pip freeze | grep $1 >>requirements.txt; }
 wt() { while true; do $@; done; }
 alias browse="google-chrome-stable --force-device-scale-factor=1.2"
 loop() { while true; do eval $@; done; }
-alias calc="bc -l <<<"
 
 [ -f $local/interactive.sh ] && source $local/interactive.sh
 
