@@ -1,0 +1,12 @@
+[[filter]]
+label = "edu"
+query = "PhD to:connectionists"
+
+[[filter]]
+label = "edu"
+archive = true
+query = "-PhD to:connectionists"
+
+[[filter]]
+archive = true
+query = "from:linkedin.com"
