@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-alias python="$DF_PYTHON_DIR/bin/python"
-alias pip="$DF_PYTHON_DIR/bin/pip"
+alias dpy="$DF_PYTHON_DIR/bin/python"
+alias dpip="$DF_PYTHON_DIR/bin/pip"
