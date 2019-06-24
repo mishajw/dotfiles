@@ -21,7 +21,7 @@ export MASTER_SOUND="Master"
 
 # Window manager
 export BACKGROUND_IMAGE="$imgs/backgrounds/boat-builders.jpg"
-export LOCK_MODE="pixel"
+export LOCK_MODE="gradient"
 export SXHKD_SHELL="bash"
 export WINDOW_GAP=15
 export WINDOW_RESIZE_INCREMENTS=200
