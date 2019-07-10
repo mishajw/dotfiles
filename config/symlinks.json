@@ -45,5 +45,8 @@
   {
     "src": "incredi.yaml",
     "dst": ".config/incredi/config.yaml"
+  },
+  {
+    "src": ".Xresources"
   }
 ]
