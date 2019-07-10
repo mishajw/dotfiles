@@ -27,8 +27,10 @@ def get_input() -> np.array:
         if line.strip()])
 
 def get_correlation(xss) -> float:
-    assert xss.shape[1] == 2
-    return np.corrcoef([xs[0] for xs in xss], [xs[1] for xs in xss])[0, 1]
+    if xss.shape[1] == 2:
+        return np.corrcoef([xs[0] for xs in xss], [xs[1] for xs in xss])[0, 1]
+    else:
+        return np.corrcoef(xss.transpose())
 
 def get_avg_ratio(xss) -> float:
     assert xss.shape[1] == 2
@@ -42,6 +44,7 @@ def get_quantiles(xs) -> List[float]:
 MODE_DICT = {
     "sum": np.sum,
     "mean": np.mean,
+    "med": np.median,
     "std": np.std,
     "min": np.min,
     "max": np.max,
