@@ -10,6 +10,4 @@ size=$(xdpyinfo | grep dimensions | grep -P '\d+x\d+' -o | head -1)
 # Create all-white image
 convert -size $size xc:white $img
 # Apply gradient
-convert $img \( +clone -fx '0.5-(j/h)/2' \) -compose multiply -composite $img
-# Apply pixelization
-convert $img -scale 1% -scale 10000% $img
+convert $img \( +clone -fx '0.5-(int(j)/h)/2' \) -compose multiply -composite $img
