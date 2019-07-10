@@ -10,3 +10,11 @@ query = "-PhD to:connectionists"
 [[filter]]
 archive = true
 query = "from:linkedin.com"
+
+[[filter]]
+label = "gbp"
+archive = true
+queryOr = [
+  "to:support@tesco.com",
+  "to:no-reply@digitalocean.com",
+]
