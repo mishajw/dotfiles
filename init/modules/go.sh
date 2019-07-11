@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-command -v go 1>/dev/null || return
+command -v go 1>/dev/null || return 0
 export GOROOT=$(go env | grep GOROOT | sed 's/GOROOT=//g;s/"//g')
 export GOPATH=$HOME/src/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH

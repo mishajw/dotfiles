@@ -6,12 +6,12 @@ pacman-install python
 python_version=$($SYSTEM_PYTHON -V)
 if [[ $python_version != *"3.6"* && $python_version != *"3.7"* ]]; then
   echo "Bad python version: $python_version"
-  return
+  return 0
 fi
 
 # If the python directory already exists, we're done
 if [ -d $DF_PYTHON_DIR ]; then
-  return
+  return 0
 fi
 
 # Set up the virtual env

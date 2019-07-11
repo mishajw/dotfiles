@@ -13,11 +13,11 @@ g-rm-branch() {
   current_branch=$(git rev-parse --abbrev-ref HEAD)
   if ! git branch | grep -q "master"; then
     echo "No master branch"
-    return
+    return 0
   fi
   if [[ "$current_branch" == "master" ]]; then
     echo "Can't delete master branch"
-    return
+    return 0
   fi
 
   echo "Deleting branch $current_branch"

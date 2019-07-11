@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-command -v brew 1>/dev/null || return
+command -v brew 1>/dev/null || return 0
 
 brew-permissions() {
   sudo chown -R $(whoami) \

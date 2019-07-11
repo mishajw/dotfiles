@@ -2,7 +2,7 @@
 
 if [ $# -lt 1 ]; then
   echo "Usage: $0 <file to backup> <optional -r>"
-  return
+  return 0
 fi
 
 FILE_TO_BACKUP=$1

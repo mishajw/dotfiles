@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-command -v cargo 1>/dev/null || return
+command -v cargo 1>/dev/null || return 0
 alias c="cargo"
 alias cr="c run"
 alias cb="c build"
