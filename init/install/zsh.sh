@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+pacman-install zsh
+
 ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 if [[ -e "$ZSH_CUSTOM" ]]; then
   exit

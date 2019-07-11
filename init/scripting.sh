@@ -46,5 +46,9 @@ export BROWSER="google-chrome-stable --force-device-scale-factor=\$CHROME_SCALE_
 
 [ -f $local/scripting.sh ] && source $local/scripting.sh
 
+pacman-install() {
+  sudo pacman -S $@ --noconfirm --needed
+}
+
 source $init/modules/python.sh
 source $init/modules/go.sh
