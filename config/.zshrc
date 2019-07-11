@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=/usr/share/oh-my-zsh
 
 # ZSH theme
 ZSH_THEME="garyblessington"
@@ -18,7 +18,6 @@ HIST_STAMPS="yyyy-mm-dd"
 # Load oh-my-zsh
 plugins=(sudo zsh-syntax-highlighting zsh-autosuggestions fzf-zsh)
 source $ZSH/oh-my-zsh.sh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Turn off autocorrect
 unsetopt correct_all

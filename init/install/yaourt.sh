@@ -8,5 +8,3 @@ cd ..
 git clone https://aur.archlinux.org/yaourt.git
 cd yaourt
 makepkg -si
-
-alias y=yaourt
