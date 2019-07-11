@@ -9,16 +9,16 @@ export ZSH_SUGGESTIONS=$ZSH_PLUGINS/zsh-autosuggestions
 export ZSH_FZF=$ZSH_PLUGINS/fzf
 export ZSH_FZF_PLUGIN=$ZSH_PLUGINS/fzf-zsh
 
-if [[ -e "$ZSH_SYNTAX" ]]; then
+if [[ ! -e "$ZSH_SYNTAX" ]]; then
   echo "Setting up syntax highlighting"
-  git clone \
+  sudo git clone \
     https://github.com/zsh-users/zsh-syntax-highlighting.git \
     $ZSH_SYNTAX
 fi
 
-if [[ -e "$ZSH_SUGGESTIONS" ]]; then
+if [[ ! -e "$ZSH_SUGGESTIONS" ]]; then
   echo "Setting up auto-suggestions"
-  git clone \
+  sudo git clone \
     https://github.com/zsh-users/zsh-autosuggestions \
     $ZSH_SUGGESTIONS
 fi
