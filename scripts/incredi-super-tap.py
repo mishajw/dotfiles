@@ -2,6 +2,7 @@
 
 import io
 import os
+import re
 import subprocess
 
 SUPER_KEY_ID = 133
@@ -11,8 +12,15 @@ KEYBOARD_NAME = os.environ["KEYBOARD_NAME"]
 def super_tapped():
     subprocess.run([INCREDIC, "--command", "show"])
 
-keyboard_id = int(subprocess.check_output(
-    ["xinput", "--list", "--id-only", KEYBOARD_NAME]))
+def get_keyboard_id() -> int:
+    output = subprocess.check_output(["xinput", "--list"]).decode().split("\n")
+    for line in output:
+        if KEYBOARD_NAME not in line:
+            continue
+        return int(re.search("id=(\d)+", line).group(1))
+    raise AssertionError(f"No keyboard with name {KEYBOARD_NAME} found")
+
+keyboard_id = get_keyboard_id()
 xinput_process = subprocess.Popen(
     ["xinput", "test", str(keyboard_id)], stdout=subprocess.PIPE)
 last_pressed = None
