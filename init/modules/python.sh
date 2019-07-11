@@ -6,7 +6,7 @@ export DF_PIP="$df/.env/bin/pip"
 
 # Check the system python version
 python_version=$($SYSTEM_PYTHON -V)
-if [[ $python_version != *"3.6"* ]]; then
+if [[ $python_version != *"3.6"* && $python_version != *"3.7"* ]]; then
   echo "Bad python version: $python_version"
   return
 fi
