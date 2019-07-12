@@ -24,8 +24,8 @@ git checkout master
 
 source $HOME/dotfiles/init/scripting.sh
 
-echo "Setting up yaourt"
-$init/install/yaourt.sh
+echo "Setting up yay"
+$init/install/yay.sh
 echo "Setting up python"
 $init/install/python.sh
 echo "Setting up zsh"

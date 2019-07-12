@@ -9,4 +9,4 @@ done <font-list
 
 echo $all_packages
 
-yaourt -S $all_packages
+yay -S $all_packages

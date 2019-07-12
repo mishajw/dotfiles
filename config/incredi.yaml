@@ -24,7 +24,7 @@ items:
 
 - name: pulled-command
   interpreter: bash
-  script: "echo upd: $(yaourt -Qua | wc -l)"
+  script: "echo upd: $((checkupdates & yay -Qum) 2>/dev/null | wc -l)"
   interval-sec: 60.0
 
 - name: pulled-command
