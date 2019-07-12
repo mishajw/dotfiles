@@ -17,7 +17,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # Load oh-my-zsh
 plugins=(sudo zsh-syntax-highlighting zsh-autosuggestions fzf-zsh)
-source $OH_MY_ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 # Turn off autocorrect
 unsetopt correct_all
