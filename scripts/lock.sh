@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-IMAGE="/tmp/screen.png"
+IMAGE="/tmp/lock-screen.png"
 
 if [ "$LOCK_MODE" == "blur" ]; then
   scrot $IMAGE
