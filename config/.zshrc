@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-export ZSH=/usr/share/oh-my-zsh
+source $HOME/dotfiles/init/interactive.sh
 
 # ZSH theme
 ZSH_THEME="garyblessington"
@@ -17,7 +17,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # Load oh-my-zsh
 plugins=(sudo zsh-syntax-highlighting zsh-autosuggestions fzf-zsh)
-source $ZSH/oh-my-zsh.sh
+source $OH_MY_ZSH/oh-my-zsh.sh
 
 # Turn off autocorrect
 unsetopt correct_all
@@ -40,5 +40,3 @@ pastefinish() {
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
-
-source $HOME/dotfiles/init/interactive.sh

@@ -2,8 +2,7 @@
 
 pacman-install zsh oh-my-zsh
 
-export ZSH=/usr/share/oh-my-zsh
-export ZSH_PLUGINS=$ZSH/custom/plugins
+export ZSH_PLUGINS=$OH_MY_ZSH/custom/plugins
 export ZSH_SYNTAX=$ZSH_PLUGINS/zsh-syntax-highlighting
 export ZSH_SUGGESTIONS=$ZSH_PLUGINS/zsh-autosuggestions
 export ZSH_FZF=$ZSH_PLUGINS/fzf
