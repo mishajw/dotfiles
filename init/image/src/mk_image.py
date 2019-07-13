@@ -10,7 +10,7 @@ from typing import List
 
 LOG = logging.getLogger(__name__)
 
-MAIN_DIRECTORY = Path(os.environ["HOME"]) / "dotfiles" / "mk-image"
+MAIN_DIRECTORY = Path(os.environ["HOME"]) / "dotfiles" / "init" / "image"
 SRC_DIRECTORY = MAIN_DIRECTORY / "src"
 OUTPUT_DIRECTORY = MAIN_DIRECTORY / "output"
 IMAGE_DIRECTORY = OUTPUT_DIRECTORY / "image.qcow2"
