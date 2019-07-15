@@ -99,7 +99,7 @@ def set_window_visible(window_id: int, visible: bool):
 
 def set_window_geom(window_id: int, location: LocationConfig):
     set_window_floating(window_id)
-    desktop_width, desktop_height = get_desktop_size()
+    desktop_width, desktop_height, desktop_x, desktop_y = get_desktop_geometry()
     LOG.debug("Found desktop size of %d, %d", desktop_width, desktop_height)
 
     if location.side == "top" or location.side == "bottom":
@@ -116,27 +116,29 @@ def set_window_geom(window_id: int, location: LocationConfig):
 
     # TODO: Can we simplify this?
     if location.side == "top":
-        window_x = location.padding
-        window_y = location.edge_distance
+        window_x = desktop_x + location.padding
+        window_y = desktop_y + location.edge_distance
     elif location.side == "left":
-        window_x = location.edge_distance
-        window_y = location.padding
+        window_x = desktop_x + location.edge_distance
+        window_y = desktop_y + location.padding
     elif location.side == "bottom":
-        window_x = location.padding
+        window_x = desktop_x + location.padding
         window_y = (
-            desktop_height
+            desktop_y
+            + desktop_height
             - window_height
             - location.border * 2
             - location.edge_distance
         )
     elif location.side == "right":
         window_x = (
-            desktop_width
+            desktop_x
+            + desktop_width
             - window_width
             - location.border * 2
             - location.edge_distance
         )
-        window_y = location.padding
+        window_y = desktop_y + location.padding
     LOG.debug("Setting window location to %d, %d", window_x, window_y)
 
     # Fix strange issue with y=0 making window appear in middle of screen
@@ -178,10 +180,40 @@ def set_window_floating(window_id: int):
         )
 
 
-def get_desktop_size() -> Tuple[int, int]:
-    desktop_size_str = check_output(["xdotool", "getdisplaygeometry"]).decode()
-    desktop_x_str, desktop_y_str = desktop_size_str.strip().split()
-    return int(desktop_x_str), int(desktop_y_str)
+def get_desktop_geometry() -> Tuple[int, int]:
+    xrandr_geometry_regex = re.compile(r"(\d+)x(\d+)\+(\d+)\+(\d+)")
+    focused_x, focused_y = get_focused_location()
+
+    for line in check_output(["xrandr"]).decode().split("\n"):
+        if " connected " not in line:
+            continue
+
+        match = xrandr_geometry_regex.search(line)
+        assert match is not None
+
+        size_x = int(match.group(1))
+        size_y = int(match.group(2))
+        offset_x = int(match.group(3))
+        offset_y = int(match.group(4))
+
+        if (
+            offset_x <= focused_x < offset_x + size_x
+            and offset_y <= focused_y < offset_y + size_y
+        ):
+            return size_x, size_y, offset_x, offset_y
+
+    raise AssertionError("No matching monitor found")
+
+
+def get_focused_location() -> Tuple[int, int]:
+    xdotool_position_regex = re.compile(r"Position: (\d+),(\d+)")
+    window_id = get_active_window_id()
+    window_geometry_str = check_output(
+        ["xdotool", "getwindowgeometry", str(window_id)]
+    ).decode()
+    match = xdotool_position_regex.search(window_geometry_str)
+    assert match is not None
+    return int(match.group(1)), int(match.group(2))
 
 
 def is_window_focused(window_id: int) -> bool:
