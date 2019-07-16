@@ -76,8 +76,11 @@ def create_window(command: str) -> int:
             return current
 
 
-def get_active_window_id() -> int:
-    return int(check_output(["xdotool", "getactivewindow"]).decode())
+def get_active_window_id() -> Optional[int]:
+    output = run(["xdotool", "getactivewindow"], stdout=PIPE)
+    if output.returncode != 0:
+        return None
+    return int(output.stdout.decode())
 
 
 def is_window_visible(window_id: int) -> bool:
@@ -207,13 +210,21 @@ def get_desktop_geometry() -> Tuple[int, int]:
 
 def get_focused_location() -> Tuple[int, int]:
     xdotool_position_regex = re.compile(r"Position: (\d+),(\d+)")
+    xdotool_mouse_regex = re.compile(r"x\:(\d+) y\:(\d+)")
     window_id = get_active_window_id()
-    window_geometry_str = check_output(
-        ["xdotool", "getwindowgeometry", str(window_id)]
-    ).decode()
-    match = xdotool_position_regex.search(window_geometry_str)
-    assert match is not None
-    return int(match.group(1)), int(match.group(2))
+    if window_id is not None:
+        window_geometry_str = check_output(
+            ["xdotool", "getwindowgeometry", str(window_id)]
+        ).decode()
+        match = xdotool_position_regex.search(window_geometry_str)
+        assert match is not None
+        return int(match.group(1)), int(match.group(2))
+    else:
+        # If we can't find the active window, return mouse location
+        mouse_str = check_output(["xdotool", "getmouselocation"]).decode()
+        match = xdotool_mouse_regex.search(mouse_str)
+        assert match is not None
+        return int(match.group(1)), int(match.group(2))
 
 
 def is_window_focused(window_id: int) -> bool:
