@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-pacman-install python
+pacman_install python
 
 # Check the system python version
 python_version=$($SYSTEM_PYTHON -V)

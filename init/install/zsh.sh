@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-pacman-install zsh oh-my-zsh
+pacman_install zsh oh-my-zsh
 
 export ZSH_PLUGINS=$ZSH/custom/plugins
 export ZSH_SYNTAX=$ZSH_PLUGINS/zsh-syntax-highlighting
