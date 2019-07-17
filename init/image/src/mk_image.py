@@ -2,6 +2,7 @@
 
 # pylint: disable=missing-docstring
 
+import argparse
 import logging
 import os
 import subprocess
@@ -25,32 +26,43 @@ OUTPUT_IMAGE_SIZE_GB = 3
 
 
 def main():
+    parser = argparse.ArgumentParser("mk_image")
+    parser.add_argument("--image", type=str, required=True)
+    args = parser.parse_args()
+
     assert SRC_DIRECTORY.is_dir(), "src directory does not exist"
     if not OUTPUT_DIRECTORY.exists():
         LOG.debug("Creating output directory")
         OUTPUT_DIRECTORY.mkdir(parents=True)
 
-    check_command_installed("vagrant")
-    check_command_installed("qemu-imag")
+    check_command_installed("docker")
 
-    if not IMAGE_DIRECTORY.exists():
-        LOG.info("Creating output image %s", IMAGE_DIRECTORY)
-        run_local(
-            [
-                "qemu-img",
-                "create",
-                "-f",
-                "qcow2",
-                IMAGE_DIRECTORY,
-                f"{OUTPUT_IMAGE_SIZE_GB}G",
-            ]
-        )
+    LOG.info("Starting docker container")
+    # TODO: check if container is already running
+    run_local(
+        [
+            "docker",
+            "run",
+            # In background
+            "--detach",
+            # frebib magic
+            "--cap-add=SYS_ADMIN",
+            "--name=mk_image",
+            # Bind image to /dev/image
+            f"--device={args.image}",
+            f"--volume={SRC_DIRECTORY}:{OS_SRC_DIRECTORY}:ro",
+            "archlinux/base",
+            # Run command that never exits
+            "tail",
+            "-f",
+            "/dev/null",
+        ]
+    )
 
-    LOG.info("Starting vagrant")
-    run_local(["vagrant", "up"])
-
-    LOG.info("Stage 0: Mount image")
-    run_os([OS_SRC_DIRECTORY / "00-mount.sh", OS_IMAGE_DIRECTORY])
+    LOG.info("Mounting image")
+    run_os(["mount", args.image, "/mnt"])
+    LOG.info("Syncing packages")
+    run_os(["pacman", "-Sy"])
 
     LOG.info("Stage 1: Installing arch")
     run_os([OS_SRC_DIRECTORY / "01-arch.sh"])
@@ -76,23 +88,18 @@ def run_local(command: List[str]) -> None:
 
 
 def run_os(command: List[str]) -> None:
-    command = build_command(command)
     LOG.debug("Running command on installation OS: %s", command)
-    run_local(["vagrant", "ssh", "--command", f"sudo {command}"])
+    run_local(["docker", "exec", "mk_image", *command])
 
 
 def run_chroot_root(command: List[str]) -> None:
-    command = build_command(command)
     LOG.debug("Running command on image as sudo: %s", command)
-    command = f"sudo arch-chroot /mnt {command}"
-    run_local(["vagrant", "ssh", "--command", command])
+    run_local(["docker", "exec", "mk_image", "arch-chroot", "/mnt", *command])
 
 
 def run_chroot_user(command: List[str]) -> None:
-    command = build_command(command)
     LOG.debug("Running command on image as sudo: %s", command)
-    command = f"sudo arch-chroot /mnt su {USER} --command {command}"
-    run_local(["vagrant", "ssh", "--command", command])
+    run_local(["docker", "exec", "mk_image", "su", USER, "--command", *command])
 
 
 def check_command_installed(command_name: str) -> None:
