@@ -5,7 +5,7 @@
 import argparse
 import logging
 import os
-import subprocess
+from subprocess import check_call
 from pathlib import Path
 from typing import List
 
@@ -24,6 +24,10 @@ OS_IMAGE_DIRECTORY = OS_OUTPUT_DIRECTORY / "image.qcow2"
 USER = "misha"
 OUTPUT_IMAGE_SIZE_GB = 3
 
+OS_CMD = ["docker", "exec", "mk_image"]
+IMG_ROOT_CMD = [*OS_CMD, "arch-chroot", "/mnt"]
+IMG_USER_CMD = [*IMG_ROOT_CMD, "su", USER, "--command"]
+
 
 def main():
     parser = argparse.ArgumentParser("mk_image")
@@ -35,11 +39,9 @@ def main():
         LOG.debug("Creating output directory")
         OUTPUT_DIRECTORY.mkdir(parents=True)
 
-    check_command_installed("docker")
-
     LOG.info("Starting docker container")
     # TODO: check if container is already running
-    run_local(
+    check_call(
         [
             "docker",
             "run",
@@ -60,61 +62,26 @@ def main():
     )
 
     LOG.info("Mounting image")
-    run_os(["mount", args.image, "/mnt"])
+    check_call([*OS_CMD, "mount", args.image, "/mnt"])
     LOG.info("Syncing packages")
-    run_os(["pacman", "-Sy"])
+    check_call([*OS_CMD, "pacman", "-Sy"])
 
     LOG.info("Stage 1: Installing arch")
-    run_os([OS_SRC_DIRECTORY / "01-arch.sh"])
+    check_call([*OS_CMD, OS_SRC_DIRECTORY / "01-arch.sh"])
     LOG.info("Stage 1.1: Linking src to image")
-    run_os(["mkdir", "--parents", "/mnt/host"])
-    run_os(["mount", "--rbind", "/host", "/mnt/host"])
+    check_call([*OS_CMD, "mkdir", "--parents", "/mnt/host"])
+    check_call([*OS_CMD, "mount", "--rbind", "/host", "/mnt/host"])
 
     LOG.info("Stage 2: Setting up user")
-    run_chroot_root([OS_SRC_DIRECTORY / "02-user.sh"])
+    check_call([*IMG_ROOT_CMD, OS_SRC_DIRECTORY / "02-user.sh"])
 
     LOG.info("Stage 3: Setting up dotfiles")
-    run_chroot_user([OS_SRC_DIRECTORY / "03-dotfiles.sh"])
+    check_call([*IMG_USER_CMD, OS_SRC_DIRECTORY / "03-dotfiles.sh"])
 
     LOG.info("Stage 4: Setting up config")
-    run_chroot_root([OS_SRC_DIRECTORY / "04-config.sh"])
+    check_call([*IMG_ROOT_CMD, OS_SRC_DIRECTORY / "04-config.sh"])
 
-    run_os(["umount", "/mnt"])
-
-
-def run_local(command: List[str]) -> None:
-    LOG.debug("Running command: %s", command)
-    subprocess.check_call(command, cwd=str(MAIN_DIRECTORY))
-
-
-def run_os(command: List[str]) -> None:
-    LOG.debug("Running command on installation OS: %s", command)
-    run_local(["docker", "exec", "mk_image", *command])
-
-
-def run_chroot_root(command: List[str]) -> None:
-    LOG.debug("Running command on image as sudo: %s", command)
-    run_local(["docker", "exec", "mk_image", "arch-chroot", "/mnt", *command])
-
-
-def run_chroot_user(command: List[str]) -> None:
-    LOG.debug("Running command on image as sudo: %s", command)
-    run_local(["docker", "exec", "mk_image", "su", USER, "--command", *command])
-
-
-def check_command_installed(command_name: str) -> None:
-    try:
-        run_local(["which", command_name])
-    except subprocess.CalledProcessError as err:
-        raise AssertionError(f"Command {command_name} does not exist", err)
-
-
-def build_command(command: List[str]) -> str:
-    command = list(map(str, command))
-    assert not any(
-        " " in c for c in command
-    ), "Spaces in OS command arguments can break"
-    return " ".join(command)
+    check_call([*OS_CMD, "umount", "/mnt"])
 
 
 if __name__ == "__main__":
