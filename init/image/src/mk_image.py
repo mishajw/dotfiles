@@ -5,9 +5,8 @@
 import argparse
 import logging
 import os
-from subprocess import check_call
+from subprocess import check_call, check_output
 from pathlib import Path
-from typing import List
 
 LOG = logging.getLogger(__name__)
 
@@ -24,13 +23,14 @@ OS_IMAGE_DIRECTORY = OS_OUTPUT_DIRECTORY / "image.qcow2"
 USER = "misha"
 OUTPUT_IMAGE_SIZE_GB = 3
 
-OS_CMD = ["docker", "exec", "mk_image"]
+DOCKER_NAME = "mk_image"
+OS_CMD = ["docker", "exec", DOCKER_NAME]
 IMG_ROOT_CMD = [*OS_CMD, "arch-chroot", "/mnt"]
 IMG_USER_CMD = [*IMG_ROOT_CMD, "su", USER, "--command"]
 
 
 def main():
-    parser = argparse.ArgumentParser("mk_image")
+    parser = argparse.ArgumentParser(DOCKER_NAME)
     parser.add_argument("--image", type=str, required=True)
     args = parser.parse_args()
 
@@ -40,26 +40,26 @@ def main():
         OUTPUT_DIRECTORY.mkdir(parents=True)
 
     LOG.info("Starting docker container")
-    # TODO: check if container is already running
-    check_call(
-        [
-            "docker",
-            "run",
-            # In background
-            "--detach",
-            # frebib magic
-            "--cap-add=SYS_ADMIN",
-            "--name=mk_image",
-            # Bind image to /dev/image
-            f"--device={args.image}",
-            f"--volume={SRC_DIRECTORY}:{OS_SRC_DIRECTORY}:ro",
-            "archlinux/base",
-            # Run command that never exits
-            "tail",
-            "-f",
-            "/dev/null",
-        ]
-    )
+    if DOCKER_NAME not in check_output(["docker", "ps"]):
+        check_call(
+            [
+                "docker",
+                "run",
+                # In background
+                "--detach",
+                # frebib magic
+                "--cap-add=SYS_ADMIN",
+                f"--name={DOCKER_NAME}",
+                # Bind image to /dev/image
+                f"--device={args.image}",
+                f"--volume={SRC_DIRECTORY}:{OS_SRC_DIRECTORY}:ro",
+                "archlinux/base",
+                # Run command that never exits
+                "tail",
+                "-f",
+                "/dev/null",
+            ]
+        )
 
     LOG.info("Mounting image")
     check_call([*OS_CMD, "mount", args.image, "/mnt"])
