@@ -192,7 +192,8 @@ def get_desktop_geometry() -> Tuple[int, int]:
             continue
 
         match = xrandr_geometry_regex.search(line)
-        assert match is not None
+        if match is None:
+            continue
 
         size_x = int(match.group(1))
         size_y = int(match.group(2))
