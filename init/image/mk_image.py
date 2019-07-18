@@ -67,7 +67,13 @@ def main():
 
     LOG.info("Stage 2: Setting up user")
     check_call(
-        [*IMG_ROOT_CMD, *BASH_CMD, (DF / "init" / "user.sh").read_text()]
+        [
+            *IMG_ROOT_CMD,
+            *BASH_CMD,
+            (DF / "init" / "user.sh").read_text(),
+            "--",
+            USER,
+        ]
     )
 
     LOG.info("Stage 3: Setting up dotfiles")
