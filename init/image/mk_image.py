@@ -49,20 +49,17 @@ def main():
             ]
         )
 
-    LOG.info("Stage 0: Mounting image")
+    LOG.info("Stage 1: Installing arch")
     if args.image not in check_output([*OS_CMD, "mount"]).decode():
         check_call([*OS_CMD, "mkfs.ext4", args.image])
         check_call([*OS_CMD, "mount", args.image, "/mnt"])
-        if args.boot is not None:
-            check_call([*OS_CMD, "mount", args.boot, "/mnt/boot"])
-        if args.swap is not None:
-            check_call([*OS_CMD, "swapon", args.swap])
-    LOG.info("Syncing packages")
     check_call([*OS_CMD, "pacman", "-Sy"])
-
-    LOG.info("Stage 1: Installing arch")
     check_call([*OS_CMD, *INSTALL_CMD, "arch-install-scripts"])
     check_call([*OS_CMD, "pacstrap", "/mnt", "base", "base-devel"])
+    if args.boot is not None:
+        check_call([*OS_CMD, "mount", args.boot, "/mnt/boot"])
+    if args.swap is not None:
+        check_call([*OS_CMD, "swapon", args.swap])
     check_call([*OS_CMD, *BASH_CMD, "genfstab -U /mnt >> /mnt/etc/fstab"])
 
     LOG.info("Stage 2: Setting up user")
