@@ -50,6 +50,7 @@ def main():
 
     LOG.info("Stage 0: Mounting image")
     if args.image not in check_output([*OS_CMD, "mount"]).decode():
+        check_call([*OS_CMD, "mkfs.ext4", args.image])
         check_call([*OS_CMD, "mount", args.image, "/mnt"])
     LOG.info("Syncing packages")
     check_call([*OS_CMD, "pacman", "-Sy"])
