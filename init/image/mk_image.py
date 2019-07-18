@@ -24,7 +24,6 @@ IMG_USER_CMD = [*IMG_ROOT_CMD, "su", USER, "--command"]
 def main():
     parser = argparse.ArgumentParser(DOCKER_NAME)
     parser.add_argument("--image", type=str, required=True)
-    parser.add_argument("--swap", type=str, default=None)
     parser.add_argument("--boot", type=str, default=None)
     args = parser.parse_args()
 
@@ -39,8 +38,12 @@ def main():
                 # frebib magic
                 "--cap-add=SYS_ADMIN",
                 f"--name={DOCKER_NAME}",
-                # Bind image to /dev/image
-                f"--device={args.image}",
+                # Bind mountable devices
+                *[
+                    f"--device={device}"
+                    for device in [args.image, args.boot]
+                    if device is not None
+                ],
                 "archlinux/base",
                 # Run command that never exits
                 "tail",
@@ -55,11 +58,9 @@ def main():
         check_call([*OS_CMD, "mount", args.image, "/mnt"])
     check_call([*OS_CMD, "pacman", "-Sy"])
     check_call([*OS_CMD, *INSTALL_CMD, "arch-install-scripts"])
-    check_call([*OS_CMD, "pacstrap", "/mnt", "base", "base-devel"])
     if args.boot is not None:
         check_call([*OS_CMD, "mount", args.boot, "/mnt/boot"])
-    if args.swap is not None:
-        check_call([*OS_CMD, "swapon", args.swap])
+    check_call([*OS_CMD, "pacstrap", "/mnt", "base", "base-devel"])
     check_call([*OS_CMD, *BASH_CMD, "genfstab -U /mnt >> /mnt/etc/fstab"])
 
     LOG.info("Stage 2: Setting up user")
