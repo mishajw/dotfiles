@@ -12,7 +12,6 @@ LOG = logging.getLogger(__name__)
 
 DF = Path(os.environ["df"])
 USER = "misha"
-OUTPUT_IMAGE_SIZE_GB = 3
 
 DOCKER_NAME = "mk_image"
 INSTALL_CMD = ["pacman", "--needed", "--noconfirm", "-S"]
