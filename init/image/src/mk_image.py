@@ -40,7 +40,7 @@ def main():
         OUTPUT_DIRECTORY.mkdir(parents=True)
 
     LOG.info("Starting docker container")
-    if DOCKER_NAME not in check_output(["docker", "ps"]):
+    if DOCKER_NAME not in check_output(["docker", "ps"]).decode():
         check_call(
             [
                 "docker",
