@@ -7,7 +7,7 @@ DF_PATH=$HOME/dotfiles
 REPO_HTTPS='https://github.com/mishajw/dotfiles.git'
 REPO_SSH='git@github.com:mishajw/dotfiles.git'
 
-[[ "$USER" == "misha" ]] || exit 1
+[[ "$USER" != "root" ]] || exit 1
 
 sudo pacman -S git zsh python --noconfirm --needed
 
