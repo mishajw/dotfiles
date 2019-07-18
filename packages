@@ -29,7 +29,6 @@ xorg-xinit
 xorg-xbacklight
 bspwm
 sxhkd
-lemonbar-xft-git
 libxrandr
 feh
 arandr
@@ -57,28 +56,23 @@ otf-inconsolata-lgc
 google-chrome
 termite
 vlc
-thunderbird
 tightvnc
 teamspeak3
 transmission-gtk
-intellij-idea-ultimate-edition
+intellij-idea-community-edition
 clion
 dropbox
-gparted
-cabal-install
-spotify
+parted
 mcomix
+duplicity
 
 # Programming
 jdk8-openjdk
-scala
-scala-docs
-sbt
-typesafe-activator
 cmake
 valgrind
 ghc
 hlint
+rustup
 
 # Virtualbox
 virtualbox
