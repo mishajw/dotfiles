@@ -25,6 +25,8 @@ IMG_USER_CMD = [*IMG_ROOT_CMD, "su", USER, "--command"]
 def main():
     parser = argparse.ArgumentParser(DOCKER_NAME)
     parser.add_argument("--image", type=str, required=True)
+    parser.add_argument("--swap", type=str, default=None)
+    parser.add_argument("--boot", type=str, default=None)
     args = parser.parse_args()
 
     LOG.info("Starting docker container")
@@ -52,6 +54,10 @@ def main():
     if args.image not in check_output([*OS_CMD, "mount"]).decode():
         check_call([*OS_CMD, "mkfs.ext4", args.image])
         check_call([*OS_CMD, "mount", args.image, "/mnt"])
+        if args.boot is not None:
+            check_call([*OS_CMD, "mount", args.boot, "/mnt/boot"])
+        if args.swap is not None:
+            check_call([*OS_CMD, "swapon", args.swap])
     LOG.info("Syncing packages")
     check_call([*OS_CMD, "pacman", "-Sy"])
 
