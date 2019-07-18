@@ -79,7 +79,11 @@ def main():
         [*IMG_USER_CMD, *BASH_CMD, (DF / "init" / "dotfiles.sh").read_text()]
     )
 
-    LOG.info("Stage 4: Setting up config")
+    LOG.info("Stage 4: Setting up boot")
+    check_call([*IMG_ROOT_CMD, *INSTALL_CMD, "refind-efi"])
+    check_call([*IMG_ROOT_CMD, "refind-install"])
+
+    LOG.info("Stage 5: Setting up config")
     check_call(
         [*IMG_ROOT_CMD, *BASH_CMD, (DF / "init" / "config.sh").read_text()]
     )
