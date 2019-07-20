@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-pacman_install python
-
 # Check the system python version
 python_version=$($SYSTEM_PYTHON -V)
 if [[ $python_version != *"3.6"* && $python_version != *"3.7"* ]]; then
@@ -16,4 +14,4 @@ fi
 
 # Set up the virtual env
 $SYSTEM_PYTHON -m venv $DF_PYTHON_DIR
-$DF_PIP install --requirement python-requirements.txt
+$DF_PIP install --requirement $init/packages/python
