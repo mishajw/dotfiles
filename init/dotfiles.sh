@@ -3,7 +3,8 @@
 set -o xtrace
 set -e
 
-DF_PATH=$HOME/dotfiles
+CLONE_PATH=$HOME/.local-perm
+DF_PATH=$CLONE_PATH/dotfiles
 REPO_HTTPS='https://github.com/mishajw/dotfiles.git'
 REPO_SSH='git@github.com:mishajw/dotfiles.git'
 
@@ -13,8 +14,11 @@ sudo pacman -S git zsh python --noconfirm --needed
 
 if [[ ! -e $DF_PATH ]]; then
   echo "Cloning dotfiles"
+  mkdir -p $CLONE_PATH
   git clone $REPO_HTTPS $DF_PATH
 fi
+
+$DF_PATH/init/perm.sh
 
 cd $DF_PATH
 git remote set-url origin $REPO_HTTP \
