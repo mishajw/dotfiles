@@ -3,7 +3,7 @@
 # pylint: disable=missing-docstring
 
 from subprocess import check_call, call
-from typing import NamedTuple, List
+from typing import NamedTuple, List, Optional
 import argparse
 import logging
 
@@ -15,7 +15,7 @@ LUKS_PADDING_MB = 20
 class Partition(NamedTuple):
     name: str
     file_system: str
-    size_mb: int
+    size_mb: Optional[int]
     is_boot: bool = False
 
 
@@ -25,10 +25,10 @@ def main():
         "--mode", choices=["simple", "crypt", "crypt-double"], required=True
     )
     parser.add_argument("--device", type=str, required=True)
-    parser.add_argument("--main-size-mb", type=int, required=True)
+    parser.add_argument("--main-size-mb", type=int, default=None)
+    parser.add_argument("--perm-size-mb", type=int, default=None)
     parser.add_argument("--boot-size-mb", type=int, default=256)
     parser.add_argument("--swap-size-mb", type=int, default=256)
-    parser.add_argument("--perm-size-mb", type=int, default=None)
     parser.add_argument("--luks-name", type=str, default="luks")
     args = parser.parse_args()
 
@@ -52,8 +52,8 @@ def main():
         )
     elif args.mode == "crypt-double":
         assert (
-            args.perm_size_mb is not None
-        ), "--perm-size-mb must be specified for crypt-double"
+            args.main_size_mb is not None
+        ), "--main-size-mb must be specified for crypt-double"
         crypt_double(
             args.device,
             args.luks_name,
@@ -86,16 +86,7 @@ def crypt(
     boot_size_mb: int,
     swap_size_mb: int,
 ):
-    make_partitions(
-        device,
-        [
-            Partition("boot", "ext4", boot_size_mb, is_boot=True),
-            Partition(
-                "luks", "ext4", swap_size_mb + main_size_mb + LUKS_PADDING_MB
-            ),
-        ],
-    )
-
+    crypt_base(device, boot_size_mb)
     make_luks_partitions(
         f"{device}p2",
         luks_name,
@@ -105,6 +96,7 @@ def crypt(
         ],
     )
 
+
 def crypt_double(
     device: str,
     luks_name: str,
@@ -113,16 +105,7 @@ def crypt_double(
     boot_size_mb: int,
     swap_size_mb: int,
 ):
-    make_partitions(
-        device,
-        [
-            Partition("boot", "ext4", boot_size_mb, is_boot=True),
-            Partition(
-                "luks", "ext4", swap_size_mb + main_size_mb + LUKS_PADDING_MB
-            ),
-        ],
-    )
-
+    crypt_base(device, boot_size_mb)
     make_luks_partitions(
         f"{device}p2",
         luks_name,
@@ -134,30 +117,50 @@ def crypt_double(
         ],
     )
 
+def crypt_base(device: str, boot_size_mb: int) -> None:
+    make_partitions(
+        device,
+        [
+            Partition("boot", "ext4", boot_size_mb, is_boot=True),
+            Partition("luks", "ext4", None),
+        ],
+    )
+
 
 def make_partitions(device: str, partitions: List[Partition]) -> None:
+    verify_partition_sizes(partitions)
+
     LOG.info("Making partitions on %s", device)
     parted(device, "mklabel gpt")
     # TODO: why start at 1mb?
     written_to_mb = 1
     for i, partition in enumerate(partitions):
         LOG.info("Making partition on %s: %s", device, partition)
-        start_mb = written_to_mb
-        end_mb = start_mb + partition.size_mb
+        start_str = f"{written_to_mb}MiB"
+        end_str = (
+            f"{written_to_mb + partition.size_mb}MiB"
+            if partition.size_mb is not None
+            else "100%"
+        )
         parted(
             device,
-            f"mkpart primary {partition.file_system} {start_mb}MiB {end_mb}Mib",
+            f"mkpart primary {partition.file_system} {start_str} {end_str}",
         )
-        written_to_mb = end_mb
         if partition.is_boot:
             LOG.info("Setting as boot on %s: %s", device, partition)
             parted(device, f"set {i + 1} esp on")
+        if partition.size_mb is None:
+            LOG.info("Partition filled rest of space, finishing")
+            break
+        written_to_mb += partition.size_mb
     parted(device, "print")
 
 
 def make_luks_partitions(
     device: str, luks_name: str, partitions: List[Partition]
 ) -> None:
+    verify_partition_sizes(partitions)
+
     LOG.info("Setting up cryptlvm on %s", device)
     check_call(["cryptsetup", "luksFormat", device])
     LOG.info("Opening cryptlvm")
@@ -168,11 +171,15 @@ def make_luks_partitions(
     check_call(["vgcreate", luks_name, "/dev/mapper/cryptlvm"])
     for partition in partitions:
         LOG.info("Making encrypted partition on %s: %s", device, partition)
+        size_cmd = (
+            ["--size", f"{partition.size_mb}M"]
+            if partition.size_mb is not None
+            else ["--extents", "100%FREE"]
+        )
         check_call(
             [
                 "lvcreate",
-                "--size",
-                f"{partition.size_mb}M",
+                *size_cmd,
                 luks_name,
                 "--name",
                 partition.name,
@@ -186,10 +193,25 @@ def make_luks_partitions(
             check_call(["mkswap", f"/dev/{luks_name}/{partition.name}"])
         else:
             raise AssertionError()
+        if partition.size_mb is None:
+            LOG.info("Partition filled rest of space, finishing")
+            break
 
 
 def parted(device: str, command: str) -> None:
     check_call(["parted", device, "--script", *command.split(" ")])
+
+
+def verify_partition_sizes(partitions: List[Partition]) -> None:
+    assert all(
+        partition.size_mb is not None for partition in partitions[:-1]
+    ), f"Only the last partition can not specify size, got: {partitions}"
+    total_mb = sum(
+        partition.size_mb
+        for partition in partitions
+        if partition.size_mb is not None
+    )
+    LOG.info("Total partition size will be %dMiB", total_mb)
 
 
 if __name__ == "__main__":
