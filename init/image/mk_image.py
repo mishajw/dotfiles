@@ -25,7 +25,9 @@ def main():
     parser = argparse.ArgumentParser(DOCKER_NAME)
     parser.add_argument("--image", type=str, required=True)
     parser.add_argument("--boot", type=str, default=None)
+    parser.add_argument("--device", type=str, default=None)
     args = parser.parse_args()
+    assert (args.boot is None) == (args.device is None)
 
     LOG.info("Starting docker container")
     if DOCKER_NAME not in check_output(["docker", "ps"]).decode():
@@ -61,10 +63,11 @@ def main():
     check_call([*OS_CMD, "pacman", "-Sy"])
     check_call([*OS_CMD, *INSTALL_CMD, "arch-install-scripts", "dosfstools"])
     if args.boot is not None:
-        LOG.info("Stage 1.2: Mounting up boot partition")
+        LOG.info("Stage 1.2: Mounting boot partition")
         check_call([*OS_CMD, "mkfs.vfat", "-F32", args.boot])
         check_call([*OS_CMD, "mkdir", "--parents", "/mnt/boot"])
         check_call([*OS_CMD, "mount", args.boot, "/mnt/boot"])
+    LOG.info("Stage 1.3: Running pacstrap")
     check_call([*OS_CMD, "pacstrap", "/mnt", "base", "base-devel"])
     check_call([*OS_CMD, *BASH_CMD, "genfstab -U /mnt >> /mnt/etc/fstab"])
 
@@ -85,8 +88,23 @@ def main():
     )
 
     LOG.info("Stage 4: Setting up boot")
-    check_call([*IMG_ROOT_CMD, *INSTALL_CMD, "refind-efi"])
-    check_call([*IMG_ROOT_CMD, "refind-install"])
+    if args.boot is not None:
+        # TODO: Maybe migrate back to refind?
+        # check_call([*IMG_ROOT_CMD, *INSTALL_CMD, "refind-efi"])
+        # check_call([*IMG_ROOT_CMD, "refind-install"])
+        check_call([*IMG_ROOT_CMD, *INSTALL_CMD, "grub"])
+        check_call(
+            [
+                *IMG_ROOT_CMD,
+                "grub-install",
+                "--recheck",
+                "--target=i386-pc",
+                args.device,
+            ]
+        )
+        check_call(
+            [*IMG_ROOT_CMD, "grub-mkconfig", "-o", "/boot/grub/grub.cfg"]
+        )
 
     LOG.info("Stage 5: Setting up config")
     check_call(
