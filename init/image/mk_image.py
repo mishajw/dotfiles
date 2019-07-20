@@ -88,14 +88,11 @@ def main():
         check_call(
             [
                 *IMG_ROOT_CMD,
-                "grub-install",
-                "--recheck",
-                "--target=i386-pc",
+                *BASH_CMD,
+                (INIT / "grub.sh").read_text(),
+                "--",
                 args.device,
             ]
-        )
-        check_call(
-            [*IMG_ROOT_CMD, "grub-mkconfig", "-o", "/boot/grub/grub.cfg"]
         )
 
     LOG.info("Stage 5: Setting up config")
