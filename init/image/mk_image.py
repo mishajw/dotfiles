@@ -57,8 +57,11 @@ def main():
         check_call([*OS_CMD, "mkfs.ext4", args.image])
         check_call([*OS_CMD, "mount", args.image, "/mnt"])
     check_call([*OS_CMD, "pacman", "-Sy"])
-    check_call([*OS_CMD, *INSTALL_CMD, "arch-install-scripts"])
+    check_call([*OS_CMD, *INSTALL_CMD, "arch-install-scripts", "dosfstools"])
     if args.boot is not None:
+        LOG.info("Stage 1.1: Mounting up boot partition")
+        check_call([*OS_CMD, "mkfs.vfat", "-F32", args.boot])
+        check_call([*OS_CMD, "mkdir", "--parents", "/mnt/boot"])
         check_call([*OS_CMD, "mount", args.boot, "/mnt/boot"])
     check_call([*OS_CMD, "pacstrap", "/mnt", "base", "base-devel"])
     check_call([*OS_CMD, *BASH_CMD, "genfstab -U /mnt >> /mnt/etc/fstab"])
