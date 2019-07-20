@@ -94,6 +94,8 @@ def main():
     )
 
     LOG.info("Unmounting image in docker container")
+    if args.boot is not None:
+        check_call([*OS_CMD, "umount", "/mnt/boot"])
     check_call([*OS_CMD, "umount", "/mnt"])
 
 
