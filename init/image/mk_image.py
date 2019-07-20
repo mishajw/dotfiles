@@ -44,7 +44,7 @@ def main():
                 # Bind mountable devices
                 *[
                     f"--device={device}"
-                    for device in [args.image, args.boot]
+                    for device in [args.image, args.boot, args.device]
                     if device is not None
                 ],
                 "archlinux/base",
