@@ -12,8 +12,8 @@ LOG = logging.getLogger(__name__)
 
 DF = Path(os.environ["df"])
 USER = "misha"
-
 DOCKER_NAME = "mk_image"
+
 INSTALL_CMD = ["pacman", "--needed", "--noconfirm", "-S"]
 BASH_CMD = ["bash", "-c"]
 OS_CMD = ["docker", "exec", DOCKER_NAME]
@@ -29,6 +29,7 @@ def main():
 
     LOG.info("Starting docker container")
     if DOCKER_NAME not in check_output(["docker", "ps"]).decode():
+        LOG.info("Starting docker container")
         check_call(
             [
                 "docker",
@@ -54,12 +55,13 @@ def main():
 
     LOG.info("Stage 1: Installing arch")
     if args.image not in check_output([*OS_CMD, "mount"]).decode():
+        LOG.info("Stage 1.1: Mounting main partition")
         check_call([*OS_CMD, "mkfs.ext4", args.image])
         check_call([*OS_CMD, "mount", args.image, "/mnt"])
     check_call([*OS_CMD, "pacman", "-Sy"])
     check_call([*OS_CMD, *INSTALL_CMD, "arch-install-scripts", "dosfstools"])
     if args.boot is not None:
-        LOG.info("Stage 1.1: Mounting up boot partition")
+        LOG.info("Stage 1.2: Mounting up boot partition")
         check_call([*OS_CMD, "mkfs.vfat", "-F32", args.boot])
         check_call([*OS_CMD, "mkdir", "--parents", "/mnt/boot"])
         check_call([*OS_CMD, "mount", args.boot, "/mnt/boot"])
@@ -91,6 +93,7 @@ def main():
         [*IMG_ROOT_CMD, *BASH_CMD, (DF / "init" / "config.sh").read_text()]
     )
 
+    LOG.info("Unmounting image in docker container")
     check_call([*OS_CMD, "umount", "/mnt"])
 
 
