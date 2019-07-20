@@ -10,7 +10,7 @@ from pathlib import Path
 
 LOG = logging.getLogger(__name__)
 
-DF = Path(os.environ["df"])
+INIT = Path(os.environ["init"])
 USER = "misha"
 DOCKER_NAME = "mk_image"
 
@@ -73,19 +73,11 @@ def main():
 
     LOG.info("Stage 2: Setting up user")
     check_call(
-        [
-            *IMG_ROOT_CMD,
-            *BASH_CMD,
-            (DF / "init" / "user.sh").read_text(),
-            "--",
-            USER,
-        ]
+        [*IMG_ROOT_CMD, *BASH_CMD, (INIT / "user.sh").read_text(), "--", USER]
     )
 
     LOG.info("Stage 3: Setting up dotfiles")
-    check_call(
-        [*IMG_USER_CMD, *BASH_CMD, (DF / "init" / "dotfiles.sh").read_text()]
-    )
+    check_call([*IMG_USER_CMD, *BASH_CMD, (INIT / "dotfiles.sh").read_text()])
 
     LOG.info("Stage 4: Setting up boot")
     if args.boot is not None:
@@ -107,9 +99,7 @@ def main():
         )
 
     LOG.info("Stage 5: Setting up config")
-    check_call(
-        [*IMG_ROOT_CMD, *BASH_CMD, (DF / "init" / "config.sh").read_text()]
-    )
+    check_call([*IMG_ROOT_CMD, *BASH_CMD, (INIT / "config.sh").read_text()])
 
     LOG.info("Unmounting image in docker container")
     if args.boot is not None:
