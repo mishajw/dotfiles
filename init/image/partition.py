@@ -21,11 +21,14 @@ class Partition(NamedTuple):
 
 def main():
     parser = argparse.ArgumentParser("partitions")
-    parser.add_argument("--mode", choices=["simple", "crypt"], required=True)
+    parser.add_argument(
+        "--mode", choices=["simple", "crypt", "crypt-double"], required=True
+    )
     parser.add_argument("--device", type=str, required=True)
     parser.add_argument("--main-size-mb", type=int, required=True)
     parser.add_argument("--boot-size-mb", type=int, default=256)
     parser.add_argument("--swap-size-mb", type=int, default=256)
+    parser.add_argument("--perm-size-mb", type=int, default=None)
     parser.add_argument("--luks-name", type=str, default="luks")
     args = parser.parse_args()
 
@@ -44,6 +47,18 @@ def main():
             args.device,
             args.luks_name,
             args.main_size_mb,
+            args.boot_size_mb,
+            args.swap_size_mb,
+        )
+    elif args.mode == "crypt-double":
+        assert (
+            args.perm_size_mb is not None
+        ), "--perm-size-mb must be specified for crypt-double"
+        crypt_double(
+            args.device,
+            args.luks_name,
+            args.main_size_mb,
+            args.perm_size_mb,
             args.boot_size_mb,
             args.swap_size_mb,
         )
@@ -87,6 +102,35 @@ def crypt(
         [
             Partition("swap", "linux-swap", swap_size_mb),
             Partition("main", "ext4", main_size_mb),
+        ],
+    )
+
+def crypt_double(
+    device: str,
+    luks_name: str,
+    main_size_mb: int,
+    perm_size_mb: int,
+    boot_size_mb: int,
+    swap_size_mb: int,
+):
+    make_partitions(
+        device,
+        [
+            Partition("boot", "ext4", boot_size_mb, is_boot=True),
+            Partition(
+                "luks", "ext4", swap_size_mb + main_size_mb + LUKS_PADDING_MB
+            ),
+        ],
+    )
+
+    make_luks_partitions(
+        f"{device}p2",
+        luks_name,
+        [
+            Partition("swap", "linux-swap", swap_size_mb),
+            Partition("main-a", "ext4", main_size_mb),
+            Partition("main-b", "ext4", main_size_mb),
+            Partition("perm", "ext4", perm_size_mb),
         ],
     )
 
