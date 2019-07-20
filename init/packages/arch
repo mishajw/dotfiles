@@ -17,6 +17,8 @@ iotop
 acpid
 command-not-found
 nmap
+exa
+the_silver_searcher
 
 # OS
 btrfs-progs
@@ -44,13 +46,14 @@ imagemagick
 i3lock
 gource
 
-# Fonts
-ttf-inconsolata
-ttf-font-awesome
-cairo-infinality-ultimate
-fontconfig-infinality-ultimate
-freetype2-infinality-ultimate
-otf-inconsolata-lgc
+# # Fonts
+# # TODO: update font package names
+# ttf-inconsolata
+# ttf-font-awesome
+# cairo-infinality-ultimate
+# fontconfig-infinality-ultimate
+# freetype2-infinality-ultimate
+# otf-inconsolata-lgc
 
 # Applications
 google-chrome
@@ -73,6 +76,7 @@ valgrind
 ghc
 hlint
 rustup
+diff-so-fancy
 
 # Virtualbox
 virtualbox
@@ -89,4 +93,3 @@ pavucontrol
 networkmanager
 networkmanager-dmenu-git
 cifs-utils
-
