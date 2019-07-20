@@ -18,6 +18,7 @@ if [[ ! -e "$lperm" ]]; then
     $lperm/downloads \
     $lperm/gnupg \
     $lperm/ssh
+  touch $lperm/zsh_history
 fi
 
 if [[ ! -e "$perm" ]]; then
@@ -30,7 +31,7 @@ create_perm_link() {
   user_dir=$2
   if [[ ! -e $user_dir || -h $user_dir ]]; then
     echo "Making symlink from $user_dir to $perm_dir"
-    ln --symbolic --force $perm_dir $user_dir
+    ln --symbolic --force --no-dereference $perm_dir $user_dir
   fi
 }
 create_perm_link $perm/src $HOME/src
@@ -40,3 +41,4 @@ create_perm_link $perm/dotfiles $HOME/dotfiles
 create_perm_link $perm/downloads $HOME/Downloads
 create_perm_link $perm/gnupg $HOME/.gnupg
 create_perm_link $perm/ssh $HOME/.ssh
+create_perm_link $perm/zsh_history $HOME/.zsh_history
