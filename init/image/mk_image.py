@@ -88,6 +88,9 @@ def main():
     check_call([*IMG_ROOT_CMD, *INSTALL_CMD, "git", "zsh", "python"])
     check_call([*IMG_USER_CMD, *BASH_CMD, (INIT / "dotfiles.sh").read_text()])
 
+    LOG.info("Stage 6: Installing all programs")
+    check_call([*IMG_USER_CMD, *BASH_CMD "$init/install.sh")])
+
     LOG.info("Unmounting image in docker container")
     if args.boot is not None:
         check_call([*OS_CMD, "umount", "/mnt/boot"])
