@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-source $HOME/dotfiles/init/interactive.sh
+source $HOME/dotfiles/init/scripting.sh
 
 # ZSH theme
 ZSH_THEME="garyblessington"
@@ -40,3 +40,5 @@ pastefinish() {
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
+
+source $HOME/dotfiles/init/interactive.sh
