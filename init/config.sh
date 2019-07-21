@@ -12,4 +12,5 @@ ln --symbolic --force /usr/share/zoneinfo/$TIME_ZONE /etc/localtime
 echo $HOST_NAME > /etc/hostname
 echo $LOCALE > /etc/locale.gen
 echo KEYMAP=$KEY_MAP > /etc/vconsole.conf
+locale-gen
 mkinitcpio --preset linux
