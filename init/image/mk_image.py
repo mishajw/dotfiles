@@ -10,27 +10,38 @@ from pathlib import Path
 
 LOG = logging.getLogger(__name__)
 
-INIT = Path(os.environ["init"])
 USER = "misha"
 DOCKER_NAME = "mk_image"
-
-INSTALL_CMD = ["pacman", "--needed", "--noconfirm", "-S"]
-BASH_CMD = ["bash", "-c"]
-OS_CMD = ["docker", "exec", DOCKER_NAME]
-IMG_ROOT_CMD = [*OS_CMD, "arch-chroot", "/mnt"]
-IMG_USER_CMD = [*IMG_ROOT_CMD, "su", USER, "--command"]
 
 
 def main():
     parser = argparse.ArgumentParser(DOCKER_NAME)
     parser.add_argument("--image", type=str, required=True)
+    parser.add_argument("--mount-path", type=str, required=True)
+    parser.add_argument("--init-path", type=str, default=None)
     parser.add_argument("--boot", type=str, default=None)
     parser.add_argument("--device", type=str, default=None)
+    parser.add_argument("--use-docker", type=bool, default=False)
     args = parser.parse_args()
+    mnt = Path(args.mount_path)
+    init = (
+        Path(args.init_path)
+        if args.init_path is not None
+        else Path(os.environ["init"])
+    )
     assert (args.boot is None) == (args.device is None)
 
+    install_cmd = ["pacman", "--needed", "--noconfirm", "-S"]
+    bash_cmd = ["bash", "-c"]
+    os_cmd = ["docker", "exec", docker_name] if args.use_docker else []
+    img_root_cmd = [*os_cmd, "arch-chroot", mnt]
+    img_user_cmd = [*img_root_cmd, "su", USER, "--command"]
+
     LOG.info("Starting docker container")
-    if DOCKER_NAME not in check_output(["docker", "ps"]).decode():
+    if (
+        args.use_docker
+        and DOCKER_NAME not in check_output(["docker", "ps"]).decode()
+    ):
         LOG.info("Starting docker container")
         check_call(
             [
@@ -56,45 +67,48 @@ def main():
         )
 
     LOG.info("Stage 1: Installing arch")
-    if args.image not in check_output([*OS_CMD, "mount"]).decode():
+    mount_output = check_output([*os_cmd, "mount"]).decode()
+    if args.image not in mount_output:
         LOG.info("Stage 1.1: Mounting main partition")
-        check_call([*OS_CMD, "mkfs.ext4", args.image])
-        check_call([*OS_CMD, "mount", args.image, "/mnt"])
-    check_call([*OS_CMD, "pacman", "-Sy"])
-    check_call([*OS_CMD, *INSTALL_CMD, "arch-install-scripts", "dosfstools"])
-    if args.boot is not None:
+        check_call([*os_cmd, "mkfs.ext4", args.image])
+        check_call([*os_cmd, "mount", args.image, args.mount_path])
+    check_call([*os_cmd, "pacman", "-Sy"])
+    check_call([*os_cmd, *install_cmd, "arch-install-scripts", "dosfstools"])
+    if args.boot is not None and args.boot not in mount_output:
         LOG.info("Stage 1.2: Mounting boot partition")
-        check_call([*OS_CMD, "mkfs.vfat", "-F32", args.boot])
-        check_call([*OS_CMD, "mkdir", "--parents", "/mnt/boot"])
-        check_call([*OS_CMD, "mount", args.boot, "/mnt/boot"])
+        check_call([*os_cmd, "mkfs.vfat", "-F32", args.boot])
+        check_call([*os_cmd, "mkdir", "--parents", mnt / "boot"])
+        check_call([*os_cmd, "mount", args.boot, mnt / "boot"])
     LOG.info("Stage 1.3: Running pacstrap")
-    check_call([*OS_CMD, "pacstrap", "/mnt", "base", "base-devel"])
-    check_call([*OS_CMD, *BASH_CMD, "genfstab -U /mnt >> /mnt/etc/fstab"])
+    check_call([*os_cmd, "pacstrap", mnt, "base", "base-devel"])
+    check_call(
+        [*os_cmd, *bash_cmd, f"genfstab -U {mnt} >> {mnt / 'etc' / 'fstab'}"]
+    )
 
     LOG.info("Stage 2: Setting up boot")
     if args.boot is not None:
-        check_call([*IMG_ROOT_CMD, *INSTALL_CMD, "refind-efi"])
-        check_call([*IMG_ROOT_CMD, "refind-install"])
+        check_call([*img_root_cmd, *install_cmd, "refind-efi"])
+        check_call([*img_root_cmd, "refind-install"])
 
     LOG.info("Stage 3: Setting up config")
-    check_call([*IMG_ROOT_CMD, *BASH_CMD, (INIT / "config.sh").read_text()])
+    check_call([*img_root_cmd, *bash_cmd, (init / "config.sh").read_text()])
 
     LOG.info("Stage 4: Setting up user")
     check_call(
-        [*IMG_ROOT_CMD, *BASH_CMD, (INIT / "user.sh").read_text(), "--", USER]
+        [*img_root_cmd, *bash_cmd, (init / "user.sh").read_text(), "--", USER]
     )
 
     LOG.info("Stage 5: Setting up dotfiles")
-    check_call([*IMG_ROOT_CMD, *INSTALL_CMD, "git", "zsh", "python"])
-    check_call([*IMG_USER_CMD, *BASH_CMD, (INIT / "dotfiles.sh").read_text()])
+    check_call([*img_root_cmd, *install_cmd, "git", "zsh", "python"])
+    check_call([*img_user_cmd, *bash_cmd, (init / "dotfiles.sh").read_text()])
 
     LOG.info("Stage 6: Installing all programs")
-    check_call([*IMG_USER_CMD, *BASH_CMD "$init/install.sh")])
+    check_call([*img_user_cmd, *bash_cmd, "$init/install.sh"])
 
     LOG.info("Unmounting image in docker container")
     if args.boot is not None:
-        check_call([*OS_CMD, "umount", "/mnt/boot"])
-    check_call([*OS_CMD, "umount", "/mnt"])
+        check_call([*os_cmd, "umount", mnt / "boot"])
+    check_call([*os_cmd, "umount", mnt])
 
 
 if __name__ == "__main__":
