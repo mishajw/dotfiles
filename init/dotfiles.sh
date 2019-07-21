@@ -19,7 +19,7 @@ if [[ ! -e $DF_PATH ]]; then
   git clone $REPO_HTTPS $DF_PATH
 fi
 
-$DF_PATH/init/perm.sh
+lperm=$HOME/.local-perm perm=$HOME/.perm $DF_PATH/init/perm.sh
 
 cd $DF_PATH
 git remote set-url origin $REPO_HTTP \
