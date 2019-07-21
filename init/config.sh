@@ -26,8 +26,8 @@ modify_mkinitcpio_conf() {
   if ! echo $HOOKS | grep -q encrypt; then
     HOOKS="${HOOKS} encrypt"
   fi
-  if ! echo $HOOKS | grep -q lvm; then
-    HOOKS="${HOOKS} lvm"
+  if ! echo $HOOKS | grep -q lvm2; then
+    HOOKS="${HOOKS} lvm2"
   fi
 
   sed "s/^HOOKS=.*/HOOKS=($HOOKS)/g" --in-place /etc/mkinitcpio.conf
