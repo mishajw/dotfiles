@@ -29,12 +29,7 @@ git checkout master
 
 source $HOME/dotfiles/init/scripting.sh
 
-echo "Setting up yay"
-$init/install/yay.sh
-echo "Setting up python"
-$init/install/python.sh
-echo "Setting up zsh"
-$init/install/zsh.sh
-
+echo "Installing everything"
+$init/install.sh
 echo "Setting up config files"
 $DF_PYTHON $scr/make-symlinks.py
