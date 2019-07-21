@@ -8,17 +8,17 @@
 
 set -e
 
-if [[ ! -e "$lperm" ]]; then
-  echo "Making local perm at $lperm"
-  mkdir -p \
-    $lperm/src \
-    $lperm/google-chrome \
-    $lperm/media \
-    $lperm/dotfiles \
-    $lperm/downloads \
-    $lperm/gnupg \
-    $lperm/ssh \
-    $lperm/idea-config
+# Set up lperm directories
+mkdir -p \
+  $lperm/src \
+  $lperm/google-chrome \
+  $lperm/media \
+  $lperm/dotfiles \
+  $lperm/downloads \
+  $lperm/gnupg \
+  $lperm/ssh \
+  $lperm/idea-config
+if [[ ! -e $lperm/zsh_history ]]; then
   touch $lperm/zsh_history
 fi
 
