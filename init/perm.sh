@@ -17,7 +17,8 @@ if [[ ! -e "$lperm" ]]; then
     $lperm/dotfiles \
     $lperm/downloads \
     $lperm/gnupg \
-    $lperm/ssh
+    $lperm/ssh \
+    $lperm/idea-config
   touch $lperm/zsh_history
 fi
 
@@ -42,3 +43,4 @@ create_perm_link $perm/downloads $HOME/Downloads
 create_perm_link $perm/gnupg $HOME/.gnupg
 create_perm_link $perm/ssh $HOME/.ssh
 create_perm_link $perm/zsh_history $HOME/.zsh_history
+create_perm_link $perm/idea-config $HOME/.idea-config
