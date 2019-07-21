@@ -2,8 +2,6 @@
 
 source $HOME/dotfiles/init/scripting.sh
 
-# ZSH theme
-ZSH_THEME="garyblessington"
 # - and _ wont matter in completion
 HYPHEN_INSENSITIVE="true"
 # Command auto-correction.
@@ -15,9 +13,26 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Change timestamps
 HIST_STAMPS="yyyy-mm-dd"
 
-# Load oh-my-zsh
-plugins=(sudo zsh-syntax-highlighting zsh-autosuggestions fzf-zsh)
-source $ZSH/oh-my-zsh.sh
+ANTIGEN_PATH=/usr/share/zsh/share/antigen.zsh
+if [[ ! -e $ANTIGEN_PATH ]]; then
+  echo "Antigen not installed, plugins unavailable"
+else
+  source $ANTIGEN_PATH
+  antigen use oh-my-zsh
+  antigen bundle sudo
+  antigen bundle command-not-found
+  antigen bundle fzf-zsh
+  antigen bundle zsh-users/zsh-syntax-highlighting
+  # TODO: fix issue
+  # antigen bundle zsh-users/zsh-autosuggestions
+  antigen theme garyblessington
+  antigen apply
+fi
+
+FZF_KEY_BINDINGS=$HOME/.fzf/shell/key-bindings.zsh
+if [[ -e $FZF_KEY_BINDINGS ]]; then
+  source $FZF_KEY_BINDINGS
+fi
 
 # Turn off autocorrect
 unsetopt correct_all
