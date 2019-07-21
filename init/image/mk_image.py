@@ -76,8 +76,6 @@ def main():
         check_call([*IMG_ROOT_CMD, *INSTALL_CMD, "refind-efi"])
         check_call([*IMG_ROOT_CMD, "refind-install"])
 
-    # TODO: Add crypt boot options to mkinicpio.conf
-
     LOG.info("Stage 3: Setting up config")
     check_call([*IMG_ROOT_CMD, *BASH_CMD, (INIT / "config.sh").read_text()])
 
