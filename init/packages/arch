@@ -47,6 +47,7 @@ i3lock
 gource
 compton
 xorg-xdpyinfo
+xorg-xprop
 
 # # Fonts
 # # TODO: update font package names
@@ -80,6 +81,8 @@ ghc
 hlint
 rustup
 diff-so-fancy
+protobuf
+python-black
 
 # Virtualbox
 virtualbox
