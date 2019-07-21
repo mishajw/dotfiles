@@ -3,7 +3,7 @@
 set -e
 
 $init/install/yay.sh
-yay --needed -S $(cat $init/packages/arch | grep -Pv '^#')
+yay --noconfirm --needed -S $(cat $init/packages/arch | grep -Pv '^#')
 
 $init/install/zsh.sh
 $init/install/python.sh
