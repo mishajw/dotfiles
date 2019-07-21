@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
+set -e
+
 $init/install/yay.sh
-yay -S --needed --noconfirm $init/packages/arch
+yay --needed -S $(cat $init/packages/arch | grep -Pv '^#')
 
 $init/install/zsh.sh
 $init/install/python.sh
 $init/install/vim.sh
 $init/install/rustup.sh
 $init/install/incredi.sh
+
+echo "Finished installing, not including AUR packages"

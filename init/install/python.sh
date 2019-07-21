@@ -4,12 +4,12 @@
 python_version=$($SYSTEM_PYTHON -V)
 if [[ $python_version != *"3.6"* && $python_version != *"3.7"* ]]; then
   echo "Bad python version: $python_version"
-  return 0
+  exit 1
 fi
 
 # If the python directory already exists, we're done
 if [ -d $DF_PYTHON_DIR ]; then
-  return 0
+  exit 0
 fi
 
 # Set up the virtual env

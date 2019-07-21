@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
-pacman_install zsh oh-my-zsh
-
 export ZSH_PLUGINS=$ZSH/custom/plugins
 export ZSH_SYNTAX=$ZSH_PLUGINS/zsh-syntax-highlighting
 export ZSH_SUGGESTIONS=$ZSH_PLUGINS/zsh-autosuggestions
 export ZSH_FZF=$ZSH_PLUGINS/fzf
 export ZSH_FZF_PLUGIN=$ZSH_PLUGINS/fzf-zsh
+
+if [[ ! -e $ZSH ]]; then
+  echo "ZSH not installed at $ZSH"
+  exit 1
+fi
 
 if [[ ! -e "$ZSH_SYNTAX" ]]; then
   echo "Setting up syntax highlighting"

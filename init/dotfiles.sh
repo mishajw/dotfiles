@@ -9,8 +9,9 @@ REPO_HTTPS='https://github.com/mishajw/dotfiles.git'
 REPO_SSH='git@github.com:mishajw/dotfiles.git'
 
 [[ "$USER" != "root" ]] || exit 1
-
-sudo pacman -S git zsh python --noconfirm --needed
+command -v git 1>/dev/null || exit 1
+command -v zsh 1>/dev/null || exit 1
+command -v python 1>/dev/null || exit 1
 
 if [[ ! -e $DF_PATH ]]; then
   echo "Cloning dotfiles"

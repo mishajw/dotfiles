@@ -7,15 +7,12 @@ openssh
 
 # Util
 upower
-dmenu2
 tree
 htop
-dtrx
 xclip
 traceroute
 iotop
 acpid
-command-not-found
 nmap
 exa
 the_silver_searcher
@@ -39,7 +36,6 @@ xorg-xsetroot
 ttf-inconsolata
 libinput
 xorg-xinput
-xtitle
 xf86-input-libinput
 scrot
 imagemagick
@@ -60,15 +56,11 @@ ttf-dejavu
 # otf-inconsolata-lgc
 
 # Applications
-google-chrome
 termite
 vlc
-tightvnc
 teamspeak3
 transmission-gtk
 intellij-idea-community-edition
-clion
-dropbox
 parted
 mcomix
 duplicity
@@ -86,7 +78,6 @@ python-black
 
 # Virtualbox
 virtualbox
-qt4
 linux-headers
 
 # Audio
@@ -97,5 +88,4 @@ pavucontrol
 
 # Internet
 networkmanager
-networkmanager-dmenu-git
 cifs-utils
