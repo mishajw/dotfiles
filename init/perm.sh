@@ -36,6 +36,7 @@ create_perm_link() {
   fi
 }
 create_perm_link $perm/src $HOME/src
+mkdir --parents $HOME/.config
 create_perm_link $perm/google-chrome $HOME/.config/google-chrome
 create_perm_link $perm/media $HOME/media
 create_perm_link $perm/dotfiles $HOME/dotfiles
