@@ -19,7 +19,7 @@ def main():
     assert match is not None
     encrypted_uuid = match.group(1)
 
-    boot_message = "Boot into encrypted device"
+    boot_message = f"Boot encrypted {args.mapped_device}"
     boot_options = (
         f"cryptdevice=UUID={encrypted_uuid}:cryptlvm root={args.mapped_device}"
     )
