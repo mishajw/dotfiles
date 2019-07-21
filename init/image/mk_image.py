@@ -71,32 +71,25 @@ def main():
     check_call([*OS_CMD, "pacstrap", "/mnt", "base", "base-devel"])
     check_call([*OS_CMD, *BASH_CMD, "genfstab -U /mnt >> /mnt/etc/fstab"])
 
-    LOG.info("Stage 2: Setting up user")
+    LOG.info("Stage 2: Setting up boot")
+    if args.boot is not None:
+        check_call([*IMG_ROOT_CMD, *INSTALL_CMD, "refind-efi"])
+        check_call([*IMG_ROOT_CMD, "refind-install"])
+
+    # TODO: Change /etc/refind_linux.conf include correct boot option
+
+    # TODO: Add crypt boot options to mkinicpio.conf
+
+    LOG.info("Stage 3: Setting up config")
+    check_call([*IMG_ROOT_CMD, *BASH_CMD, (INIT / "config.sh").read_text()])
+
+    LOG.info("Stage 4: Setting up user")
     check_call(
         [*IMG_ROOT_CMD, *BASH_CMD, (INIT / "user.sh").read_text(), "--", USER]
     )
 
-    LOG.info("Stage 3: Setting up dotfiles")
+    LOG.info("Stage 5: Setting up dotfiles")
     check_call([*IMG_USER_CMD, *BASH_CMD, (INIT / "dotfiles.sh").read_text()])
-
-    LOG.info("Stage 4: Setting up boot")
-    if args.boot is not None:
-        # TODO: Maybe migrate back to refind?
-        # check_call([*IMG_ROOT_CMD, *INSTALL_CMD, "refind-efi"])
-        # check_call([*IMG_ROOT_CMD, "refind-install"])
-        check_call([*IMG_ROOT_CMD, *INSTALL_CMD, "grub"])
-        check_call(
-            [
-                *IMG_ROOT_CMD,
-                *BASH_CMD,
-                (INIT / "grub.sh").read_text(),
-                "--",
-                args.device,
-            ]
-        )
-
-    LOG.info("Stage 5: Setting up config")
-    check_call([*IMG_ROOT_CMD, *BASH_CMD, (INIT / "config.sh").read_text()])
 
     LOG.info("Unmounting image in docker container")
     if args.boot is not None:
