@@ -16,6 +16,8 @@ acpid
 nmap
 exa
 the_silver_searcher
+arch-install-scripts
+fzf
 
 # OS
 btrfs-progs
