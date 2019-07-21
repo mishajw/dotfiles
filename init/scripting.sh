@@ -47,6 +47,8 @@ export ZSH=/usr/share/oh-my-zsh
 export TERMINAL="termite"
 export BROWSER="google-chrome-stable --force-device-scale-factor=\$CHROME_SCALE_FACTOR"
 
+export PATH="$PATH:$HOME/.cargo/bin"
+
 [ -f $local/scripting.sh ] && source $local/scripting.sh
 
 pacman_install() {
