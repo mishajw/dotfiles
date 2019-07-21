@@ -74,9 +74,8 @@ def main():
         check_call([*os_cmd, "mount", args.image, args.mount_path])
     check_call([*os_cmd, "pacman", "-Sy"])
     check_call([*os_cmd, *install_cmd, "arch-install-scripts", "dosfstools"])
-    if args.boot is not None and args.boot not in mount_output:
+    if args.boot is not None:
         LOG.info("Stage 1.2: Mounting boot partition")
-        check_call([*os_cmd, "mkfs.vfat", "-F32", args.boot])
         check_call([*os_cmd, "mkdir", "--parents", mnt / "boot"])
         check_call([*os_cmd, "mount", args.boot, mnt / "boot"])
     LOG.info("Stage 1.3: Running pacstrap")
