@@ -45,9 +45,12 @@ scrot
 imagemagick
 i3lock
 gource
+compton
+xorg-xdpyinfo
 
 # # Fonts
 # # TODO: update font package names
+ttf-dejavu
 # ttf-inconsolata
 # ttf-font-awesome
 # cairo-infinality-ultimate
