@@ -13,8 +13,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Change timestamps
 HIST_STAMPS="yyyy-mm-dd"
 
-ANTIGEN_PATH=/usr/share/zsh/share/antigen.zsh
-if [[ ! -e $ANTIGEN_PATH ]]; then
+if [[ ! -e "$ANTIGEN_PATH" ]]; then
   echo "Antigen not installed, plugins unavailable"
 else
   source $ANTIGEN_PATH

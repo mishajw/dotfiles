@@ -41,6 +41,7 @@ export CHROME_SCALE_FACTOR="1.2"
 export SYSTEM_PYTHON=$(which python3)
 export SCREENSHOT_COMMAND='import $SCREENSHOT_LOCATION'
 export IDEA_PROPERTIES="$cnf/idea.properties"
+export ANTIGEN_PATH=/usr/share/zsh/share/antigen.zsh
 
 # Default applications for use in dotfiles
 export TERMINAL="termite"
