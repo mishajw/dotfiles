@@ -22,7 +22,10 @@ xinput_process = subprocess.Popen(
 )
 last_id = None
 for line in io.TextIOWrapper(xinput_process.stdout, encoding="utf-8"):
-    _, mode, current_id = line.strip().split()
+    event_type, *event_parameters = line.strip().split()
+    if event_type != "key":
+        continue
+    mode, current_id = event_parameters
     current_id = int(current_id)
 
     if mode == "press":
