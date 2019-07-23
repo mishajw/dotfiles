@@ -42,6 +42,7 @@ pf() { pip freeze | grep $1 >>requirements.txt; }
 wt() { while true; do $@; done; }
 alias browse="google-chrome-stable --force-device-scale-factor=1.2"
 loop() { while true; do eval $@; done; }
+alias ag="ag --pager less"
 
 [ -f $local/interactive.sh ] && source $local/interactive.sh
 
