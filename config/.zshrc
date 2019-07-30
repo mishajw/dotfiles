@@ -22,8 +22,7 @@ else
   antigen bundle command-not-found
   antigen bundle fzf-zsh
   antigen bundle zsh-users/zsh-syntax-highlighting
-  # TODO: fix issue
-  # antigen bundle zsh-users/zsh-autosuggestions
+  antigen bundle zsh-users/zsh-autosuggestions
   antigen theme garyblessington
   antigen apply
 fi
