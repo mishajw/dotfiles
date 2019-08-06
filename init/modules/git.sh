@@ -27,3 +27,8 @@ g-rm-branch() {
     git push origin --delete $current_branch
   fi
 }
+
+alias -g COM="\$(\
+  git log --oneline --author \$(git config user.email) \
+  | fzf \
+  | awk '{print \$1}')"
