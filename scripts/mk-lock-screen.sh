@@ -2,11 +2,20 @@
 
 set -e
 if [[ "$#" != 1 ]]; then
-  echo "Usage: $0 <output file>"
+  echo "Usage: $0 <output directory>"
 fi
 
-IMAGE=$1
 SIZE=$(xdpyinfo | grep dimensions | grep -P '\d+x\d+' -o | head -1)
+IMAGE_DIRECTORY=$1 && mkdir -p $IMAGE_DIRECTORY
+IMAGE="$IMAGE_DIRECTORY/lock-screen-$SIZE.png"
+
+# Write image to stdout so caller knows where it's written
+echo $IMAGE
+
+# Don't recreate image
+if [ -e $IMAGE ]; then
+  exit
+fi
 
 # Create all-white image
 convert -size $SIZE xc:#619eff $IMAGE

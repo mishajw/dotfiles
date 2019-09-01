@@ -7,6 +7,7 @@ export scr="$df/scripts"
 export imgs="$df/images"
 export init="$df/init"
 export local="$df/local"
+export gen="$df/gen" && mkdir -p $gen
 export prog="$HOME/prog" && mkdir -p $prog
 export dflogs="/tmp/dflogs" && mkdir -p $dflogs
 export perm="$HOME/.perm"

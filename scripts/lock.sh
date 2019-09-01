@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-IMAGE="/tmp/lock-screen.png"
+set -e
+IMAGE="$gen/lock-screen.png"
 
 if [ "$LOCK_MODE" == "blur" ]; then
   scrot $IMAGE
@@ -9,9 +10,7 @@ elif [ "$LOCK_MODE" == "pixel" ]; then
   scrot $IMAGE
   convert $IMAGE -scale 5% -scale 2000% $IMAGE
 elif [ "$LOCK_MODE" == "gradient" ]; then
-  if [ ! -f "$IMAGE" ]; then
-    $scr/mk-lock-screen.sh $IMAGE
-  fi
+  IMAGE=$($scr/mk-lock-screen.sh $gen)
 fi
 
 i3lock --ignore-empty-password --image $IMAGE
