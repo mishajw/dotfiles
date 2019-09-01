@@ -4,6 +4,7 @@ set -e
 
 $init/install/yay.sh
 yay --noconfirm --needed -S $(cat $init/packages/arch | grep -Pv '^#')
+yay --noconfirm --needed -S $(cat $init/packages/arch-aur | grep -Pv '^#')
 
 $init/install/python.sh
 $init/install/vim.sh
