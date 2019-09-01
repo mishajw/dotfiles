@@ -18,6 +18,7 @@ exa
 the_silver_searcher
 arch-install-scripts
 fzf
+jq
 
 # OS
 btrfs-progs
