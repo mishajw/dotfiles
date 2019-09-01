@@ -4,7 +4,7 @@ alias c="cargo"
 alias cr="c run"
 alias cb="c build"
 alias ct="c test"
-alias cf="c +nightly fmt"
+alias cf="c fmt"
 alias cck="c check"
 cdoc() {
   original_path=$PWD
