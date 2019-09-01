@@ -42,6 +42,7 @@ export SYSTEM_PYTHON=$(which python3)
 export SCREENSHOT_COMMAND='import $SCREENSHOT_LOCATION'
 export IDEA_PROPERTIES="$cnf/idea.properties"
 export ANTIGEN_PATH=/usr/share/zsh/share/antigen.zsh
+export INTELLIJ=$(which idea)
 
 # Default applications for use in dotfiles
 export TERMINAL="termite"
