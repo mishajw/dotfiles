@@ -2,7 +2,10 @@
 
 # Check the system python version
 python_version=$($SYSTEM_PYTHON -V)
-if [[ $python_version != *"3.6"* && $python_version != *"3.7"* ]]; then
+if [[ \
+    $python_version != *"3.6"* && \
+    $python_version != *"3.7"* && \
+    $python_version != *"3.8"* ]]; then
   echo "Bad python version: $python_version"
   exit 1
 fi
