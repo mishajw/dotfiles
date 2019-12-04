@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+#
+# Creates and mounts a qcow2 image. Primarily used for debugging image creation.
+#
+
 set -e
 
 if [[ "$#" != 2 ]]; then

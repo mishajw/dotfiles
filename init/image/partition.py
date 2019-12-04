@@ -2,6 +2,10 @@
 
 # pylint: disable=missing-docstring
 
+"""
+Sets up an devices's partitions for creating an image.
+"""
+
 from subprocess import check_call, call
 from typing import NamedTuple, List, Optional
 import argparse

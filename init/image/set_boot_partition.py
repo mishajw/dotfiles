@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+"""
+Sets up booting from an encrypted device.
+"""
+
 import argparse
 import re
 from pathlib import Path

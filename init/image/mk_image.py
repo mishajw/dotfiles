@@ -2,6 +2,10 @@
 
 # pylint: disable=missing-docstring
 
+"""
+Installs arch & dotfiles onto a device.
+"""
+
 import argparse
 import logging
 import os
