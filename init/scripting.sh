@@ -38,7 +38,7 @@ export LANGUAGE="$LANG"
 export LC_ALL="$LANG"
 export MAIN_FONT="Monospace:style=Bold:size=10"
 export SCREENSHOT_LOCATION="/tmp/scr.png"
-export CHROME_SCALE_FACTOR="1.2"
+export CHROME_SCALE_FACTOR="1.0"
 export SYSTEM_PYTHON=$(which python3)
 export SCREENSHOT_COMMAND='import $SCREENSHOT_LOCATION'
 export IDEA_PROPERTIES="$cnf/idea.properties"
