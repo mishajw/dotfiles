@@ -139,8 +139,8 @@ set expandtab           " Insert spaces when TAB is pressed.
 set tabstop=2           " Render TABs using this many spaces.
 set shiftwidth=2        " Indentation amount for < and > commands.
 
-" Set column limit at 80 characters
-set colorcolumn=80
+" Set column limit at 100 characters
+set colorcolumn=100
 
 " Highlight line when in insert mode
 :autocmd InsertEnter * set cul
