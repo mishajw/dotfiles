@@ -1,5 +1,8 @@
 # Basics
-vim
+# gvim needed for clipboard support.
+gvim
+# Needed for deoplete vim plugin.
+python-pynvim
 git
 zsh
 tmux
