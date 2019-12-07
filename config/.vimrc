@@ -165,7 +165,7 @@ set splitbelow          " Horizontal split below current.
 set splitright          " Vertical split to right of current.
 
 " Run the last command used in the last window
-nnoremap <leader>r :!$scr/last-command-last-window.sh<CR>
+nnoremap <leader>r :!$scr/dfrun.py %<CR>
 
 " Goyo options
 map <leader>g :Goyo<CR>
