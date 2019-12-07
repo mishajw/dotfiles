@@ -63,7 +63,7 @@ button/lid)
   case "$3" in
   close)
     logger 'LID closed'
-    su -c "DISPLAY=:0 $scr/lock.sh" misha
+    su -c "DISPLAY=:0 $scr/x/lock.sh" misha
     ;;
   open)
     logger 'LID opened'

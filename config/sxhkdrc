@@ -4,23 +4,23 @@ super + Return
 super + r
   eval $BROWSER
 super + space
-  $scr/launcher.sh
+  $scr/x/launcher.sh
 super + grave
-  $DF_PYTHON $scr/quake.py --tag term --command termite \
+  $DF_PYTHON $scr/x/quake.py --tag term --command termite \
     --side left --percent 0.45 --border 4
 super + shift + grave
-  $DF_PYTHON $scr/quake.py --tag browse --command "$BROWSER" \
+  $DF_PYTHON $scr/x/quake.py --tag browse --command "$BROWSER" \
     --side right --percent 0.45 --border 4
 super + ctrl + c
   networkmanager_dmenu
 
 # Volume and brightness
 shift + XF86Audio{Lower,Raise}Volume
-  $scr/vol-control.sh {down,up} 1
+  $scr/x/vol-control.sh {down,up} 1
 XF86Audio{Lower,Raise}Volume
-  $scr/vol-control.sh {down,up} 3
+  $scr/x/vol-control.sh {down,up} 3
 XF86AudioMute
-  $scr/vol-control.sh toggle
+  $scr/x/vol-control.sh toggle
 XF86MonBrightnessUp
   xbacklight -inc 5
 XF86MonBrightnessDown
@@ -28,7 +28,7 @@ XF86MonBrightnessDown
 
 # Misc utilities
 super + ctrl + alt + z
-  $scr/lock.sh
+  $scr/x/lock.sh
 super + Print
   eval $SCREENSHOT_COMMAND
 

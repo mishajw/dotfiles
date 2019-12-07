@@ -10,7 +10,7 @@ elif [ "$LOCK_MODE" == "pixel" ]; then
   scrot $IMAGE
   convert $IMAGE -scale 5% -scale 2000% $IMAGE
 elif [ "$LOCK_MODE" == "gradient" ]; then
-  IMAGE=$($scr/mk-lock-screen.sh $gen)
+  IMAGE=$($scr/util/mk-lock-screen.sh $gen)
 fi
 
 i3lock --ignore-empty-password --image $IMAGE

@@ -18,7 +18,7 @@ source $init/modules/systemctl.sh
 source $init/modules/vim.sh
 source $init/modules/yay.sh
 source $init/modules/ydiff.sh
-source $scr/alias-scripts.sh >/dev/null
+source $scr/util/alias-scripts.sh >/dev/null
 
 # Misc aliases and functions
 alias res='exec /proc/$$/exe'
