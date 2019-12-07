@@ -22,6 +22,7 @@ the_silver_searcher
 arch-install-scripts
 fzf
 jq
+evince
 
 # OS
 btrfs-progs
