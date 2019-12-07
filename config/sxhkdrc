@@ -27,8 +27,6 @@ XF86MonBrightnessDown
   xbacklight -dec 5
 
 # Misc utilities
-super + p
-  $scr/switch-window.sh
 super + ctrl + alt + z
   $scr/lock.sh
 super + Print
