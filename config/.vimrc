@@ -120,7 +120,6 @@ set rtp+=~/.fzf
 map <C-p> :GFiles<CR>
 map <leader>p :Files<CR>
 map <leader>l :Lines<CR>
-map <leader>f :BLines<CR>
 map <leader>a :Ag<CR>
 map Q :Buffers<CR>
 
@@ -165,7 +164,8 @@ set splitbelow          " Horizontal split below current.
 set splitright          " Vertical split to right of current.
 
 " Run the last command used in the last window
-nnoremap <leader>r :!$scr/dfrun.py %<CR>
+nnoremap <leader>r :!$scr/dfrun.py run %<CR>
+nnoremap <leader>f :!$scr/dfrun.py format %<CR>
 
 " Goyo options
 map <leader>g :Goyo<CR>
