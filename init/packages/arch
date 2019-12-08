@@ -23,6 +23,7 @@ arch-install-scripts
 fzf
 jq
 evince
+shfmt
 
 # OS
 btrfs-progs

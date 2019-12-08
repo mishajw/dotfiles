@@ -28,6 +28,8 @@ if args.mode == "run":
     elif path.suffix == ".rs":
         subprocess.check_output(["rustc", path, "-o", compile_file])
         os.execlp(compile_file, compile_file)
+    elif path.suffix == ".sh":
+        os.execlp(path, path)
 elif args.mode == "format":
     if path.suffix == ".py":
         os.execl(df_python, df_python, "-m", "black", path)
@@ -35,6 +37,8 @@ elif args.mode == "format":
         os.execlp("cargo", "cargo", "format")
     elif path.suffix == ".rs":
         os.execlp("rustfmt", "rustfmt", path)
+    elif path.suffix == ".sh":
+        os.execlp("shfmt", "shfmt", "-w", "-i", "2", path)
 else:
     print(f"Unrecognized extension for {mode}: {path}")
     sys.exit(1)
