@@ -3,6 +3,7 @@
 cd $HOME
 source $HOME/dotfiles/init/scripting.sh
 
+# TODO: Make nicer?
 if xrandr | grep "\<connected\>" | grep $DISPLAY2_NAME; then
   SINGLE_DISPLAY="false"
 else
@@ -28,19 +29,8 @@ bspc config pointer_action1 resize_corner
 bspc config pointer_action2 resize_side
 bspc config pointer_action3 move
 
-# Check if the second monitor is connected
-if $SINGLE_DISPLAY; then
-  bspc monitor "$DISPLAY1_NAME" -d 1 2 3 4 5 6 7 8 9 dmp
-  bspc monitor "$DISPLAY2_NAME" -d None
-else
-  echo Setting up second display
-  bspc monitor "$DISPLAY1_NAME" -d 1 2 3 4 5 6 7 dmp
-  bspc monitor "$DISPLAY2_NAME" -d a b
-  # Check if the monitors are in the wrong order
-  if ! bspc query --monitors --names | head -1 | grep $DISPLAY1_NAME; then
-    bspc monitor "$DISPLAY1_NAME" --swap "$DISPLAY2_NAME"
-  fi
-fi
+# Setup monitors
+$DF_PYTHON $scr/setup-displays.py
 
 # Set background
 feh --bg-fill $BACKGROUND_IMAGE
