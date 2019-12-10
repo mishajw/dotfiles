@@ -163,9 +163,9 @@ set magic               " Use 'magic' patterns (extended regular expressions).
 set splitbelow          " Horizontal split below current.
 set splitright          " Vertical split to right of current.
 
-" Run the last command used in the last window
-nnoremap <leader>r :!$scr/dfrun.py run %<CR>
-nnoremap <leader>f :!$scr/dfrun.py format %<CR>
+" Run/format the current file.
+nnoremap <leader>r :!$DF_PYTHON $scr/dfrun.py run %<CR>
+nnoremap <leader>f :!$DF_PYTHON $scr/dfrun.py format %<CR>
 
 " Goyo options
 map <leader>g :Goyo<CR>
