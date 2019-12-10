@@ -1,3 +1,4 @@
+black==19.10b0
+matplotlib==3.0.3
 numpy==1.15.4
 ydiff==1.1
-matplotlib==3.0.3
