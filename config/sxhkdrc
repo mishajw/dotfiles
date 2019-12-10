@@ -32,9 +32,9 @@ super + ctrl + alt + z
 super + Print
   eval $SCREENSHOT_COMMAND
 
-# Reload SXHKD configuration
+# Reload BSPWM
 super + Escape
-	pkill -USR1 -x sxhkd
+	$cnf/bspwmrc & disown
 
 # Close windows
 super + {_,shift + }w
