@@ -32,7 +32,7 @@ if args.mode == "run":
         os.execlp(path, path)
 elif args.mode == "format":
     if path.suffix == ".py":
-        os.execl(df_python, df_python, "-m", "black", path)
+        os.execl(df_python, df_python, "-m", "black", "--line-length", "100", path)
     elif path.suffix == ".rs" and Path("Cargo.toml").is_file():
         os.execlp("cargo", "cargo", "format")
     elif path.suffix == ".rs":
