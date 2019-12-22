@@ -24,6 +24,7 @@ fzf
 jq
 evince
 shfmt
+xorg-xkill
 
 # OS
 btrfs-progs
