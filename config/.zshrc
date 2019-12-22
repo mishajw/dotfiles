@@ -23,6 +23,7 @@ else
   antigen bundle fzf-zsh
   antigen bundle zsh-users/zsh-syntax-highlighting
   antigen bundle zsh-users/zsh-autosuggestions
+  antigen bundle urbainvaes/fzf-marks
   antigen theme garyblessington
   antigen apply
 fi
