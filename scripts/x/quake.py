@@ -119,15 +119,11 @@ def set_window_geom(window_id: int, location: LocationConfig):
     elif location.side == "bottom":
         window_x = desktop_x + location.padding
         window_y = (
-            desktop_y
-            + desktop_height
-            - window_height
-            - location.border * 2
-            - location.edge_distance
+            desktop_y + desktop_height - window_height - location.border - location.edge_distance
         )
     elif location.side == "right":
         window_x = (
-            desktop_x + desktop_width - window_width - location.border * 2 - location.edge_distance
+            desktop_x + desktop_width - window_width - location.border - location.edge_distance
         )
         window_y = desktop_y + location.padding
     LOG.debug("Setting window location to %d, %d", window_x, window_y)

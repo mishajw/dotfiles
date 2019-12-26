@@ -7,7 +7,7 @@ super + space
   $scr/x/launcher.sh
 super + grave
   $DF_PYTHON $scr/x/quake.py --tag term --command termite \
-    --side left --percent 0.45 --border 4
+    --side bottom --percent 0.33 --border 4
 super + shift + grave
   $DF_PYTHON $scr/x/quake.py --tag browse --command "$BROWSER" \
     --side right --percent 0.45 --border 4
