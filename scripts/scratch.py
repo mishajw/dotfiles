@@ -3,6 +3,7 @@
 from pathlib import Path
 import argparse
 import os
+import re
 
 """
 Creates scratch files for quick notes.
@@ -19,24 +20,26 @@ fn main() {
 """
 
 parser = argparse.ArgumentParser("scratch")
-parser.add_argument("language", type=str, choices=["py", "rs", "md"])
-parser.add_argument("name", type=str, nargs="?", default="scratch")
+parser.add_argument("name", type=str, default=".md")
 parser.add_argument("--dir", type=str, default=Path(os.environ["HOME"]) / "src" / "scratch")
 args = parser.parse_args()
 
-language = args.language
-scratch_name = args.name
 scratch_dir = Path(args.dir)
-scratch_path = scratch_dir / (scratch_name + "." + language)
+scratch_name = args.name
 editor = os.environ["EDITOR"]
+
+# If only extension is supplied, then default to "scratch".
+if re.match(r"\.[^\.]*", scratch_name):
+    scratch_name = "scratch" + scratch_name
 
 if not scratch_dir.is_dir():
     scratch_dir.mkdir(parents=True)
+scratch_path = scratch_dir / scratch_name
 
 if not scratch_path.is_file():
-    if language == "py":
+    if scratch_path.suffix == ".py":
         contents = DEFAULT_PY
-    elif language == "rs":
+    elif scratch_path.suffix == ".rs":
         contents = DEFAULT_RS
     else:
         contents = ""
