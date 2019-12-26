@@ -19,16 +19,15 @@ def main():
     print("Connected monitors: " + ", ".join(monitors))
 
     if monitors == {"eDP1"}:
-        run_xrandr(["--output eDP1 --primary --auto"])
+        run_xrandr(["--output eDP1 --primary --auto", "--output DP1 --off"])
         set_desktops([("eDP1", DESKTOPS_SOLO)])
     elif monitors == {"eDP1", "DP1"}:
         run_xrandr(["--output DP1 --primary --auto", "--output eDP1 --off"])
         set_desktops([("DP1", DESKTOPS_SOLO)])
     elif monitors == {"DP-2", "DP-0"}:
-        run_xrandr([
-            "--output DP-2 --primary --auto",
-            "--output DP-0 --auto --left-of DP-2 --rotate left",
-        ])
+        run_xrandr(
+            ["--output DP-2 --primary --auto", "--output DP-0 --auto --left-of DP-2 --rotate left"]
+        )
         set_desktops([("DP-2", DESKTOPS_PRIMARY), ("DP-0", DESKTOPS_SECONDARY)])
     else:
         print("Unrecognized monitors")
