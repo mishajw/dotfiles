@@ -22,9 +22,7 @@ LocationConfig = namedtuple(
 )
 
 
-def main(
-    tag: str, command: str, window_id_directory: str, location: LocationConfig
-):
+def main(tag: str, command: str, window_id_directory: str, location: LocationConfig):
     if not os.path.isdir(window_id_directory):
         LOG.debug("Creating directory to store window IDs")
         os.makedirs(window_id_directory)
@@ -85,9 +83,7 @@ def get_active_window_id() -> Optional[int]:
 
 def is_window_visible(window_id: int) -> bool:
     visible_windows = (
-        check_output(["xdotool", "search", "--onlyvisible", ".*"])
-        .decode()
-        .split("\n")
+        check_output(["xdotool", "search", "--onlyvisible", ".*"]).decode().split("\n")
     )
     return str(window_id) in visible_windows
 
@@ -106,15 +102,11 @@ def set_window_geom(window_id: int, location: LocationConfig):
     LOG.debug("Found desktop size of %d, %d", desktop_width, desktop_height)
 
     if location.side == "top" or location.side == "bottom":
-        window_width = (
-            desktop_width - location.border * 2 - location.padding * 2
-        )
+        window_width = desktop_width - location.border * 2 - location.padding * 2
         window_height = int(desktop_height * location.percent)
     else:
         window_width = int(desktop_width * location.percent)
-        window_height = (
-            desktop_height - location.border * 2 - location.padding * 2
-        )
+        window_height = desktop_height - location.border * 2 - location.padding * 2
     LOG.debug("Setting window size to %d, %d", window_width, window_height)
 
     # TODO: Can we simplify this?
@@ -135,11 +127,7 @@ def set_window_geom(window_id: int, location: LocationConfig):
         )
     elif location.side == "right":
         window_x = (
-            desktop_x
-            + desktop_width
-            - window_width
-            - location.border * 2
-            - location.edge_distance
+            desktop_x + desktop_width - window_width - location.border * 2 - location.edge_distance
         )
         window_y = desktop_y + location.padding
     LOG.debug("Setting window location to %d, %d", window_x, window_y)
@@ -148,38 +136,21 @@ def set_window_geom(window_id: int, location: LocationConfig):
     if window_y == 0:
         window_y = 1
 
+    check_output(["xdotool", "windowmove", str(window_id), str(window_x), str(window_y)])
     check_output(
-        ["xdotool", "windowmove", str(window_id), str(window_x), str(window_y)]
-    )
-    check_output(
-        [
-            "xdotool",
-            "windowsize",
-            str(window_id),
-            str(window_width),
-            str(window_height),
-        ]
+        ["xdotool", "windowsize", str(window_id), str(window_width), str(window_height),]
     )
 
 
 def set_window_floating(window_id: int):
     LOG.debug("Setting window classname to %s", CLASS_NAME)
-    check_output(
-        ["xdotool", "set_window", "--classname", CLASS_NAME, str(window_id)]
-    )
+    check_output(["xdotool", "set_window", "--classname", CLASS_NAME, str(window_id)])
 
     rules = check_output(["bspc", "rule", "--list"]).decode()
     if CLASS_NAME not in rules:
         LOG.debug("Adding BSPWM rule to float classnmae")
         check_output(
-            [
-                "bspc",
-                "rule",
-                "--add",
-                "*:" + CLASS_NAME,
-                "state=floating",
-                "sticky=on",
-            ]
+            ["bspc", "rule", "--add", "*:" + CLASS_NAME, "state=floating", "sticky=on",]
         )
 
 
@@ -200,10 +171,7 @@ def get_desktop_geometry() -> Tuple[int, int]:
         offset_x = int(match.group(3))
         offset_y = int(match.group(4))
 
-        if (
-            offset_x <= focused_x < offset_x + size_x
-            and offset_y <= focused_y < offset_y + size_y
-        ):
+        if offset_x <= focused_x < offset_x + size_x and offset_y <= focused_y < offset_y + size_y:
             return size_x, size_y, offset_x, offset_y
 
     raise AssertionError("No matching monitor found")
@@ -246,12 +214,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser("quake")
     parser.add_argument("--tag", type=str, required=True)
     parser.add_argument("--command", type=str, required=True)
-    parser.add_argument(
-        "--window-id-directory", type=str, default="/tmp/quake-window-ids"
-    )
-    parser.add_argument(
-        "--side", choices=["top", "bottom", "left", "right"], default="top"
-    )
+    parser.add_argument("--window-id-directory", type=str, default="/tmp/quake-window-ids")
+    parser.add_argument("--side", choices=["top", "bottom", "left", "right"], default="top")
     parser.add_argument("--percent", type=float, default=0.3)
     parser.add_argument("--padding", type=int, default=20)
     parser.add_argument("--edge-distance", type=int, default=0)
@@ -262,11 +226,5 @@ if __name__ == "__main__":
         args.tag,
         args.command,
         args.window_id_directory,
-        LocationConfig(
-            args.side,
-            args.percent,
-            args.padding,
-            args.edge_distance,
-            args.border,
-        ),
+        LocationConfig(args.side, args.percent, args.padding, args.edge_distance, args.border,),
     )
