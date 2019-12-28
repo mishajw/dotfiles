@@ -23,8 +23,8 @@ arch-install-scripts
 fzf
 jq
 evince
-shfmt
 xorg-xkill
+ipcalc
 
 # OS
 btrfs-progs
@@ -86,6 +86,7 @@ protobuf
 python-black
 tk
 haveged
+shfmt
 
 # Virtualbox
 virtualbox
