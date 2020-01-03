@@ -27,12 +27,12 @@ def main():
     elif monitors == {"eDP1", "DP1"}:
         run_xrandr(["--output DP1 --primary --auto", "--output eDP1 --off"])
         set_desktops([("DP1", DESKTOPS_SOLO)])
-    elif monitors == {"DP-2", "DP-0"}:
+    elif monitors == {"DP-0", "DP-2"}:
         run_xrandr([
-            "--output DP-2 --primary --auto",
-            "--output DP-0 --auto --left-of DP-2",
+            "--output DP-0 --primary --auto",
+            "--output DP-2 --auto --left-of DP-0",
         ])
-        set_desktops([("DP-2", DESKTOPS_PRIMARY), ("DP-0", DESKTOPS_SECONDARY)])
+        set_desktops([("DP-0", DESKTOPS_PRIMARY), ("DP-2", DESKTOPS_SECONDARY)])
     else:
         print("Unrecognized monitors")
         sys.exit(1)
