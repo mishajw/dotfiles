@@ -164,8 +164,8 @@ set splitbelow          " Horizontal split below current.
 set splitright          " Vertical split to right of current.
 
 " Run/format the current file.
-nnoremap <leader>r :!$DF_PYTHON $scr/dfrun.py run %<CR>
-nnoremap <leader>f :!$DF_PYTHON $scr/dfrun.py format %<CR>
+nnoremap <leader>r :!$DF_PYTHON $scr/quick.py run %<CR>
+nnoremap <leader>f :!$DF_PYTHON $scr/quick.py fmt %<CR>
 
 " Goyo options
 map <leader>g :Goyo<CR>

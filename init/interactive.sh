@@ -12,6 +12,7 @@ source $init/modules/intellij.sh
 source $init/modules/mac.sh
 source $init/modules/mycloud.sh
 source $init/modules/python-interactive.sh
+source $init/modules/quick.sh
 source $init/modules/sl.sh
 source $init/modules/systemctl.sh
 source $init/modules/vim.sh
