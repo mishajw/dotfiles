@@ -6,7 +6,7 @@ py-calc() {
     return 1
   fi
   MATHS="$@"
-  $DF_PYTHON -c "print($MATHS)"
+  $DF_PYTHON -c "from math import *; print($MATHS)"
 }
 
 alias calc="noglob py-calc"
