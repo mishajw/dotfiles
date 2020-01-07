@@ -75,10 +75,12 @@ def init_handlers() -> None:
     fmt_handlers.append((is_sh, path_command("shfmt", "-w", "-i", "2")))
 
 
-def get_handler(path: Path, handlers: List[Tuple[PathPrerequisite, Any]]) -> Any:
+def get_handler(path: Path, handlers: List[Tuple[PathPrerequisite, Any]], default=None) -> Any:
     for prerequisite, handler in handlers:
         if prerequisite(path):
             return handler
+    if default is not None:
+        return default
     print(f"Unsupported file type: {path}")
     sys.exit()
 
@@ -133,7 +135,7 @@ if __name__ == "__main__":
         path = Path(args.path)
         if args.scratch:
             path = Path(args.scratch_dir) / path
-        file_template = get_handler(path, edit_handlers)
+        file_template = get_handler(path, edit_handlers, default="")
         print(f"Editing {path}")
         edit_with_template(path, file_template)
     else:
