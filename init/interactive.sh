@@ -48,3 +48,6 @@ alias ag="ag --pager less"
 
 # Start x if it isn't already started
 pgrep X 1>/dev/null || ([ -z "$TMUX" ] && startx)
+
+# Stop Ctrl+S/Q behaviour.
+stty -ixon
