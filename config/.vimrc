@@ -193,3 +193,4 @@ execute "digraphs us " . 0x1D64
 execute "digraphs vs " . 0x1D65
 execute "digraphs xs " . 0x2093
 
+source $df/scripts/todo-md.vim
