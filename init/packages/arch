@@ -53,6 +53,7 @@ gource
 compton
 xorg-xdpyinfo
 xorg-xprop
+redshift
 
 # # Fonts
 # # TODO: update font package names

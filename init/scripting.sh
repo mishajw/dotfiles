@@ -29,6 +29,7 @@ export SXHKD_SHELL="bash"
 export WINDOW_GAP=15
 export WINDOW_RESIZE_INCREMENTS=200
 export VOLUME_FIFO="/tmp/df_volume_fifo"
+export REDSHIFT_BRIGHTNESS="0.7"
 
 # Misc
 export IP_DEVICE="wlan0"
