@@ -133,13 +133,13 @@ set tabstop=2
 set shiftwidth=2
 set autoindent
 set formatoptions+=o    " Continue comment marker in new lines.
-set textwidth=0         " Hard-wrap long lines as you type them.
 set expandtab           " Insert spaces when TAB is pressed.
 set tabstop=2           " Render TABs using this many spaces.
 set shiftwidth=2        " Indentation amount for < and > commands.
 
 " Set column limit at 100 characters
 set colorcolumn=100
+set textwidth=100
 
 " Highlight line when in insert mode
 :autocmd InsertEnter * set cul
