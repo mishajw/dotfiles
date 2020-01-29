@@ -28,7 +28,8 @@ g-rm-branch() {
   fi
 }
 
-alias -g COM="\$(\
+alias -g Gc="\$(\
   git log --oneline --author \$(git config user.email) \
   | fzf \
   | awk '{print \$1}')"
+alias -g Gb="\$(git branch | fzf | sed 's/*//g')"
