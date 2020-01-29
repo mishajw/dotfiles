@@ -193,4 +193,8 @@ execute "digraphs us " . 0x1D64
 execute "digraphs vs " . 0x1D65
 execute "digraphs xs " . 0x2093
 
+" Shorter column length in commit messages.
+au BufRead,BufNewFile *.hg.txt set textwidth=72
+au BufRead,BufNewFile *.hg.txt set colorcolumn=72
+
 source $df/scripts/todo-md.vim
