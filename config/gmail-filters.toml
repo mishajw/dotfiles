@@ -1,11 +1,7 @@
 [[filter]]
 label = "edu"
-query = "PhD to:connectionists"
-
-[[filter]]
-label = "edu"
 archive = true
-query = "-PhD to:connectionists"
+query = "to:connectionists"
 
 [[filter]]
 archive = true
@@ -15,6 +11,23 @@ query = "from:linkedin.com"
 label = "gbp"
 archive = true
 queryOr = [
-  "to:support@tesco.com",
-  "to:no-reply@digitalocean.com",
+  "from:support@tesco.com",
+  "from:no-reply@digitalocean.com",
+  "from:no-reply-aws@amazon.com",
+]
+
+[[filter]]
+label = "prp"
+queryOr = [
+  "from:banardmarcus.co.uk",
+  "from:laurels.co.uk",
+  "from:haart.co.uk",
+  "from:e.rightmove.co.uk",
+]
+
+[[filter]]
+label = "blg"
+queryOr = [
+  "from:wordpress.com",
+  "from:drawinglinks@substack.com",
 ]
