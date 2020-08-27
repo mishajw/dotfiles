@@ -43,6 +43,7 @@ pf() { pip freeze | grep $1 >>requirements.txt; }
 wt() { while true; do $@; done; }
 loop() { while true; do eval $@; done; }
 alias ag="ag --pager less"
+alias m="make"
 
 [ -f $local/interactive.sh ] && source $local/interactive.sh
 
