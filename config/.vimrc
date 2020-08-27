@@ -186,7 +186,6 @@ execute "digraphs ms " . 0x2098
 execute "digraphs ns " . 0x2099
 execute "digraphs os " . 0x2092
 execute "digraphs ps " . 0x209A
-execute "digraphs ps " . 0x209A
 execute "digraphs rs " . 0x1D63
 execute "digraphs ss " . 0x209B
 execute "digraphs ts " . 0x209C
