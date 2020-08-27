@@ -19,19 +19,28 @@ def main():
     print("Connected monitors: " + ", ".join(monitors))
 
     if monitors == {"eDP1"}:
-        run_xrandr(["--output eDP1 --primary --auto", "--output DP1 --off"])
+        run_xrandr(["--output eDP1 --primary --auto --scale 1x1", "--output DP1 --off"])
         set_desktops([("eDP1", DESKTOPS_SOLO)])
     elif monitors == {"screen"}:
         run_xrandr(["--output screen --primary --auto"])
         set_desktops([("screen", DESKTOPS_SOLO)])
     elif monitors == {"eDP1", "DP1"}:
-        run_xrandr(["--output DP1 --primary --auto", "--output eDP1 --off"])
-        set_desktops([("DP1", DESKTOPS_SOLO)])
+        run_xrandr(
+            ["--output DP1 --primary --auto", "--output eDP1 --same-as DP1 --scale-from 2560x1440"]
+        )
+        set_desktops([("eDP1", DESKTOPS_SOLO)])
+        check_call(["bspc", "monitor", "DP1", "--remove"])
+    elif monitors == {"eDP1", "HDMI1"}:
+        run_xrandr(
+            [
+                "--output HDMI1 --primary --auto",
+                "--output eDP1 --same-as HDMI1 --scale-from 1024x768",
+            ]
+        )
+        set_desktops([("eDP1", DESKTOPS_SOLO)])
+        check_call(["bspc", "monitor", "HDMI1", "--remove"])
     elif monitors == {"DP-0", "DP-2"}:
-        run_xrandr([
-            "--output DP-0 --primary --auto",
-            "--output DP-2 --auto --left-of DP-0",
-        ])
+        run_xrandr(["--output DP-0 --primary --auto", "--output DP-2 --auto --left-of DP-0"])
         set_desktops([("DP-0", DESKTOPS_PRIMARY), ("DP-2", DESKTOPS_SECONDARY)])
     else:
         print("Unrecognized monitors")
