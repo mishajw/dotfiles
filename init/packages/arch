@@ -25,6 +25,7 @@ jq
 evince
 xorg-xkill
 ipcalc
+dnsutils
 
 # OS
 btrfs-progs
