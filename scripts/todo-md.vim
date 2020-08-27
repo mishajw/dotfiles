@@ -19,6 +19,7 @@ function SetTodoColors()
   call matchadd('TodoRed',              '#blkr\>')
   call matchadd('TodoLightRed',         '#blkd\>')
   call matchadd('TodoPurple',           '#qstn\>')
+  call matchadd('TodoPurple',           '#idea\>')
   call matchadd('TodoBlue',             '#clup\>')
 endfunction
 
