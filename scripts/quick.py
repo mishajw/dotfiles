@@ -48,6 +48,9 @@ def init_handlers() -> None:
     def is_cargo(path: Path) -> bool:
         return has_ext("rs")(path) and Path("Cargo.toml").is_file()
 
+    def is_py_venv(path: Path) -> bool:
+        return has_ext("py")(path) and Path(".env/bin/python").is_file()
+
     def path_command(*args) -> CommandsGenerator:
         return lambda path: [[*args, str(path)]]
 
@@ -58,6 +61,7 @@ def init_handlers() -> None:
         return [["rustc", path, "-o", "/tmp/quick.out"], ["/tmp/quick.out"]]
 
     is_py = has_ext("py")
+    run_handlers.append((is_py_venv, path_command(".env/bin/python")))
     run_handlers.append((is_py, path_command(PYTHON)))
     fmt_handlers.append((is_py, path_command(PYTHON, "-m", "black", "--line-length", 100)))
     edit_handlers.append((is_py, '#!/usr/bin/env python\nprint("Hello, world!")'))
