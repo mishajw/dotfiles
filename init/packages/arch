@@ -26,6 +26,7 @@ evince
 xorg-xkill
 ipcalc
 dnsutils
+xev
 
 # OS
 btrfs-progs
@@ -56,15 +57,11 @@ xorg-xdpyinfo
 xorg-xprop
 redshift
 
-# # Fonts
-# # TODO: update font package names
+# Fonts
 ttf-dejavu
-# ttf-inconsolata
-# ttf-font-awesome
-# cairo-infinality-ultimate
-# fontconfig-infinality-ultimate
-# freetype2-infinality-ultimate
-# otf-inconsolata-lgc
+tex-gyre-fonts
+otf-libertinus
+noto-fonts-emoji
 
 # Applications
 termite
