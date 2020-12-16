@@ -53,7 +53,7 @@ super + {_,shift + }{h,j,k,l}
 	bspc node --{focus,swap} {west,south,north,east}
 # Cycle between nodes in a window
 super + {_,shift + }c
-	bspc node --focus {next,prev}.local
+	bspc node --focus {next,prev}.local.leaf
 # Go to last desktop
 super + Tab
 	bspc desktop --focus last
