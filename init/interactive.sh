@@ -2,6 +2,7 @@
 
 source $HOME/dotfiles/init/scripting.sh
 
+source $init/modules/adb.sh
 source $init/modules/apt-get.sh
 source $init/modules/calc.sh
 source $init/modules/cargo.sh
