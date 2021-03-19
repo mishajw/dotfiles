@@ -77,6 +77,7 @@ def init_handlers() -> None:
     is_sh = has_ext("sh")
     run_handlers.append((is_sh, path_command()))
     fmt_handlers.append((is_sh, path_command("shfmt", "-w", "-i", "2")))
+    edit_handlers.append((is_sh, '#!/usr/bin/env bash',))
 
 
 def get_handler(path: Path, handlers: List[Tuple[PathPrerequisite, Any]], default=None) -> Any:
