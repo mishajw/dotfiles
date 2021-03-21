@@ -21,6 +21,9 @@ function SetTodoColors()
   call matchadd('TodoPurple',           '#qstn\>')
   call matchadd('TodoPurple',           '#idea\>')
   call matchadd('TodoBlue',             '#clup\>')
+
+  call matchadd('TodoRed',              '\[now\]')
+  call matchadd('TodoOrange',           '\[today\]')
 endfunction
 
 au BufRead,BufNewFile *todo.md call SetTodoColors()
