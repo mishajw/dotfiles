@@ -10,7 +10,7 @@ highlight TodoBlue             ctermbg=4    ctermfg=white
 highlight TodoPurple           ctermbg=13   ctermfg=white
 highlight TodoFade             ctermfg=243
 
-function SetTodoColors()
+function SetupTodo()
   call matchadd('TodoGreenHighlight',   '#todo\>')
   call matchadd('TodoOrangeHighlight',  '#onit\>')
   call matchadd('TodoOrange',           '#redy\>')
@@ -25,6 +25,9 @@ function SetTodoColors()
   call matchadd('TodoYellow',           '\[.*\]$')
   call matchadd('TodoOrange',           '\[today\]$')
   call matchadd('TodoRed',              '\[now\]$')
+
+  set colorcolumn=60
+  set textwidth=60
 endfunction
 
-au BufRead,BufNewFile *todo.md call SetTodoColors()
+au BufRead,BufNewFile *todo.md call SetupTodo()
