@@ -86,6 +86,7 @@ python-black
 tk
 haveged
 shfmt
+ncdu
 
 # Virtualbox
 virtualbox
