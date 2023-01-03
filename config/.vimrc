@@ -128,10 +128,8 @@ map Q :Buffers<CR>
 set updatetime=100
 
 " Tabs to 2x space
-set expandtab
 set softtabstop=2
 set tabstop=2
-set shiftwidth=2
 set autoindent
 set formatoptions+=o    " Continue comment marker in new lines.
 set expandtab           " Insert spaces when TAB is pressed.

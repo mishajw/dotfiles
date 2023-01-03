@@ -1,6 +1,7 @@
 " Colors for nicer todo.md files.
 
 highlight TodoGreenHighlight   ctermbg=2    ctermfg=black  cterm=italic,bold,underline
+highlight TodoGreen            ctermbg=2    ctermfg=black
 highlight TodoYellow           ctermbg=226  ctermfg=black
 highlight TodoOrangeHighlight  ctermbg=11   ctermfg=white  cterm=italic,bold,underline
 highlight TodoOrange           ctermbg=11   ctermfg=white
@@ -12,6 +13,7 @@ highlight TodoFade             ctermfg=243
 
 function SetupTodo()
   call matchadd('TodoGreenHighlight',   '#todo\>')
+  call matchadd('TodoGreen',            '#schd\>')
   call matchadd('TodoOrangeHighlight',  '#onit\>')
   call matchadd('TodoOrange',           '#redy\>')
   call matchadd('TodoYellow',           '#revw\>')

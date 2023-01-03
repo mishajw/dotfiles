@@ -134,7 +134,13 @@ def set_window_geom(window_id: int, location: LocationConfig):
 
     check_output(["xdotool", "windowmove", str(window_id), str(window_x), str(window_y)])
     check_output(
-        ["xdotool", "windowsize", str(window_id), str(window_width), str(window_height),]
+        [
+            "xdotool",
+            "windowsize",
+            str(window_id),
+            str(window_width),
+            str(window_height),
+        ]
     )
 
 
@@ -146,7 +152,14 @@ def set_window_floating(window_id: int):
     if CLASS_NAME not in rules:
         LOG.debug("Adding BSPWM rule to float classnmae")
         check_output(
-            ["bspc", "rule", "--add", "*:" + CLASS_NAME, "state=floating", "sticky=on",]
+            [
+                "bspc",
+                "rule",
+                "--add",
+                "*:" + CLASS_NAME,
+                "state=floating",
+                "sticky=on",
+            ]
         )
 
 
@@ -222,5 +235,11 @@ if __name__ == "__main__":
         args.tag,
         args.command,
         args.window_id_directory,
-        LocationConfig(args.side, args.percent, args.padding, args.edge_distance, args.border,),
+        LocationConfig(
+            args.side,
+            args.percent,
+            args.padding,
+            args.edge_distance,
+            args.border,
+        ),
     )

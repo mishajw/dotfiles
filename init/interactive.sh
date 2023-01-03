@@ -15,6 +15,7 @@ source $init/modules/mycloud.sh
 source $init/modules/python-interactive.sh
 source $init/modules/quick.sh
 source $init/modules/sl.sh
+source $init/modules/ssh.sh
 source $init/modules/systemctl.sh
 source $init/modules/vim.sh
 source $init/modules/yay.sh

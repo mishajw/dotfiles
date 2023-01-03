@@ -6,7 +6,8 @@ if [[ \
     $python_version != *"3.6"* && \
     $python_version != *"3.7"* && \
     $python_version != *"3.8"* && \
-    $python_version != *"3.9"* ]]; then
+    $python_version != *"3.9"* && \
+    $python_version != *"3.10"* ]]; then
   echo "Bad python version: $python_version"
   exit 1
 fi

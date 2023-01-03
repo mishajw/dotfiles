@@ -3,7 +3,7 @@
 # Function to print the volume
 print-vol() {
   echo -n "vol: "
-  amixer sget Master | grep "Front Left: Playback" | grep -Po "[0-9]+%"
+  amixer sget Master | grep "Mono: Playback" | grep -Po "[0-9]+%"
 }
 
 # Set up FIFO

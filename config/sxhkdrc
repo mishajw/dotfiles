@@ -6,7 +6,7 @@ super + r
 super + space
   $scr/x/launcher.sh
 super + grave
-  $DF_PYTHON $scr/x/quake.py --tag term --command termite \
+  $DF_PYTHON $scr/x/quake.py --tag term --command rxvt \
     --side bottom --percent 0.33 --border 4
 super + shift + grave
   $DF_PYTHON $scr/x/quake.py --tag browse --command "$BROWSER" \
@@ -22,19 +22,20 @@ XF86Audio{Lower,Raise}Volume
 XF86AudioMute
   $scr/x/vol-control.sh toggle
 XF86MonBrightnessUp
-  xbacklight -inc 5
+  $scr/x/brightness.sh 0.1
 XF86MonBrightnessDown
-  xbacklight -dec 5
+  $scr/x/brightness.sh -0.1
 
 # Misc utilities
-super + ctrl + alt + z
+super + z
   $scr/x/lock.sh
 super + Print
   eval $SCREENSHOT_COMMAND
+super + ctrl + z
+	$cnf/bspwmrc & disown
 
 # Reload BSPWM
 super + Escape
-	$cnf/bspwmrc & disown
 
 # Close windows
 super + {_,shift + }w

@@ -6,6 +6,7 @@
 	gpgsign = true
 [push]
 	default = current
+	autoSetupRemote = true
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
@@ -55,9 +56,6 @@
 	tool = vimdiff
 [difftool]
 	prompt = true
-[pager]
-  diff = diff-so-fancy | less --tabs=1,5 -RFX
-  show = diff-so-fancy | less --tabs=1,5 -RFX
 [rebase]
 	autoStash = true
 [include]
