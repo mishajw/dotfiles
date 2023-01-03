@@ -5,7 +5,10 @@ query = "to:connectionists"
 
 [[filter]]
 archive = true
-query = "from:linkedin.com"
+queryOr = [
+  "(from:linkedin.com)",
+  "(from:vercel[bot])"
+]
 
 [[filter]]
 label = "gbp"

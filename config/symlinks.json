@@ -45,5 +45,9 @@
   },
   {
     "src": ".Xresources"
+  },
+  {
+    "src": "fonts-local.conf",
+    "dst": "/etc/fonts/local.conf"
   }
 ]
