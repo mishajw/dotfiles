@@ -9,7 +9,7 @@ if [[ ! -e $HOME/.fzf ]]; then
 fi
 
 if [[ ! -e $HOME/.vim/bundle ]]; then
-  mkdir --parents ~/.vim/bundle
+  mkdir -p ~/.vim/bundle
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   YCM=~/.vim/bundle/YouCompleteMe
 fi

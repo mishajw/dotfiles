@@ -27,6 +27,19 @@ function dfssh-first-random() {
   dfssh-first "$SESSION_NAME" "${@}"
 }
 
+function dfssh-copy-dir() {
+  REMOTE_DIRECTORY="/mnt/ssd-0/misha_workspace/rsynced$PWD"
+  ssh misha mkdir -p "$REMOTE_DIRECTORY"
+  rsync -rv \
+		--filter ':- .gitignore' \
+		--exclude ".git" \
+		. misha:"$REMOTE_DIRECTORY"
+}
+
+function dfssh-run() {
+  REMOTE_DIRECTORY="/mnt/ssd-0/misha_workspace/rsynced$PWD"
+  ssh misha "cd $REMOTE_DIRECTORY && ${@}"
+}
+
 alias s="dfssh-first-random"
 alias sn="dfssh-first"
-

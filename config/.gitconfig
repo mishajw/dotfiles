@@ -1,52 +1,12 @@
 [user]
 	email = mishajw@gmail.com
 	name = Misha Wagner
-	signingkey = 92271A1D
-[commit]
-	gpgsign = true
 [push]
 	default = current
 	autoSetupRemote = true
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
-[alias]
-  a = add
-  ap = add --patch
-  b = branch
-  c = "!f() { git commit --message \"$*\"; }; f"
-  ca = "!f() { git commit --all --message \"$*\"; }; f"
-  cam = commit --amend
-  cf = "!f() { git log --oneline --author Misha | fzf | awk '{print $1}' | xargs -I% git commit --fixup %; }; f"
-  cl = "!f() { git clone ssh://git@github.com/$*; }; f"
-  bl = "!f() { git branch --list | fzf | sed 's/\\*//g' | xargs git checkout; }; f"
-  co = checkout
-  d = diff
-  ds = diff --staged
-  f = fetch
-  l = log --oneline --decorate
-  lg = log --oneline --decorate --graph
-  m = merge
-  p = push
-  pf = push --force
-  pl = pull
-  psup = push --set-upstream origin $(git_current_branch)
-  rao = remote add origin
-  rb = rebase --interactive --autosquash
-  rba = rebase --abort
-  rbc = rebase --continue
-  rbh = rebase --interactive HEAD~20
-  s = status
-  sh = show
-  shf = show --name-only
-  si = submodule init
-  st = stash
-  std = stash drop
-  stn = stash push --message
-  stp = stash pop
-  stsh = stash show --patch
-  su = submodule update
-
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true

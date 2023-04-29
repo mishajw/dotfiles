@@ -25,6 +25,7 @@ else
   antigen bundle zsh-users/zsh-autosuggestions
   antigen bundle urbainvaes/fzf-marks
   antigen theme garyblessington
+  antigen bundle unixorn/fzf-zsh-plugin@main
   antigen apply
 fi
 

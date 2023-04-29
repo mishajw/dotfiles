@@ -60,3 +60,6 @@ pacman_install() {
 
 source $init/modules/python.sh
 source $init/modules/go.sh
+
+alias python="python3"
+
