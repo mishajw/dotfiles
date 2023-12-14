@@ -1,0 +1,4 @@
+tap "homebrew/bundle"
+cask "google-chrome"
+cask "spotify"
+cask "visual-studio-code"
