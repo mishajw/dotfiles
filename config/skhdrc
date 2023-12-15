@@ -10,9 +10,6 @@ shift + alt - k : yabai -m window --swap north
 shift + alt - h : yabai -m window --swap west
 shift + alt - l : yabai -m window --swap east
 
-# Balance size of windows.
-shift + alt - 0 : yabai -m space --balance
-
 # Resize windows.
 alt + ctrl - k : yabai -m window --resize top:0:-60
 alt + ctrl + shift - j : yabai -m window --resize top:0:60
@@ -25,9 +22,9 @@ alt + ctrl + shift - l : yabai -m window --resize left:60:0
 
 # Zoom.
 alt - m : yabai -m window --toggle zoom-fullscreen
-
 # Rotate.
 alt - r : yabai -m window --toggle split
-
 # Cycle.
 alt - c : yabai -m window --focus next || yabai -m window --focus first
+# Balance size of windows.
+shift + alt - 0 : yabai -m space --balance
