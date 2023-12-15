@@ -25,3 +25,6 @@ alt + ctrl + shift - l : yabai -m window --resize left:20:0
 
 # Zoom.
 alt - m : yabai -m window --toggle zoom-fullscreen
+
+# Rotate.
+alt - r : yabai -m window --toggle split
