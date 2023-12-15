@@ -1,4 +1,7 @@
 tap "homebrew/bundle"
+brew "antigen"
+brew "zsh"
 cask "google-chrome"
 cask "spotify"
 cask "visual-studio-code"
+vscode "vscodevim.vim"
