@@ -28,8 +28,8 @@ g-rm-branch() {
   fi
 }
 
-function gc() { git commit --message \"$*\"; }
-function gca() { git commit --all --message \"$*\"; }
+function gc() { git commit --message "$*"; }
+function gca() { git commit --all --message "$*"; }
 function gcf() { git log --oneline --author Misha | fzf | awk '{print $1}' | xargs -I% git commit --fixup %; }
 function gcl() { git clone ssh://git@github.com/$*; }
 function gbl() { git branch --list | fzf | sed 's/\\*//g' | xargs git checkout; }
