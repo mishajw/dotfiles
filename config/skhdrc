@@ -28,3 +28,6 @@ alt - m : yabai -m window --toggle zoom-fullscreen
 
 # Rotate.
 alt - r : yabai -m window --toggle split
+
+# Cycle.
+alt - c : yabai -m window --focus next || yabai -m window --focus first
