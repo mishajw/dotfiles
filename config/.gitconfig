@@ -1,6 +1,7 @@
 [user]
 	email = mishajw@gmail.com
 	name = Misha Wagner
+	signingkey = /Users/misha/.ssh/signing.pub
 [push]
 	default = current
 	autoSetupRemote = true
@@ -22,3 +23,5 @@
   path = ~/dotfiles/local/.gitconfig
 [pull]
 	rebase = true
+[gpg]
+	format = ssh
