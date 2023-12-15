@@ -28,3 +28,7 @@ alt - r : yabai -m window --toggle split
 alt - c : yabai -m window --focus next || yabai -m window --focus first
 # Balance size of windows.
 shift + alt - 0 : yabai -m space --balance
+
+# Shortcuts to open web + code.
+alt - n : open -na "Google Chrome" --args --new-window
+alt + shift - n : open -na "Visual Studio Code" --args --new-window
