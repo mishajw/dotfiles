@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
-
 set -e
-
-$init/install/yay.sh
-yay --noconfirm --needed -S $(cat $init/packages/arch | grep -Pv '^#')
-yay --noconfirm --needed -S $(cat $init/packages/arch-aur | grep -Pv '^#')
-
-$init/install/python.sh
 $init/install/vim.sh
-$init/install/rustup.sh
-$init/install/incredi.sh
-
-echo "Finished installing, not including AUR packages"
+brew bundle --file $df/config/Brewfile
+chsh -s $(which zsh)

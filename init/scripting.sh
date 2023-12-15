@@ -44,6 +44,9 @@ export SYSTEM_PYTHON=$(which python3)
 export SCREENSHOT_COMMAND='import $SCREENSHOT_LOCATION'
 export IDEA_PROPERTIES="$cnf/idea.properties"
 export ANTIGEN_PATH=/usr/share/zsh/share/antigen.zsh
+export ANTIGEN_PATH=$( \
+  ([ -f "/usr/share/zsh/share/antigen.zsh" ] && echo "/usr/share/zsh/share/antigen.zsh") || \
+  ([ -f "/opt/homebrew/share/antigen/antigen.zsh" ] && echo "/opt/homebrew/share/antigen/antigen.zsh"))
 export INTELLIJ=$(which idea)
 
 # Default applications for use in dotfiles
@@ -59,7 +62,6 @@ pacman_install() {
 }
 
 source $init/modules/python.sh
-source $init/modules/go.sh
 
 alias python="python3"
 
