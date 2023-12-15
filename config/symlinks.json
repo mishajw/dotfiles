@@ -14,5 +14,13 @@
   },
   {
     "src": ".gitignore_global"
+  },
+  {
+    "src": "yabairc",
+    "dst": ".yabairc"
+  },
+  {
+    "src": "skhdrc",
+    "dst": ".skhdrc"
   }
 ]
