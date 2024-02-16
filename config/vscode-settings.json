@@ -13,12 +13,28 @@
     "python.analysis.typeCheckingMode": "strict",
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter",
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "editor.rulers": [88]
     },
     "python.analysis.diagnosticSeverityOverrides": {
         "reportMissingTypeStubs": "none",
         "reportUnknownMemberType": "none",
         "reportUnknownVariableType": "none",
-        "reportUnknownArgumentType": "none"
-    }
+        "reportUnknownArgumentType": "none",
+        "reportMissingTypeArgument": "none",
+        "reportUnknownLambdaType": "none",
+        "reportUnknownParameterType": "none"
+    },
+    "editor.lineNumbers": "relative",
+    "jupyter.runStartupCommands": [
+        "%load_ext autoreload", "%autoreload 2"
+    ],
+    "jupyter.interactiveWindow.creationMode": "perFile",
+    "window.restoreWindows": "one",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
 }
