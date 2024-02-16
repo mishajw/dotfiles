@@ -55,13 +55,6 @@ export BROWSER="google-chrome-stable --force-device-scale-factor=\$CHROME_SCALE_
 
 export PATH="$PATH:$HOME/.cargo/bin"
 
-[ -f $local/scripting.sh ] && source $local/scripting.sh
-
-pacman_install() {
-  sudo pacman -S $@ --noconfirm --needed
-}
-
 source $init/modules/python.sh
 
-alias python="python3"
-
+[ -f $local/scripting.sh ] && source $local/scripting.sh
