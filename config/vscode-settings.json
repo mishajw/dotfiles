@@ -23,7 +23,8 @@
         "reportUnknownArgumentType": "none",
         "reportMissingTypeArgument": "none",
         "reportUnknownLambdaType": "none",
-        "reportUnknownParameterType": "none"
+        "reportUnknownParameterType": "none",
+        "reportUntypedFunctionDecorator": "none"
     },
     "editor.lineNumbers": "relative",
     "jupyter.runStartupCommands": [
@@ -32,7 +33,7 @@
     "jupyter.interactiveWindow.creationMode": "perFile",
     "window.restoreWindows": "one",
     "github.copilot.enable": {
-        "*": false,
+        "*": true,
         "plaintext": false,
         "markdown": false,
         "scminput": false

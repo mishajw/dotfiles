@@ -21,3 +21,4 @@ yabai -m config \
     left_padding 0 \
     right_padding 0 \
     window_gap 0
+yabai -m rule --add app="iTerm2" manage=off
