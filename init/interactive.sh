@@ -9,6 +9,7 @@ source $init/modules/exa.sh
 source $init/modules/git.sh
 source $init/modules/global-aliases.sh
 source $init/modules/mac.sh
+source $init/modules/make.sh
 source $init/modules/python-interactive.sh
 source $init/modules/quick.sh
 source $init/modules/ssh.sh
@@ -37,7 +38,6 @@ pf() { pip freeze | grep $1 >>requirements.txt; }
 wt() { while true; do $@; done; }
 loop() { while true; do eval $@; done; }
 alias ag="ag --pager less"
-alias m="make"
 
 [ -f $local/interactive.sh ] && source $local/interactive.sh
 
