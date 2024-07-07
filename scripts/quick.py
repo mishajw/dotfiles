@@ -15,10 +15,10 @@ For example, you can start editing a file:
 See init_handlers for supported file types.
 """
 
+
 from pathlib import Path
 from typing import Callable
 from typing import Any
-from typing import Dict
 from typing import List
 from typing import Tuple
 import argparse
@@ -51,19 +51,21 @@ def init_handlers() -> None:
     def is_py_venv(path: Path) -> bool:
         return has_ext("py")(path) and Path(".env/bin/python").is_file()
 
-    def path_command(*args) -> CommandsGenerator:
+    def path_command(*args: Any) -> CommandsGenerator:
         return lambda path: [[*args, str(path)]]
 
-    def command(*args) -> CommandsGenerator:
+    def command(*args: Any) -> CommandsGenerator:
         return lambda _: [list(args)]
 
     def build_and_run_rs(path: Path) -> List[Command]:
-        return [["rustc", path, "-o", "/tmp/quick.out"], ["/tmp/quick.out"]]
+        return [["rustc", str(path), "-o", "/tmp/quick.out"], ["/tmp/quick.out"]]
 
     is_py = has_ext("py")
     run_handlers.append((is_py_venv, path_command(".env/bin/python")))
     run_handlers.append((is_py, path_command(PYTHON)))
-    fmt_handlers.append((is_py, path_command(PYTHON, "-m", "black", "--line-length", 100)))
+    fmt_handlers.append(
+        (is_py, path_command(PYTHON, "-m", "black", "--line-length", 100))
+    )
     edit_handlers.append((is_py, '#!/usr/bin/env python\nprint("Hello, world!")'))
 
     run_handlers.append((is_cargo, command("cargo", "run")))
@@ -72,15 +74,27 @@ def init_handlers() -> None:
     is_rs = has_ext("rs")
     run_handlers.append((is_rs, build_and_run_rs))
     fmt_handlers.append((is_rs, path_command("rustfmt")))
-    edit_handlers.append((is_rs, 'fn main() { println!("Hello, world!"); }',))
+    edit_handlers.append(
+        (
+            is_rs,
+            'fn main() { println!("Hello, world!"); }',
+        )
+    )
 
     is_sh = has_ext("sh")
     run_handlers.append((is_sh, path_command()))
     fmt_handlers.append((is_sh, path_command("shfmt", "-w", "-i", "2")))
-    edit_handlers.append((is_sh, '#!/usr/bin/env bash',))
+    edit_handlers.append(
+        (
+            is_sh,
+            "#!/usr/bin/env bash",
+        )
+    )
 
 
-def get_handler(path: Path, handlers: List[Tuple[PathPrerequisite, Any]], default=None) -> Any:
+def get_handler(
+    path: Path, handlers: List[Tuple[PathPrerequisite, Any]], default: Any = None
+) -> Any:
     for prerequisite, handler in handlers:
         if prerequisite(path):
             return handler
@@ -104,12 +118,14 @@ def exec_commands(commands: List[Command]) -> None:
 def edit_with_template(path: Path, file_template: FileTemplate) -> None:
     if not path.is_file():
         path.write_text(file_template)
-    exec_commands([[EDITOR, path]])
+    exec_commands([[EDITOR, str(path)]])
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("quick")
-    parser.add_argument("--scratch-dir", type=str, default=Path(HOME) / "src" / "scratch")
+    parser.add_argument(
+        "--scratch-dir", type=str, default=Path(HOME) / "src" / "scratch"
+    )
     subparsers = parser.add_subparsers(dest="command", help="commands")
 
     run_parser = subparsers.add_parser("run")
