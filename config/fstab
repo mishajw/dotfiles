@@ -1,4 +1,0 @@
-/dev/mapper/luks-main--a	/         	ext4      	rw,relatime	0 1
-/dev/sda1           	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro	0 2
-/dev/mapper/luks-swap	none      	swap      	defaults  	0 0
-/dev/mapper/luks-perm	/mnt/perm 	ext4      	rw,relatime	0 2

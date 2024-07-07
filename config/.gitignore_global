@@ -1,6 +1,0 @@
-*.agdai
-*.agda~
-*.sw*
-.DS_Store
-.idea
-.mypy_cache

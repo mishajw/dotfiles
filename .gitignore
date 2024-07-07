@@ -1,8 +1,1 @@
-*.log
-*.pyc
-*.swp
-*/.idea
-*__
-.env
-local
-gen
+local.sh
