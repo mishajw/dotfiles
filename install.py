@@ -4,7 +4,6 @@ from pathlib import Path
 
 _SYMLINKS: dict[str, Path] = {
     ".vimrc": Path("~/.vimrc"),
-    ".vimrc": Path("~/.config/nvim/init.vim"),
     ".gitconfig": Path("~/.gitconfig"),
     "yabairc": Path("~/.yabairc"),
     "skhdrc": Path("~/.skhdrc"),
