@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-ROOT=$(dirname $(pwd)/${(%):-%N})
+# ROOT=$(dirname $(pwd)/${(%):-%N})
+ROOT=$(dirname ${(%):-%N})
 _log() {
   echo -e "[\033[32m"mishajw/dotfiles"\033[39m]" $@
 }
@@ -152,18 +153,7 @@ PROMPT='%F{cyan}%c%f %F{red}${vcs_info_msg_0_}%f$ '
 # misc
 cdmk() { mkdir -p -- "$1" && cd -P -- "$1"; }
 alias ".."="cd .."
+alias reup="source ~/.zshrc"
 
 [ -f $ROOT/local.sh ] && source $ROOT/local.sh
 _log done
-
-# # Quick directories
-# export df="$HOME/dotfiles"
-# export cnf="$df/config"
-# export scr="$df/scripts"
-# export imgs="$df/images"
-# export init="$df/init"
-# export local="$df/local"
-# export gen="$df/gen" && mkdir -p $gen
-# export prog="$HOME/prog" && mkdir -p $prog
-# export perm="$HOME/.perm"
-# export lperm="$HOME/.local-perm"
