@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from pathlib import Path
 
+import subprocess
 
 _SYMLINKS: dict[str, Path] = {
     ".vimrc": Path("~/.vimrc"),
@@ -15,6 +16,7 @@ _SYMLINKS: dict[str, Path] = {
 
 def main():
     create_symlinks()
+    install_oh_my_zsh()
     source_setup_script_in_zsh()
 
 
@@ -63,6 +65,22 @@ def source_setup_script_in_zsh():
         f.write(f"\n{source_text}\n")
     log("> sourced")
 
+
+def install_oh_my_zsh():
+    log("Installing Oh My Zsh and plugins")
+    confirmation = input("Do you want to install Oh My Zsh and plugins? (y/n): ").lower()
+    if confirmation != "y":
+        log("> Oh My Zsh and plugins installation skipped")
+        return
+    install_script = """
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" unattended
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    git clone https://github.com/joshskidmore/zsh-fzf-history-search ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-fzf-history-search
+    """
+
+    subprocess.run(install_script, shell=True, check=True, executable='/bin/bash')
+    log("> Oh My Zsh and plugins installed successfully")
 
 def log(s: str) -> None:
     print(f"\033[32m[mishajw/dotfiles]\033[39m {s}")

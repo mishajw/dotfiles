@@ -150,6 +150,11 @@ alias se="EDITOR=vim sudoedit"
 setopt PROMPT_SUBST
 PROMPT='%F{cyan}%c%f %F{red}${vcs_info_msg_0_}%f$ '
 
+# oh-my-zsh
+plugins=(zsh-fzf-history-search zsh-syntax-highlighting zsh-autosuggestions)
+export ZSH=$HOME/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
 # misc
 cdmk() { mkdir -p -- "$1" && cd -P -- "$1"; }
 alias ".."="cd .."
